@@ -7,8 +7,8 @@ export default function ContentImg() {
             <div className='container'>
                 <div className='text-[40px] font-semibold leading-[55px] text-white text-center max-w-[1195px] m-auto mb-[87px] '>
                     <p>Fcookie is a platform that lets people buy and sell shared ownership in
-                        <span className='text-[#FFFFFF66]'>
-                            digital collectible assets. We believe investing should be shaped by passion,
+                        <span className='text-[#FFFFFF66]'> 
+                              digital collectible assets. We believe investing should be shaped by passion,
                             identity, and community not just numbers on a chart.
                         </span>
                     </p>

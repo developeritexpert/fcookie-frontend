@@ -123,9 +123,9 @@ export default function CollectionSlider() {
                                     <p className="text-center font-[400] mt-[25px] text-[15px] text-[#6C6C6C]">{item.title}</p>
                                     <p className="text-center text-[15px] text-[#6C6C6C] font-[400]  mb-[17px]">{item.name}</p>
                                     <div className="flex justify-center">
-                                        <Link href="\" className="mb-[5px] inline-block text-white py-[2px] px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)] text-[22px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
+                                        <Link href="\" className="mb-[5px] inline-block text-white py-[2px]  px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)] text-[13px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
                                     </div>
-                                    <p className="text-center text-[22px] font-[400] leading-[22px]">{item.day}</p>
+                                    <p className="text-center text-[13px] font-[400] leading-[22px]">{item.day}</p>
                                 </div>
 
                             ))}
