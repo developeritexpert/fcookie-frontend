@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { TfiLayoutLineSolid } from "react-icons/tfi";
 
 
-export default function CollectionSlider() {
+export default function ProductsSlider() {
     const sliderRef = useRef(null);
     const [current, setCurrent] = useState(1);
     const [total, setTotal] = useState(0);
@@ -26,7 +26,7 @@ export default function CollectionSlider() {
             } else if (width < 1024) {
                 setSlidesToShow(3);
             } else {
-                setSlidesToShow(4);
+                setSlidesToShow(5);
             }
         };
 
@@ -49,40 +49,39 @@ export default function CollectionSlider() {
 
     const slides = [
         {
-            image: "/img/slider-img.png",
-            title: "Factory Sealed ",
-            name: "Kevin Durant/Lebron James/Stephen Curry",
-            bid: "$425,000 / Bid",
-            day: "9d 18h"
+            image: "/img/product-slider1.png",
+            title: "Baseball Starter Pack ",
+            price: "$25.00"
         },
         {
-            image: "/img/slider-img1.png",
-            title: "PSA 9 | 1/1 | POP 1 ",
-            name: " Victor Wembanyama",
-            bid: "$110,000 / Bid",
-            day: "2d 18h"
+            image: "/img/product-slider2.png",
+            title: "Baseball Starter Pack",
+            price: "$25.00"
         },
         {
-            image: "/img/slider-img2.png",
-            title: "Factory Sealed | 1/1",
-            name: "Stephen Curry",
-            bid: "$86,875 / Bid",
-            day: "9d 18h"
+            image: "/img/product-slider3.png",
+            title: "Pokémon Starter Pack",
+            price: "$25.00"
         },
         {
-            image: "/img/slider-img3.png",
-            title: "Factory Sealed | 1/1 ",
-            name: "Stephen Curry",
-            bid: "$67,396 / Bid",
-            day: "9d 18h"
+            image: "/img/product-slider4.png",
+            title: "Sports Starter Pack ",
+            price: "$25.00"
+
         },
         {
-            image: "/img/slider-img4.png",
-            title: "PSA 3.5 Auto 7 | POP 1",
-            name: " Michael Jordan",
-            bid: "$63,316 / Bid",
-            day: "9d 18h"
+            image: "/img/product-slider5.png",
+            title: "Baseball Pro Pack",
+            price: "$25.00"
+
         },
+        {
+            image: "/img/product-slider6.png",
+            title: "Football Pro Pack",
+            price: "$25.00"
+
+        },
+
 
     ];
 
@@ -103,8 +102,8 @@ export default function CollectionSlider() {
     };
 
     return (
-        <div className=" relative before:content-['']  before:absolute before:bottom-[-35%] before:left-0 before:z-2  before:w-[270px] before:h-[538px]   before:bg-[url('/img/slider-org-shade.png')]  before:bg-no-repeat before:bg-contain">
-            <div className="xl:pt-[30px] xl:pb-[50px] overflow-hidden relative ">
+        <div className=" xl:pt-[30px] xl:pb-[110px] overflow-hidden relative before:content-['']  before:absolute before:bottom-0 before:left-[-20%] before:z-40  before:w-[876px] before:h-[200px]   before:bg-[url('/img/fcookie.png')]  before:bg-no-repeat before:bg-contain">
+            <div className=" relative ">
                 <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-1 before:w-full before:h-full before:bg-[#090702]">
                     <div className="flex justify-between mb-[30px] ">
                         <p className="font-semibold text-[32px] text-white">Top Collections</p>
@@ -115,16 +114,13 @@ export default function CollectionSlider() {
                         <Slider ref={sliderRef} {...settings}>
                             {slides.map((item, i) => (
 
-                                <div key={i} className=" pt-[39px] pb-[26px]  w-full flex flex-col items-center bg-[#0D0D0D]  border border-[#1E1E1E] rounded-[14px]  ">
+                                <div key={i} className=" p-[14px]  pb-[24px] border border-[#1E1E1E] w-full flex flex-col items-center bg-[#0D0D0D]  rounded-[14px]  ">
                                     <div className="bg-[#1921610A] rounded-full flex items-center justify-center">
-                                        <Image src={item.image} alt="Model" width={185} height={276} className="" />
+                                        <Image src={item.image} alt="Model" width={272} height={225} className="rounded-[14px]" />
                                     </div>
-                                    <p className="text-center font-normal mt-[25px] text-[15px] text-[#6C6C6C]">{item.title}</p>
-                                    <p className="text-center text-[15px] text-[#6C6C6C] font-normal  mb-[17px]">{item.name}</p>
-                                    <div className="flex justify-center">
-                                        <Link href="\" className="mb-[5px] inline-block text-white py-[2px]  px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)] text-[13px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
-                                    </div>
-                                    <p className="text-center text-[13px] font-[400] leading-[22px]">{item.day}</p>
+                                    <p className="text-center  mt-[25px] text-[20px] text-white font-medium ">{item.title}</p>
+                                    <p className="text-center mt-[5px] text-[15px] text-[#6C6C6C] font-normal  leading-[20px] ">{item.price}</p>
+                                   
                                 </div>
 
                             ))}
@@ -132,7 +128,10 @@ export default function CollectionSlider() {
                     </div>
 
 
-                    <div className="w-full bg-[#0A90C812] h-1 rounded-full mt-[69px] overflow-hidden flex ">
+
+
+
+                    <div className="w-full bg-[#0A90C812] h-1 rounded-full mt-[48px] overflow-hidden flex ">
                         <div
                             className="h-full bg-[#7C4A17] transition-all duration-300"
                             style={{ width: `${progress}%` }}>

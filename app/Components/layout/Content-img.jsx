@@ -1,9 +1,10 @@
+"use client";
 import React from 'react'
 import Image from 'next/image';
 
 export default function ContentImg() {
     return (
-        <div className='pt-[50px] relative z-30 '>
+        <div className="pt-[50px] pb-[43px] relative z-30  before:content-['']  before:absolute before:bottom-[-20%] before:right-0 before:z-0  before:w-[260px] before:h-[538px]   before:bg-[url('/img/green-shade.png')]  before:bg-no-repeat before:bg-contain ">
             <div className='container'>
                 <div className='text-[40px] font-semibold leading-[55px] text-white text-center max-w-[1195px] m-auto mb-[87px] '>
                     <p>Fcookie is a platform that lets people buy and sell shared ownership in
@@ -13,10 +14,9 @@ export default function ContentImg() {
                         </span>
                     </p>
                 </div>
-                <div className="relative " >
-                    <div className='absolute'></div>
+                <div className="relative" >
 
-                    <Image src="/img/cont-img1.png" alt="" width={200} height={200} className='w-full max-h-[587px] rounded-[25px]' />
+                    <Image src="/img/cont-img1.png" alt="" width={200} height={200} quality={200} className='w-full max-h-[587px] rounded-[25px]' />
                 </div>
 
 
