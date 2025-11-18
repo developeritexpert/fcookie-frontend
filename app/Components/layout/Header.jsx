@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -26,10 +27,10 @@ export default function header() {
                     <div className=' flex'>
                         <LanguageDropdown/>
                         <div>
-                            <Link href="/" className='bg-[#FFFFFF0D] px-[16px] py-[11px] text-white flex items-center gap-[15px] font-[600] rounded-[7px]'>Darkmode<IoMoonSharp /></Link>
+                            <Link href="/" className='bg-[#FFFFFF0D] px-[16px] py-[11px] ms-[22px] text-white flex items-center gap-[15px] font-[600] rounded-[7px]'>Darkmode<IoMoonSharp /></Link>
                         </div>
                         <div>
-                            <Link href="/" className='bg-[#EFB24D] px-[29px] py-[11px] font-[600] rounded-[7px] ms-[10px] block'>Login</Link>
+                            <Link href="/" className='bg-[#EFB24D] px-[29px] py-[11px] font-semibold rounded-[7px] ms-[10px] block'>Login</Link>
                         </div>
 
                     </div>

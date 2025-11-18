@@ -12,7 +12,7 @@ export default function LanguageDropdown() {
     <select
       value={lang}
       onChange={handleChange}
-      className="border text-white p-2 rounded">
+      className="border-none text-white p-2 rounded">
       <option className="text-black" value="en">English</option>
       <option className="text-black" value="hi">Hindi</option>
       <option className="text-black" value="fr">French</option>
