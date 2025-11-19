@@ -43,9 +43,16 @@ body {
   max-width: 1440px;
   margin: auto;
 }
+.slick-track{
+  display: flex !important;
+}
 
+.slick-slide{
+  height: auto !important;
+}
 .slick-slide>div {
   margin: 0 15px;
+  height: 100%;
 }
 
 .slick-list {

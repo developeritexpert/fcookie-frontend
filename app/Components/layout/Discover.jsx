@@ -24,15 +24,17 @@ export default function Discover() {
         }
     ]
     return (
-        <div className='pt-[80px] pb-[110px] '>
-            <div className='container'>
-                <h3 className='text-[32px] font-semibold mb-[20px] text-white text-center'>Discover</h3>
+        <div className=' pt-[30px] md:pt-[50px] lg:pt-[80px] pb-[40px] md:pb-[50px] lg:pb-[110px]   px-[20px] md:px-[30px] lg:px-[50px] relative '>
+            <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#EFB24D]/8 to-[#EFB24D]/0 pointer-events-none"></div>
 
-                <div className='flex gap-[30px]'>
+            <div className='container relative z-20'>
+                <h3 className='text-[24px] md:text-[28px] lg:text-[32px] font-semibold mb-[20px] text-white text-center'>Discover</h3>
+
+                <div className='grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-[30px]'>
                     {discover.map((item, index) => (
-                        <div className='p-[16px] pb-[26px] bg-[#0D0D0D] border border-[#1E1E1E] rounded-[14px]'>
-                            <Image src={item.image} alt="" width={428} height={243} className='rounded-[15px]' />
-                            <p className= " mt-[20px] text-white text-[20px] font-medium  ">{item.title}</p>
+                        <div className='p-[16px] pb-[26px] dark:bg-[#0D0D0D] border border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px]'>
+                            <Image src={item.image} alt="" width={200} height={200} className='rounded-[15px] w-full h-full  max-w-full sm:max-w-[428px] max-h-[fit-content]' />
+                            <p className=" mt-[20px] text-[18px]  md:text-[20px] font-medium ">{item.title}</p>
                             <p className="mt-[5px] text-[#6C6C6C] text-[15px]  leading-[20px] font-normal  ">{item.subtitle}</p>
 
                         </div>

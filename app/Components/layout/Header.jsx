@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import LanguageDropdown from './LanguageDropdown';
 
+
 export default function Header() {
       const { theme, setTheme } = useTheme()
        const [mounted, setMounted] = useState(false)
@@ -17,7 +18,7 @@ export default function Header() {
     return (
         <>
             <header className ="w-full py-[25px] px-[20px] md:px-[30px] lg:px-[50px]" >
-                <div className="p-[16px] max-w-[1600px] mx-auto bg-[#FFFFFF12] flex justify-between items-center rounded-[11px] border border-[#444444]">
+                <div className="p-[16px] max-w-[1600px] mx-auto bg-[#FFFFFF12] flex justify-between items-center rounded-[11px] border border-[#EFB24D]/10 dark:border-[#444444]">
                     <div className=' flex gap-[75px]'>
                         <Link href="/">
                             <Image src="/img/header-logo.png"
@@ -28,13 +29,13 @@ export default function Header() {
                         </Link>
                         <div className='flex item-center gap-[75px]'>
                             <div className='flex items-center hover:text-[#EFB24D] duration-300'> <Link href="/">Home</Link></div>
-                            <div className='flex items-center hover:text-[#EFB24D] duration-300'> <Link href="/">Marketplace</Link></div>
+                            <div className='flex items-center hover:text-[#EFB24D] duration-300'> <Link href="/marketplace">Marketplace</Link></div>
                             <div className='flex items-center hover:text-[#EFB24D] duration-300'> <Link href="/">Submit my collectibles</Link></div>
                         </div>
                     </div>
 
                     <div className='flex gap-[10px]'>
-                        <LanguageDropdown/>
+                       <LanguageDropdown/>
                         <div>
                             <button 
                                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
