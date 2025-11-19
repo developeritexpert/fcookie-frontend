@@ -102,9 +102,9 @@ export default function ProductsSlider() {
     };
 
     return (
-        <div className=" xl:pt-[30px] xl:pb-[110px] overflow-hidden relative before:content-['']  before:absolute before:bottom-0 before:left-[-20%] before:z-40  before:w-[876px] before:h-[200px]   before:bg-[url('/img/fcookie.png')]  before:bg-no-repeat before:bg-contain">
+        <div className=":pt-[30px]  pb-[50px]  lg:pb-[110px]  px-[20px] md:px-[30px] lg:px-[50px] overflow-hidden relative before:content-['']  before:absolute before:bottom-0 before:left-[-20%] before:z-40  before:w-[876px] before:h-[195px]   before:bg-[url('/img/fcookie.png')]  before:bg-no-repeat before:bg-contain">
             <div className=" relative ">
-                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-1 before:w-full before:h-full before:bg-[#090702]">
+                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-1 before:w-full before:h-full before:bg-black">
                     <div className="flex justify-between mb-[30px] ">
                         <p className="font-semibold text-[32px] text-white">Top Collections</p>
 
@@ -114,11 +114,11 @@ export default function ProductsSlider() {
                         <Slider ref={sliderRef} {...settings}>
                             {slides.map((item, i) => (
 
-                                <div key={i} className=" p-[14px]  pb-[24px] border border-[#1E1E1E] w-full flex flex-col items-center bg-[#0D0D0D]  rounded-[14px]  ">
+                                <div key={i} className=" h-full p-[14px]  pb-[24px] border border-[#1E1E1E] w-full flex flex-col items-center bg-[#0D0D0D]  rounded-[14px]  ">
                                     <div className="bg-[#1921610A] rounded-full flex items-center justify-center">
                                         <Image src={item.image} alt="Model" width={272} height={225} className="rounded-[14px]" />
                                     </div>
-                                    <p className="text-center  mt-[25px] text-[20px] text-white font-medium ">{item.title}</p>
+                                    <p className="text-center  mt-[25px] text-[20px] md:text-[20px] text-white font-medium ">{item.title}</p>
                                     <p className="text-center mt-[5px] text-[15px] text-[#6C6C6C] font-normal  leading-[20px] ">{item.price}</p>
                                    
                                 </div>
@@ -140,7 +140,7 @@ export default function ProductsSlider() {
 
                     <div className="flex justify-between flex-reverse items-center mt-4">
                         <p className="text-sm flex  items-center text-white">
-                            <span className="font-semibold text-[29px]">{current}</span>/<span className="ml-1 text-[22px]">{total}</span>
+                            <span className="font-semibold text-[24px] md:text-[29px]">{current}</span>/<span className="ml-1 text-[18px] md:text-[22px]">{total}</span>
 
                         </p>
                         <div className="flex items-center gap-4">

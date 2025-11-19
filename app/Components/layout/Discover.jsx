@@ -24,7 +24,8 @@ export default function Discover() {
         }
     ]
     return (
-        <div className='pt-[80px] pb-[110px] '>
+        <div className='pt-[80px] pb-[110px] relative'>
+            <div className="absolute -z-10  top-0 left-0 right-0 bottom-0 bg-gradient-to-b from-[#EFB24D]/8 to-[rgba(239,178,77,0)]  pointer-events-none"></div>
             <div className='container'>
                 <h3 className='text-[32px] font-semibold mb-[20px] text-white text-center'>Discover</h3>
 
@@ -32,7 +33,7 @@ export default function Discover() {
                     {discover.map((item, index) => (
                         <div className='p-[16px] pb-[26px] bg-[#0D0D0D] border border-[#1E1E1E] rounded-[14px]'>
                             <Image src={item.image} alt="" width={428} height={243} className='rounded-[15px]' />
-                            <p className= " mt-[20px] text-white text-[20px] font-medium  ">{item.title}</p>
+                            <p className=" mt-[20px] text-white text-[20px] font-medium  ">{item.title}</p>
                             <p className="mt-[5px] text-[#6C6C6C] text-[15px]  leading-[20px] font-normal  ">{item.subtitle}</p>
 
                         </div>

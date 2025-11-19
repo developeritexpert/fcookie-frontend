@@ -93,7 +93,7 @@ export default function CollectionSlider() {
         slidesToScroll: 1,
         arrows: false,
         speed: 600,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 4000,
         beforeChange: (oldIndex, newIndex) => {
             const newProgress = ((newIndex + 1) / slides.length) * 100;
@@ -103,11 +103,12 @@ export default function CollectionSlider() {
     };
 
     return (
-        <div className=" relative before:content-['']  before:absolute before:bottom-[-35%] before:left-0 before:z-2  before:w-[270px] before:h-[538px]   before:bg-[url('/img/slider-org-shade.png')]  before:bg-no-repeat before:bg-contain">
-            <div className="xl:pt-[30px] xl:pb-[50px] overflow-hidden relative ">
-                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-1 before:w-full before:h-full before:bg-[#090702]">
+        <div className=" px-[20px] md:px-[30px] lg:px-[50px] relative">
+            <div className="absolute z-30  bottom-[-25%] left-0 h-[538px] w-[270px]  bg-[#EFB24D]/30 blur-[524px] pointer-events-none"></div>
+            <div className="pt-[30px] pb-[30px] md:pb-[50px] overflow-hidden relative ">
+                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-1 before:w-full before:h-full before:bg-black">
                     <div className="flex justify-between mb-[30px] ">
-                        <p className="font-semibold text-[32px] text-white">Top Collections</p>
+                        <p className="font-semibold text-[24px] lg:text-[28px] lg:text-[32px] text-white">Top Collections</p>
 
                         <Link href="/" className="flex gap-1 items-center text-white"><TfiLayoutLineSolid />Explore All Collections</Link>
                     </div>
@@ -115,16 +116,16 @@ export default function CollectionSlider() {
                         <Slider ref={sliderRef} {...settings}>
                             {slides.map((item, i) => (
 
-                                <div key={i} className=" pt-[39px] pb-[26px]  w-full flex flex-col items-center bg-[#0D0D0D]  border border-[#1E1E1E] rounded-[14px]  ">
+                                <div key={i} className=" pt-[39px] pb-[26px] h-full  w-full flex flex-col items-center bg-[#0D0D0D]  border border-[#1E1E1E] rounded-[14px]  ">
                                     <div className="bg-[#1921610A] rounded-full flex items-center justify-center">
                                         <Image src={item.image} alt="Model" width={185} height={276} className="" />
                                     </div>
                                     <p className="text-center font-normal mt-[25px] text-[15px] text-[#6C6C6C]">{item.title}</p>
                                     <p className="text-center text-[15px] text-[#6C6C6C] font-normal  mb-[17px]">{item.name}</p>
-                                    <div className="flex justify-center">
-                                        <Link href="\" className="mb-[5px] inline-block text-white py-[2px]  px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)] text-[13px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
+                                    <div className="flex justify-center ">
+                                        <Link href="\" className="mb-[5px] inline-block text-white py-[5px]  px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)] text-[13px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
                                     </div>
-                                    <p className="text-center text-[13px] font-[400] leading-[22px]">{item.day}</p>
+                                    <p className="text-center text-[13px] font-normal  leading-[22px]">{item.day}</p>
                                 </div>
 
                             ))}

@@ -21,13 +21,13 @@ const footerData = {
         description:
             "Subscribe for exclusive insights, trends, and tips delivered to your inbox.",
     },
-    copyright: "© 2025 Fcookie. All Rights Reserved",
+  
 };
 
 export default function Footer() {
     return (
         <footer className="bg-[#090702] text-white pt-[110px] pb-[44px]  border-t border-[#FFFFFF66]">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-[203px]">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 ">
                 <div>
                     <Image
                         src="/img/header-logo.png"
@@ -70,26 +70,37 @@ export default function Footer() {
 
 
                 <div>
-                    <h3 className="mb-[7px] font-semibold">{footerData.subscribe.title}</h3>
-                    <p className="text-sm text-[] mb-[20px]">
+
+                    <Link href="/your-link">
+                        <Image
+                            src="/img/foorter-msg.png"
+                            alt=""
+                            width={54}
+                            height={54}
+                            className="mb-[31px] cursor-pointer"
+                        />
+                    </Link>
+
+                    <h3 className="mb-[7px] text-[22px] font-bold">{footerData.subscribe.title}</h3>
+                    <p className="text-sm text-[16px] leading-[23px] font-normal text-[#f7f8f8] mb-[20px]">
                         {footerData.subscribe.description}
                     </p>
 
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 bg-white px-[22px] py-[18px] rounded-[5px]">
                         <input
                             type="email"
                             placeholder="Enter Email Address"
-                            className="bg-white text-black px-4 py-2 rounded-md w-full"
+                            className="bg-white text-black rounded-md w-full"
                         />
-                        <button className="bg-white text-black px-4 py-2 rounded-md font-semibold hover:bg-gray-200">
+                        <button className="bg-white text-black rounded-md font-semibold hover:bg-gray-200">
                             SUBSCRIBE
                         </button>
                     </div>
                 </div>
 
             </div>
-            <div className="text-center text-gray-500 text-sm mt-10">
-                {footerData.copyright}
+            <div className="text-center text-[#f7f8f8]  text-[20px] font mt-10">
+                © 2025 Fcookie. All Rights Reserved
             </div>
         </footer>
     );

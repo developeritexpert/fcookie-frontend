@@ -19,10 +19,10 @@ export default function ExploreCate() {
         { title: "Other Cards", image: "/img/explore-img10.png", link: "/other-cards" }
     ];
     return (
-        <div className='pt-[50px] pb-[43px] text-white'>
+        <div className='pt-[30px] lg:pt-[50px] pb-[30px] lg:pb-[43px] px-[20px] md:px-[30px] lg:px-[50px] text-white'>
             <div className='container'>
                 <h3 className="text-[32px] font-semibold text-left  mb-[13px]">Explore categories</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4  gap-4">
                     {explore.map((products, index) => (
                         <Link href={products.link} key={index}>
                             <div className="py-[9px] px-[10px] bg-[#0D0D0D] flex gap-[20px] rounded-[10px] cursor-pointer">
