@@ -79,7 +79,7 @@ function page() {
                     </div>
                 </div>
             </section>
-            <div className='absolute top-0 bottom-0 right-0 left-0 rounded-[50%] bg-[#EFB24D]/16 blur-[754px] pointer-events-none'></div>
+            <div className='absolute top-[-50%] bottom-[30%] right-0 left-0 rounded-[50%] z-[-1] bg-[#EFB24D] opacity-[0.30] blur-[754px] pointer-events-none'></div>
         </>
     )
 }
