@@ -120,17 +120,12 @@ export default function ProductsSlider() {
                                     </div>
                                     <p className="text-center  mt-[25px] text-[20px] md:text-[20px]  dark:text-white font-medium ">{item.title}</p>
                                     <p className="text-center mt-[5px] text-[15px] text-[#6C6C6C] font-normal  leading-[20px] ">{item.price}</p>
-                                   
+
                                 </div>
 
                             ))}
                         </Slider>
                     </div>
-
-
-
-
-
                     <div className="w-full bg-[#0A90C812] h-1 rounded-full mt-[48px] overflow-hidden flex ">
                         <div
                             className="h-full bg-[#7C4A17] transition-all duration-300"

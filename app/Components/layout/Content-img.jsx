@@ -21,7 +21,7 @@ export default function ContentImg() {
                             <Image src="/img/fcookie.png" alt="Login" height={200} width={200} className='w-full' />
                         </div>
 
-                        <Image src="/img/cont-img1.png" alt="" width={200} height={200} quality={200} className='w-full max-h-[587px] rounded-[25px]' />
+                        <Image src="/img/cont-img1.png" alt="" width={500} height={500} className='w-full max-h-[587px] rounded-[25px]' />
                     </div>
 
                 </div>
