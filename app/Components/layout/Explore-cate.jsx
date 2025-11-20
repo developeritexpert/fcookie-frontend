@@ -9,12 +9,10 @@ export default function ExploreCate() {
         { title: "Baseball", image: "/img/explore-img2.png", link: "/baseball" },
         { title: "Basketball", image: "/img/explore-img3.png", link: "/basketball" },
         { title: "Football", image: "/img/explore-img4.png", link: "/football" },
-
         { title: "Hockey", image: "/img/explore-img5.png", link: "/hockey" },
         { title: "Marvel Cards", image: "/img/explore-img6.png", link: "/marvel" },
         { title: "Soccer", image: "/img/explore-img7.png", link: "/soccer" },
         { title: "VeeFriends Cards", image: "/img/explore-img8.png", link: "/veefriends" },
-
         { title: "One Piece Cards", image: "/img/explore-img9.png", link: "/one-piece" },
         { title: "Other Cards", image: "/img/explore-img10.png", link: "/other-cards" }
     ];
