@@ -27,7 +27,7 @@ const footerData = {
 
 export default function Footer() {
     return (
-      <footer className="dark:bg-[#000000] dark:text-white pt-[40px] md:pt-[50px] pb-[30px] lg:pt-[110px] lg:pb-[44px] px-[20px] md:px-[30px] lg:px-[50px] border-t border-[#000000]/6 dark:border-[#FFFFFF66]">
+      <footer className="dark:bg-[#000000] dark:text-white pt-[40px] md:pt-[50px] pb-[30px] lg:pt-[110px] lg:pb-[44px] px-[20px] md:px-[30px] lg:px-[50px] border-t border-[#000000]/10 dark:border-[#FFFFFF]/20">
 
     <div className="container mx-auto  pb-[30px] md:pb-[50px] lg:pb-[110px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         
@@ -41,9 +41,11 @@ export default function Footer() {
                 className="mb-4 w-full h-full  max-w-[180px] max-h-[51px] lg:max-w-[204px] lg:max-h-[61px] xl:w-full xl:max-w-[264px] xl:max-h-[71px]"
             />
 
-            <div className="text-[20px] font-normal leading-[32px] dark:text-[#F7F8F8]">
-                <p>{footerData.contact.phone}</p>
-                <p>{footerData.contact.email}</p>
+            <div className="text-[20px] font-normal leading-[32px] dark:text-[#F7F8F8]/70">
+            
+              
+              <Link href="/"><p>{footerData.contact.phone}</p></Link> 
+                 <Link href="/"><p>{footerData.contact.email}</p></Link> 
             </div>
         </div>
 
@@ -55,10 +57,10 @@ export default function Footer() {
 
             <ul>
                 {footerData.quickLinks.map((item, i) => (
-                    <li key={i}>
+                    <li key={i} className='leading-[32px] md:leading-[45px]'>
                         <Link 
                             href={item.link}
-                            className="text-[18px] leading-[45px] font-normal text-[#000000]/70 dark:text-[#f7f8f8]/70"
+                            className="text-[18px]  font-normal text-[#000000]/70 dark:text-[#f7f8f8]/70"
                         >
                             {item.title}
                         </Link>
@@ -75,10 +77,11 @@ export default function Footer() {
 
             <ul>
                 {footerData.helpLinks.map((item, i) => (
-                    <li key={i}>
+                    <li key={i} className=' leading-[32px] md:leading-[45px]'>
                         <Link 
                             href={item.link}
-                            className="text-[18px] leading-[45px] font-normal text-[#000000]/70 dark:text-[#f7f8f8]/70"
+                            className="text-[18px] 
+                            font-normal text-[#000000]/70 dark:text-[#f7f8f8]/70"
                         >
                             {item.title}
                         </Link>
@@ -88,14 +91,14 @@ export default function Footer() {
         </div>
 
         {/* Column 4 */}
-        <div className='mt-[30px] lg:mt-0'>
+        <div className=' mt-[30px] lg:mt-0'>
             <Link href="/your-link">
                 <Image
                     src="/img/foorter-msg.png"
                     alt=""
-                    width={54}
-                    height={54}
-                    className="invert dark:invert-0 cursor-pointer mb-[31px]"
+                    width={100}
+                    height={100}
+                    className="invert dark:invert-0 cursor-pointer mb-[15px] sm:mb-[20px] md:mb-[31px] w-[35px] md:w-[54px]"
                 />
             </Link>
 
@@ -111,7 +114,7 @@ export default function Footer() {
                 <input
                     type="email"
                     placeholder="Enter Email Address"
-                    className="bg-white dark:text-black rounded-md w-full"
+                    className="bg-white dark:text-black rounded-md w-full focus-visible:outline-0"
                 />
                 <button className="bg-white dark:text-black rounded-md font-semibold hover:bg-gray-200">
                     SUBSCRIBE
@@ -121,8 +124,8 @@ export default function Footer() {
 
     </div>
 
-    <div className="container pt-[30px] md:pt-[45px] border-t  border-black/6 dark:border-white/6">
-        <p className="text-center text-[#000000]/70 dark:text-[#f7f8f8]/70 text-[20px]">
+    <div className="container pt-[30px] md:pt-[45px] border-t  border-[#000000]/10 dark:border-[#FFFFFF]/20">
+        <p className="text-center text-[#000000]/70  dark:text-[#f7f8f8]/70 mtext-[16px] sm:text-[18px] md:text-[20px]">
             © 2025 Fcookie. All Rights Reserved
         </p>
     </div>

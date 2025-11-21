@@ -103,27 +103,27 @@ export default function CollectionSlider() {
     };
 
     return (
-        <div className=" px-[20px] md:px-[30px] lg:px-[50px] relative">
-            <div className="absolute z-50  bottom-[-25%] left-0 h-[538px] w-[270px]  bg-[#EFB24D]/30 blur-[524px] pointer-events-none"></div>
-            <div className="pt-[30px] pb-[30px] md:pb-[50px] overflow-hidden relative ">
-                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-40 before:w-full before:h-full before:bg-white dark:before:bg-black">
+        <div className=" px-[20px] md:px-[30px] lg:px-[50px] relative -z-0">
+            <div className="absolute z-20 bottom-[-15%] lg:bottom-[-25%] left-0  h-[300px] w-[180px] lg:h-[400px] lg:w-[180px]  xl:h-[538px]  bg-[#EFB24D4D] blur-[150px] pointer-events-none"></div>
+            <div className=" pt-[20px] sm:pt-[30px] pb-[30px] md:pb-[50px] overflow-hidden relative ">
+                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-200%] before:z-10 before:w-[200%] before:h-full before:bg-white dark:before:bg-black ">
                     <div className="flex justify-between mb-[30px] ">
-                        <p className="font-semibold text-[24px] lg:text-[28px] lg:text-[32px] text-black dark:text-white">Top Collections</p>
+                        <h2 className="font-semibold text-[22px] md:text-[28px] lg:text-[32px] text-black dark:text-white">Top Collections</h2>
 
-                        <Link href="/" className="flex gap-1 items-center text-black dark:text-white"><TfiLayoutLineSolid />Explore All Collections</Link>
+                        <Link href="/" className="flex gap-1 items-center  text-black dark:text-white"> <TfiLayoutLineSolid />Explore All Collections</Link>
                     </div>
                     <div>
                         <Slider ref={sliderRef} {...settings}>
                             {slides.map((item, i) => (
 
-                                <div key={i} className=" pt-[39px] pb-[26px] h-full  w-full flex flex-col items-center bg-white dark:bg-[#0D0D0D]  border border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px]  ">
+                                <div key={i} className=" py-[20px] sm:py-[25px] lg:pt-[39px] lg:pb-[26px] h-full  w-full flex flex-col items-center bg-white dark:bg-[#0D0D0D]  border border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px]  ">
                                     <div className="bg-[#1921610A] rounded-full flex items-center justify-center">
-                                        <Image src={item.image} alt="Model" width={185} height={276} className="" />
+                                        <Image src={item.image} alt="Model" width={300} height={300} className="w-full h-full  max-w-[120px] max-h-[150px]  sm:max-w-[150px] sm:max-h-[180px]    md:max-w-[165px]  md:max-h-[200px]  lg:max-w-[185px]  lg:max-h-[276px]" />
                                     </div>
-                                    <p className="text-center font-normal mt-[25px] text-[15px] text-[#6C6C6C]">{item.title}</p>
+                                    <p className="text-center font-normal mt-[15px] md:mt-[25px] text-[15px] text-[#6C6C6C]">{item.title}</p>
                                     <p className="text-center text-[15px] text-[#6C6C6C] font-normal  mb-[17px]">{item.name}</p>
                                     <div className="flex justify-center ">
-                                        <Link href="\" className="mb-[5px] inline-block text-white py-[5px]  px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)] text-[13px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
+                                        <Link href="\" className="mb-[5px] inline-block text-white py-[5px]  px-[10px] bg-[linear-gradient(180deg,#75DA5B_0%,#4DCE94_100%)]  text-[13px] font-[600] rounded-[4px] text-center">{item.bid}</Link>
                                     </div>
                                     <p className="text-center text-[13px] font-normal  leading-[22px]">{item.day}</p>
                                 </div>
@@ -133,7 +133,7 @@ export default function CollectionSlider() {
                     </div>
 
 
-                    <div className="w-full bg-[#0A90C812] h-1 rounded-full mt-[69px] overflow-hidden flex ">
+                    <div className="w-full bg-[#0A90C812] h-1 rounded-full mt-[40px] sm:mt-[50px] md:mt-[69px] overflow-hidden flex ">
                         <div
                             className="h-full bg-[#7C4A17] transition-all duration-300"
                             style={{ width: `${progress}%` }}>

@@ -102,11 +102,11 @@ export default function ProductsSlider() {
     };
 
     return (
-        <div className=":pt-[30px]  pb-[50px]  lg:pb-[110px]  px-[20px] md:px-[30px] lg:px-[50px] overflow-hidden relative before:content-['']  before:absolute before:bottom-0 before:left-[-20%] before:z-40 before:w-[300px] before:h-[110px]   sm:before:w-[400px] sm:before:h-[120px]   md:before:w-[550px] md:before:h-[130px]   lg:before:w-[650px] lg:before:h-[150px]  xl:before:w-[876px] xl:before:h-[195px]   before:bg-[url('/img/fcookie.png')]  before:bg-no-repeat before:bg-contain">
+        <div className="pt-[30px]  lg:pt-[50px]  pb-[50px]  lg:pb-[110px]  px-[20px] md:px-[30px] lg:px-[50px] overflow-hidden relative before:content-['']  before:absolute before:bottom-0 before:left-[-20%] before:z-40 before:w-[300px] before:h-[110px]   sm:before:w-[400px] sm:before:h-[120px]   md:before:w-[550px] md:before:h-[130px]   lg:before:w-[650px] lg:before:h-[150px]  xl:before:w-[876px] xl:before:h-[195px]   before:bg-[url('/img/fcookie.png')]  before:bg-no-repeat before:bg-contain">
             <div className=" relative ">
-                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-100%] before:z-30 before:w-full before:h-full before:bg-white  dark:before:bg-black">
+                <div className=" container relative before:content-[''] before:absolute before:top-0 before:left-[-200%] before:z-30 before:w-[200%] before:h-full before:bg-white  dark:before:bg-black">
                     <div className="flex justify-between mb-[30px] ">
-                        <p className="font-semibold text-[32px] text-white">Top Collections</p>
+                        <h2 className="font-semibold text-[24px]  md:text-[28px] lg:text-[32px] text-white">Featured Products</h2>
 
                         <Link href="/" className="flex gap-1 items-center text-white"><TfiLayoutLineSolid />Explore All Collections</Link>
                     </div>
@@ -114,12 +114,12 @@ export default function ProductsSlider() {
                         <Slider ref={sliderRef} {...settings}>
                             {slides.map((item, i) => (
 
-                                <div key={i} className=" h-full p-[14px]  pb-[24px] border border-[#E6E6E6] dark:border-[#1E1E1E] w-full flex flex-col items-center bg-white dark:bg-[#0D0D0D] rounded-[14px]  ">
+                                <div key={i} className=" h-full p-[14px]  pb-[24px] border border-[#E6E6E6] dark:border-[#1E1E1E] w-full flex flex-col  bg-white dark:bg-[#0D0D0D] rounded-[14px]  ">
                                     <div className="bg-[#1921610A] rounded-full flex items-center justify-center">
-                                        <Image src={item.image} alt="Model" width={272} height={225} className="rounded-[14px]" />
+                                        <Image src={item.image} alt="Model" width={272} height={225} className="rounded-[14px] blur-0 image-render-pixel" />
                                     </div>
-                                    <p className="text-center  mt-[25px] text-[20px] md:text-[20px]  dark:text-white font-medium ">{item.title}</p>
-                                    <p className="text-center mt-[5px] text-[15px] text-[#6C6C6C] font-normal  leading-[20px] ">{item.price}</p>
+                                    <p className=" mt-[25px] text-[18px] sm:text-[20px] md:text-[20px]  dark:text-white font-medium ">{item.title}</p>
+                                    <p className=" mt-[5px] text-[15px] text-[#6C6C6C] font-normal  leading-[20px] ">{item.price}</p>
 
                                 </div>
 
@@ -142,7 +142,7 @@ export default function ProductsSlider() {
 
                             <button
                                 onClick={() => sliderRef.current.slickPrev()}
-                                className="group border border-[##FFFFFF4D] bg-transparent hover:bg-[#EFB24D] hover:border-[#000000] duration-400 py-2 px-4 transition rounded-[21px] w-12 flex items-center justify-center"
+                                className="group border border-[#FFFFFF4D] bg-transparent hover:bg-[#EFB24D] hover:border-[#000000] duration-400 py-2 px-4 transition rounded-[21px] w-12 flex items-center justify-center"
                             >
 
                                 <svg
@@ -162,7 +162,7 @@ export default function ProductsSlider() {
 
                             <button
                                 onClick={() => sliderRef.current.slickNext()}
-                                className="group border bg-transparent hover:bg-[#EFB24D] hover:border-[#000000] duration-400 py-2 px-4 transition rounded-[21px] w-12 flex items-center justify-center"
+                                className="group border border-[#FFFFFF4D] bg-transparent hover:bg-[#EFB24D] hover:border-[#000000] duration-400 py-2 px-4 transition rounded-[21px] w-12 flex items-center justify-center"
                             >
                                 <svg
                                     width="20"
