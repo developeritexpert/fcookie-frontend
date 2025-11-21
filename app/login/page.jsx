@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../Components/layout/Header'
+import Header from '../components/layout/Header'
 import Image from 'next/image'
 import Link from 'next/link'
 

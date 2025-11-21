@@ -1,5 +1,5 @@
 "use client"
-import CustomSelect from "@/app/Components/layout/CustomSelect";
+import CustomSelect from "@/app/components/layout/CustomSelect";
 import { useState } from "react";
 
 function Page() {
