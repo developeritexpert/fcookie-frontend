@@ -1,13 +1,13 @@
 "use client"
 import React from 'react'
-import Header from '@/app/components/layout/Header'
-import Banner from './components/layout/Banner'
-import CollectionSlider from './components/layout/Collection-slider'
-import ContentImg from './components/layout/Content-img'
-import ExploreCate from './components/layout/Explore-cate'
-import ProductsSlider from './components/layout/Products-slider'
-import Discover from './components/layout/Discover-more'
-import Footer from './components/layout/Footer'
+import Header from '@/app/Components/layout/Header'
+import Banner from './Components/layout/Banner'
+import CollectionSlider from './Components/layout/Collection-slider'
+import ContentImg from './Components/layout/Content-img'
+import ExploreCate from './Components/layout/Explore-cate'
+import ProductsSlider from './Components/layout/Products-slider'
+import Discover from './Components/layout/Discover-more'
+import Footer from './Components/layout/Footer'
 
 export default function page() {
   return (

@@ -1,10 +1,10 @@
 import React from 'react'
-import Header from '../components/layout/Header'
-import Footer from '../components/layout/Footer'
+import Header from '../Components/layout/Header'
+import Footer from '../Components/layout/Footer'
 import Link from 'next/link'
-import FilterPage from '../components/layout/Market-filter-sec'
-import Discover from '../components/layout/Discover-more'
-import ProductsFilter from '../components/layout/Market-filter-sec'
+import FilterPage from '../Components/layout/Market-filter-sec'
+import Discover from '../Components/layout/Discover-more'
+import ProductsFilter from '../Components/layout/Market-filter-sec'
 
 export default function
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import LanguageDropdown from '@/app/components/layout/LanguageDropdown'
+import LanguageDropdown from '@/app/Components/layout/LanguageDropdown'
 
 function DashboardHeader({ collapsed, setCollapsed }) {
   return (

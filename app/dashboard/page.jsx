@@ -1,5 +1,5 @@
 "use client"
-import CustomSelect from "@/app/components/layout/CustomSelect";
+import CustomSelect from "@/app/Components/layout/CustomSelect";
 import { useState } from "react";
 import Image from 'next/image'
 import DashboardPerformanceInsights from "./components/DashboardPerformanceInsights";
