@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
-function DashboardNavLink({ href, children, collapsed, setCollapsed }) {
+function AdminDashboardNavLink({ href, children, collapsed, setCollapsed }) {
   const pathname = usePathname();
   const isActive = pathname === href;
 
@@ -32,4 +32,4 @@ function DashboardNavLink({ href, children, collapsed, setCollapsed }) {
   );
 }
 
-export default DashboardNavLink;
+export default AdminDashboardNavLink;

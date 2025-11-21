@@ -1,6 +1,6 @@
 import React from "react";
 
-function DashboardFooter({ collapsed }) {
+function AdminDashboardFooter({ collapsed }) {
   return (
     <>
       <div className="border-t border-[#FFFFFF24] py-[20px] h-[50px] flex items-center justify-center">
@@ -10,4 +10,4 @@ function DashboardFooter({ collapsed }) {
   );
 }
 
-export default DashboardFooter;
+export default AdminDashboardFooter;

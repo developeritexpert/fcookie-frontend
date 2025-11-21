@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import LanguageDropdown from '@/app/Components/layout/LanguageDropdown'
 
-function DashboardHeader({ collapsed, setCollapsed }) {
+function AdminDashboardHeader({ collapsed, setCollapsed }) {
   return (
     <header className="h-[60px] py-[10px] bg-[#F7F8F80A] flex items-center justify-between px-4 border-b border-[#444444] dark:text-[#F7F8F8]">
       <div className='flex items-center gap-[10px] md:gap-[20px]'>
@@ -32,4 +32,4 @@ function DashboardHeader({ collapsed, setCollapsed }) {
   )
 }
 
-export default DashboardHeader
+export default AdminDashboardHeader

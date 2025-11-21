@@ -8,7 +8,7 @@ function DashboardSidebar({ collapsed, setCollapsed }) {
             <div className={`z-[2] border-r border-[#F7F8F81A] md:backdrop-blur-[0px] backdrop-blur-[100px] md:bg-[#F7F8F80A] dark:text-[#F7F8F8B2] h-full transition-all duration-500 md:duration-300 md:relative md:top-auto md:left-auto md:bottom-auto top-0 bottom-0 left-0 fixed md:translate-x-0
                 ${collapsed ? "w-[80px] -translate-x-[280px]" : "w-[280px] translate-x-0"}`}>
                 <div className='px-[10px]'>
-                    <div className='h-[90px] border-[#F7F8F81C] border-b p-[10px] flex items-center justify-center relative'>
+                    <div className='h-[60px] border-[#F7F8F81C] border-b p-[10px] flex items-center justify-center relative'>
                         {collapsed ? (
                             <Image src="/icons/cookie.png"
                                 alt="Logo"
@@ -20,7 +20,7 @@ function DashboardSidebar({ collapsed, setCollapsed }) {
                                 alt="Logo"
                                 width={500}
                                 height={500}
-                                className='w-[120px] md:block hidden' />
+                                className='w-[100px] md:block hidden' />
                         )}
                         <Image src="/img/header-logo.png"
                                 alt="Logo"
@@ -46,9 +46,9 @@ function DashboardSidebar({ collapsed, setCollapsed }) {
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col justify-between h-[calc(100vh-90px)]'>
-                    <div className={`pt-[50px] h-[calc(100vh-210px)] duration-300 ${collapsed ? "pl-[10px]" : "pl-[50px]"}`}>
-                        <nav className='space-y-[10px] h-[calc(100vh-260px)] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#F7F8F81C] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#F7F8F830]'>
+                <div className='flex flex-col justify-between h-[calc(100vh-60px)]'>
+                    <div className='pt-[30px] h-[calc(100vh-140px)] duration-300 pl-[10px]'>
+                        <nav className='space-y-[10px] h-[calc(100vh-170px)] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-[#F7F8F81C] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb:hover]:bg-[#F7F8F830]'>
                             <DashboardNavLink href="/dashboard" collapsed={collapsed} setCollapsed={setCollapsed}>
                                 <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg" className='min-w-[20px] min-h-[20px] max-h-[20px] max-w-[20px] object-contain'>
                                     <path fillRule="evenodd" clipRule="evenodd" d="M2.52746 23C1.13104 23 0 21.8812 0 20.5V2.5C0 1.11875 1.13104 0 2.52746 0H20.4725C21.869 0 23 1.11875 23 2.5V20.5C23 21.8812 21.869 23 20.4725 23H2.52746ZM21.9889 2.50016V6.00032H1.01082V2.50016C1.01082 1.67142 1.68946 1.00016 2.5273 1.00016H20.4724C21.3102 1.00016 21.9889 1.67142 21.9889 2.50016ZM21.9889 7H1.01082V20.5002C1.01082 21.3289 1.68946 22.0002 2.5273 22.0002H20.4724C21.3102 22.0002 21.9889 21.3289 21.9889 20.5002V7ZM5.30775 10C4.61019 10 4.04404 10.56 4.04404 11.25C4.04404 11.94 4.61019 12.5 5.30775 12.5C6.00532 12.5 6.57147 11.94 6.57147 11.25C6.57147 10.56 6.00532 10 5.30775 10ZM3.03305 11.25C3.03305 10.0075 4.05161 9 5.30775 9C6.42236 9 7.34994 9.79376 7.54457 10.84C7.62671 10.7838 7.72781 10.75 7.83523 10.75H9.15582C9.38456 9.7475 10.2906 8.99998 11.3737 8.99998C12.6298 8.99998 13.6484 10.0075 13.6484 11.25C13.6484 12.4925 12.6298 13.5 11.3737 13.5C10.2906 13.5 9.38458 12.7525 9.15582 11.7499H7.83523C7.72781 11.7499 7.62671 11.7162 7.54457 11.6599C7.37523 12.5737 6.64607 13.2949 5.72227 13.4624C5.77914 13.5437 5.81326 13.6437 5.81326 13.7499V15.2499C5.81326 15.2687 5.812 15.2874 5.81074 15.3049C6.82424 15.5312 7.5825 16.4274 7.5825 17.4999C7.5825 18.7424 6.56394 19.7499 5.3078 19.7499C4.05165 19.7499 3.0331 18.7424 3.0331 17.4999C3.0331 16.4274 3.79135 15.5312 4.80486 15.3049C4.8036 15.2874 4.80233 15.2687 4.80233 15.2499V13.7499C4.80233 13.6437 4.83646 13.5437 4.89332 13.4624C3.83559 13.2699 3.03305 12.3525 3.03305 11.25ZM13.6484 11.25C13.6484 10.9737 13.8744 10.75 14.1537 10.75H15.2216C15.4503 9.74749 16.3564 8.99997 17.4394 8.99997C18.6956 8.99997 19.7142 10.0075 19.7142 11.25C19.7142 12.4924 18.6956 13.4999 17.4394 13.4999C16.3564 13.4999 15.4503 12.7524 15.2216 11.7499H14.1537C13.8744 11.7499 13.6484 11.5262 13.6484 11.25ZM16.1757 11.25C16.1757 11.94 16.7419 12.5 17.4394 12.5C18.137 12.5 18.7031 11.94 18.7031 11.25C18.7031 10.56 18.137 10 17.4394 10C16.7419 10 16.1757 10.56 16.1757 11.25ZM11.3734 10C10.6759 10 10.1097 10.56 10.1097 11.25C10.1097 11.94 10.6759 12.5 11.3734 12.5C12.071 12.5 12.6372 11.94 12.6372 11.25C12.6372 10.56 12.071 10 11.3734 10ZM5.30753 16.2499C4.60996 16.2499 4.04381 16.8099 4.04381 17.4999C4.04381 18.1899 4.60996 18.7499 5.30753 18.7499C6.00509 18.7499 6.57124 18.1899 6.57124 17.4999C6.57124 16.8099 6.00509 16.2499 5.30753 16.2499ZM4.80203 4.24992C5.22034 4.24992 5.56029 3.91366 5.56029 3.4999C5.56029 3.08614 5.22034 2.74989 4.80203 2.74989C4.38373 2.74989 4.04378 3.08614 4.04378 3.4999C4.04378 3.91366 4.38373 4.24992 4.80203 4.24992ZM19.2085 3.4999C19.2085 3.91366 18.8685 4.24992 18.4502 4.24992C18.0319 4.24992 17.692 3.91366 17.692 3.4999C17.692 3.08614 18.0319 2.74989 18.4502 2.74989C18.8685 2.74989 19.2085 3.08614 19.2085 3.4999ZM10.6153 17.0001C10.336 17.0001 10.1098 17.2238 10.1098 17.5001C10.1098 17.7763 10.336 18.0001 10.6153 18.0001H12.1318C12.411 18.0001 12.6373 17.7763 12.6373 17.5001C12.6373 17.2238 12.411 17.0001 12.1318 17.0001H10.6153ZM16.6812 17.0001C16.4019 17.0001 16.1757 17.2238 16.1757 17.5001C16.1757 17.7763 16.4019 18.0001 16.6812 18.0001H18.1977C18.477 18.0001 18.7032 17.7763 18.7032 17.5001C18.7032 17.2238 18.477 17.0001 18.1977 17.0001H16.6812Z"
@@ -81,7 +81,7 @@ function DashboardSidebar({ collapsed, setCollapsed }) {
                             </DashboardNavLink>
                         </nav>
                     </div>
-                    <div className='flex items-center justify-center py-[20px] h-[120px]'>
+                    <div className='flex items-center justify-center py-[20px] h-[80px]'>
                         <button className={`bg-[#F7F8F80A] border border-[#444444] rounded-[7px] flex items-center  py-[6px] duration-300  ${collapsed ? "text-[0px] px-[15px] gap-[0px]" : "text-sm px-[30px] gap-[10px]"}`}>
                             <svg width="18" height="22" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg" className='w-[15px]'>
                                 <path d="M10.8432 20.3609H1.37791V1.37791H10.8432C11.224 1.37791 11.5321 1.06971 11.5321 0.688953C11.5321 0.308192 11.224 0 10.8432 0H0.688953C0.308192 0 0 0.308192 0 0.688953V21.0498C0 21.4301 0.308192 21.7388 0.688953 21.7388H10.8432C11.224 21.7388 11.5321 21.4301 11.5321 21.0498C11.5321 20.6695 11.224 20.3609 10.8432 20.3609Z" fill="#F7F8F8" fillOpacity="0.7" />

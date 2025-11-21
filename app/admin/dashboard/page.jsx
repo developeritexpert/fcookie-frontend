@@ -2,7 +2,7 @@
 import CustomSelect from "@/app/Components/layout/CustomSelect";
 import { useState } from "react";
 import Image from 'next/image'
-import DashboardPerformanceInsights from "./components/DashboardPerformanceInsights";
+import AdminDashboardPerformanceInsights from "../components/AdminDashboardPerformanceInsights";
 
 function page() {
   const [selected, setSelected] = useState({
@@ -12,10 +12,10 @@ function page() {
 
   const options = [
     { value: "all", label: "All" },
-    { value: "delivered", label: "Delivered" },
-    { value: "processing", label: "Processing" },
-    { value: "intransit", label: "In Transit" },
-    { value: "cancelled", label: "Cancelled" }
+    { value: "option1", label: "Option 1" },
+    { value: "processing", label: "Option 2" },
+    { value: "intransit", label: "Option 3" },
+    { value: "cancelled", label: "Canelle" }
   ];
   return (
     <>
@@ -42,38 +42,41 @@ function page() {
           </div>
         </div>
         <div className='flex md:flex-row flex-col gap-[25px] items-stretch'>
-          <div className='border-[#F7F8F81C] border bg-[#F7F8F805] rounded-[7px] p-[20px] lg:p-[30px] flex items-center lg:flex-row md:flex-col flex-row gap-[20px] justify-between basis-[33%]'>
+          <div className='border-[#F7F8F81C] border bg-[#F7F8F805] rounded-[7px] p-[20px] lg:p-[30px] flex items-center lg:flex-row md:flex-col flex-row gap-[10px] md:gap-[20px] justify-between basis-[33%]'>
             <div className='flex flex-col lg:items-start md:items-center items-start'>
-              <h3 className='min-h-[51px] font-semibold mb-[10px] lg:mb-[15px] text-[15px] md:text-[17px] text-left md:text-center lg:text-left'>Number of Collectibles Owned</h3>
-              <span className='text-[#EFB24D] text-xl font-bold'>2500 +</span>
+              <h3 className='font-semibold mb-[10px] lg:mb-[15px] text-[15px] md:text-[17px] text-left md:text-center lg:text-left'>Active Users</h3>
+              <span className='text-[#EFB24D] text-xl font-bold'>12,430</span>
+              <span>↑ Up 8% vs last month</span>
             </div>
             <div>
-              <Image src="/icons/collectibles.png" alt="Collectibles" width={150} height={150} className='w-[60px] lg:w-[80px]' />
+              <Image src="/img/graph2.png" alt="Collectibles" width={150} height={150} className='w-[60px] lg:w-[150px]' />
             </div>
           </div>
-          <div className='border-[#F7F8F81C] border bg-[#F7F8F805] rounded-[7px] p-[20px] lg:p-[30px] flex items-center lg:flex-row md:flex-col flex-row gap-[20px] justify-between basis-[33%]'>
+          <div className='border-[#F7F8F81C] border bg-[#F7F8F805] rounded-[7px] p-[20px] lg:p-[30px] flex items-center lg:flex-row md:flex-col flex-row gap-[10px] md:gap-[20px] justify-between basis-[33%]'>
             <div className='flex flex-col lg:items-start md:items-center items-start'>
-              <h3 className='min-h-[51px] font-semibold mb-[10px] lg:mb-[15px] text-[15px] md:text-[17px] text-left md:text-center lg:text-left'>Total Rewards Earned (Spin Credits)</h3>
-              <span className='text-[#EFB24D] text-xl font-bold'>25</span>
+              <h3 className='font-semibold mb-[10px] lg:mb-[15px] text-[15px] md:text-[17px] text-left md:text-center lg:text-left'>Total Revenue</h3>
+              <span className='text-[#EFB24D] text-xl font-bold'>$245,870</span>
+              <span>Growth steady this week</span>
             </div>
             <div>
-              <Image src="/icons/rewards.png" alt="Collectibles" width={150} height={150} className='w-[60px] lg:w-[80px]' />
+              <Image src="/img/graph2.png" alt="Collectibles" width={150} height={150} className='w-[60px] lg:w-[150px]' />
             </div>
           </div>
-          <div className='border-[#F7F8F81C] border bg-[#F7F8F805] rounded-[7px] p-[20px] lg:p-[30px] flex items-center lg:flex-row md:flex-col flex-row gap-[20px] justify-between basis-[33%]'>
+          <div className='border-[#F7F8F81C] border bg-[#F7F8F805] rounded-[7px] p-[20px] lg:p-[30px] flex items-center lg:flex-row md:flex-col flex-row gap-[10px] md:gap-[20px] justify-between basis-[33%]'>
             <div className='flex flex-col lg:items-start md:items-center items-start'>
-              <h3 className='min-h-[51px] font-semibold mb-[10px] lg:mb-[15px] text-[15px] md:text-[17px] text-left md:text-center lg:text-left'>Last Activity Timestamp</h3>
-              <span className='text-[#EFB24D] text-xl font-bold'>5 hours ago</span>
+              <h3 className='font-semibold mb-[10px] lg:mb-[15px] text-[15px] md:text-[17px] text-left md:text-center lg:text-left'>Conversion Rate</h3>
+              <span className='text-[#EFB24D] text-xl font-bold'>4.7%</span>
+              <span>Improved by 0.6%</span>
             </div>
             <div>
-              <Image src="/icons/timestamp.png" alt="Collectibles" width={150} height={150} className='w-[60px] lg:w-[80px]' />
+              <Image src="/img/graph2.png" alt="Collectibles" width={150} height={150} className='w-[60px] lg:w-[150px]' />
             </div>
           </div>
         </div>
       </div>
 
       <div className="mt-[20px]">
-        <DashboardPerformanceInsights/>
+        <AdminDashboardPerformanceInsights/>
       </div>
     </>
   )
