@@ -1,26 +1,65 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.dark {
+  --background: #000000;
+  --foreground: #ffffff;
+} 
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SF-Pro/SF-Pro-Display-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SF-Pro/SF-Pro-Display-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("/fonts/SF-Pro/SF-Pro-Display-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "SF Pro Display", sans-serif;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+}
+.slick-track{
+  display: flex !important;
+}
+
+.slick-slide{
+  height: auto !important;
+}
+.slick-slide>div {
+  margin: 0 15px;
+  height: 100%;
+}
+
+.slick-list {
+  margin: 0 16px !important;
+  overflow: visible !important;
+}
+
+img{
+  max-width: 100%;
 }
