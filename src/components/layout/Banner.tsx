@@ -9,10 +9,10 @@ export default function Banner(): JSX.Element {
       <div className="px-[20px] md:px-[30px] lg:px-[50px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative">
         
         {/* Background Shade */}
-        <div className="absolute top-[-50px] left-0 bg-[url('/img/bann-shade.png')] bg-no-repeat bg-cover"></div>
+         <div className="absolute top-[-50px] left-0  bg-[url('/img/bann-shade.png)]  bg-no-repeat bg-cover "></div>
 
         {/* Banner Image */}
-        <div className="bg-[url('/img/bann1.png')] bg-cover bg-center max-w-[1800px] w-full h-[360px] md:h-[420px] lg:h-[642px] relative filter brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
+        <div className="bg-[url('/img/bann1.png')] bg-cover bg-center max-w-[1800px] m-auto w-full h-[360px] md:h-[420px] lg:h-[642px] relative filter brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
 
           {/* Gradient Overlay */}
           <div className="absolute inset-0 

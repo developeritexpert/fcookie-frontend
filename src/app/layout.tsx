@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import ClientComponent from "./ClientComponent";
 import ClientLayout from "./ClientLayout";
+import AOSWrapper from "@/components/aos/AOSWrapper";
 
 export const metadata: Metadata = {
   title: "My New Project",
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body>
         <ClientComponent>
           <ClientLayout>
+            <AOSWrapper/>
             {children}
           </ClientLayout>
         </ClientComponent>

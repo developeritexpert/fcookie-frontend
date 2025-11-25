@@ -32,7 +32,7 @@ export default function Footer() {
     <div className="container mx-auto  pb-[30px] md:pb-[50px] lg:pb-[110px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         
         {/* Column 1 */}
-        <div>
+        <div data-aos="fade-up" data-aos-delay="100">
             <Image
                 src="/img/header-logo.png"
                 alt="fcookie"
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         {/* Column 2 */}
-        <div className='mt-[30px] md:mt-0 '>
+        <div className='mt-[30px] md:mt-0 ' data-aos="fade-up" data-aos-delay="300">
             <h3 className="mb-[11px] font-semibold text-[24px] leading-[32px] dark:text-white">
                 Quick Links
             </h3>
@@ -70,7 +70,7 @@ export default function Footer() {
         </div>
 
         {/* Column 3 */}
-        <div className='mt-[30px] lg:mt-0'>
+        <div className='mt-[30px] lg:mt-0' data-aos="fade-up" data-aos-delay="500">
             <h3 className="mb-[11px] font-semibold text-[24px] leading-[32px] dark:text-white">
                 Help
             </h3>
@@ -91,7 +91,7 @@ export default function Footer() {
         </div>
 
         {/* Column 4 */}
-        <div className=' mt-[30px] lg:mt-0'>
+        <div className=' mt-[30px] lg:mt-0' data-aos="fade-up" data-aos-delay="700">
             <Link href="/your-link">
                 <Image
                     src="/img/foorter-msg.png"

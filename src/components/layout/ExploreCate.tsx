@@ -19,11 +19,14 @@ export default function ExploreCate() {
     return (
         <div className='pt-[30px] lg:pt-[50px] pb-[30px] lg:pb-[43px] px-[20px] md:px-[30px] lg:px-[50px] relative  '>
             <div className='container'>
-                <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left  mb-[13px]">Explore categories</h2>
-                <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4  gap-4">
+                <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left  mb-[13px]" data-aos="fade-up">Explore categories</h2>
+                <div className="grid grid-cols-2  md:grid-cols-3 lg:grid-cols-4  gap-4" data-aos="fade-up" data-aos-delay="100">
                     {explore.map((products, index) => (
                         <Link href={products.link} key={index}>
-                            <div className="py-[9px] px-[10px] h-full bg-white dark:bg-[#0D0D0D] flex flex-col items-center sm:flex-row gap-[20px]  rounded-[10px] cursor-pointer border border-[#E6E6E6] dark:border-[#1E1E1E]">
+                            <div className="py-[9px] px-[10px] h-full bg-white dark:bg-[#0D0D0D] 
+                                 flex flex-col items-center sm:flex-row gap-[20px] rounded-[10px]
+                                  cursor-pointer border border-[#E6E6E6] dark:border-[#1E1E1E]
+                                   transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                                 <div className="bg-white h-[71px] w-[71px] p-[13px] rounded-[10px] flex items-center justify-center object-contain">
                                     <Image
                                         src={products.image}

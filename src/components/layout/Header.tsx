@@ -3,12 +3,28 @@ import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import Image from 'next/image'
 import Link from 'next/link'
-import LanguageDropdown from "./LanguageDropdown" 
-export default function Header(){
-const { theme, setTheme } = useTheme()
-const [mounted, setMounted] = useState<boolean>(false)
-const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
-const [isAnimating, setIsAnimating] = useState<boolean>(false)
+import LanguageDropdown from "./LanguageDropdown"
+export default function Header() {
+  const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState<boolean>(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
+  const [isAnimating, setIsAnimating] = useState<boolean>(false)
+  const [fixed, setFixed] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setFixed(true);
+      } else {
+        setFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
 
 
   useEffect(() => {
@@ -31,13 +47,13 @@ const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-    if (
-      isMobileMenuOpen &&
-      !(event.target as HTMLElement).closest('.mobile-menu') &&
-      !(event.target as HTMLElement).closest('.hamburger-btn')
-    ) {
-      toggleMobileMenu()
-    }
+      if (
+        isMobileMenuOpen &&
+        !(event.target as HTMLElement).closest('.mobile-menu') &&
+        !(event.target as HTMLElement).closest('.hamburger-btn')
+      ) {
+        toggleMobileMenu()
+      }
 
     }
 
@@ -60,7 +76,8 @@ const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
   return (
     <>
-      <header className="w-full py-[25px] px-[20px] md:px-[30px] lg:px-[50px]">
+      <header className={`w-full  py-[25px] px-[20px] md:px-[30px] lg:px-[50px] transition-all duration-400 ${fixed ? "fixed top-0 left-0 z-50 bg-white dark:bg-black" : "relative z-50" 
+        }`}>
         <div className="p-[16px] max-w-[1440px] mx-auto bg-[#FFFFFF12] flex justify-between items-center rounded-[11px] border border-[#EFB24D]/10 dark:border-[#444444]">
           <div className='flex gap-[20px] lg:gap-[40px] xl:gap-[75px] items-center'>
             <Link href="/">
@@ -73,7 +90,7 @@ const [isAnimating, setIsAnimating] = useState<boolean>(false)
               />
             </Link>
 
-            <div className='hidden lg:flex items-center gap-[40px] xl:gap-[75px] text-[#F7F8F8]'>
+            <div className='hidden lg:flex items-center gap-[40px] xl:gap-[75px] text-black dark:text-[#F7F8F8]'>
               <div className='flex items-center hover:text-[#EFB24D] duration-300'>
                 <Link href="/">Home</Link>
               </div>

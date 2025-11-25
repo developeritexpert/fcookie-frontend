@@ -25,12 +25,12 @@ export default function MarketplacePage(){
           <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),linear-gradient(180deg,rgba(255,255,255,0)_43.69%,rgba(255,255,255,0.99)_100%)] dark:bg-[linear-gradient(180deg,rgba(0,0,0,0)_43.69%,rgba(0,0,0,0.94)_100%),linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2))] rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"></div>
 
           {/* Banner Text */}
-          <div className="flex flex-col text-white absolute top-[25px] left-[20px] sm:top-[30px] sm:left-[30px] md:left-[40px] md:bottom-[33px] lg:left-[80px] xl:left-[180px]">
-            <h1 className="text-[26px] sm:text-[28px] md:text-[35px] lg:text-[50px] font-semibold mb-[8px]">
+          <div className="flex flex-col text-white absolute top-[25px] left-[20px] sm:top-[30px] sm:left-[30px] md:top-auto md:left-[40px] md:bottom-[33px] lg:left-[80px] xl:left-[180px]">
+            <h1 className="text-[26px] sm:text-[28px] md:text-[35px] lg:text-[50px] font-semibold mb-[8px] leading-[30px] md:leading-[40px] ">
               Start Building Your Collection
             </h1>
 
-            <p className="text-[18px] md:text-[20px] leading-[27px] max-w-[650px]">
+            <p className="text-[18px] md:text-[20px] leading-[24px] md:leading-[27px] max-w-[650px]">
               Discover, collect, and trade digital packs and rare items. Your next
               find is waiting.
             </p>

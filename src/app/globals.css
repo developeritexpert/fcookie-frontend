@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
   --background: #ffffff;
   --foreground: #000000;
@@ -62,4 +61,31 @@ body {
 
 img{
   max-width: 100%;
+}
+
+/* animation  */
+.move-right{
+  animation:move-rgt 10s infinite linear ;
+}
+@keyframes move-rgt {
+  0%,100%{
+    transform: translateX(0%);
+  }
+  50%{
+    transform: translateX(-30%);
+  }
+  
+}
+.move-right{
+  animation:move-lft 10s infinite linear ;
+}
+
+@keyframes move-lft {
+  0%,100%{
+    transform: translateX(0%);
+  }
+  50%{
+    transform: translateX(30%);
+  }
+  
 }
