@@ -3,13 +3,15 @@ import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from "next/navigation";
 import LanguageDropdown from "./LanguageDropdown" 
+
 export default function Header(){
 const { theme, setTheme } = useTheme()
 const [mounted, setMounted] = useState<boolean>(false)
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 const [isAnimating, setIsAnimating] = useState<boolean>(false)
-
+const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true)
@@ -115,9 +117,36 @@ const [isAnimating, setIsAnimating] = useState<boolean>(false)
                 </div>
               </button>
             </div>
-            <div>
-              <Link href="/" className=' bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D]  hover:bg-transparent  px-[30px] py-[10px] font-semibold rounded-[7px] block'>Login</Link>
-            </div>
+            {pathname === "/login" ? (
+              <div>
+                <Link
+                  href="/register"
+                  className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            ) : pathname === "/register" ? (
+              <div>
+                <Link
+                  href="/login"
+                  className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                >
+                  Login
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link
+                  href="/login"
+                  className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
+
+
           </div>
 
           <div className="lg:hidden flex items-center gap-4">
