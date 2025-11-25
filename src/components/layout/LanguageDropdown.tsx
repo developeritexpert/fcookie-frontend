@@ -7,13 +7,21 @@ export default function LanguageDropdown() {
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState("en");
 
-  const languages = [
-    { code: "en", label: "EN", flag: "/img/flag1.png" },
-    { code: "hi", label: "HI", flag: "/img/flag2.png" },
-    { code: "fr", label: "FR", flag: "/img/flag3.png" }
-  ];
+    type Lang = {
+      code: string;
+      label: string;
+      flag: string;
+    };
 
-  const selected = languages.find((l) => l.code === lang);
+    const languages: Lang[] = [
+      { code: "en", label: "EN", flag: "/img/flag1.png" },
+      { code: "hi", label: "HI", flag: "/img/flag2.png" },
+      { code: "fr", label: "FR", flag: "/img/flag3.png" },
+    ];
+
+  const selected = languages.find((l) => l.code === lang) ?? languages[0];
+
+
 
   return (
     <div className="relative  flex items-center">
