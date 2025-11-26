@@ -60,7 +60,7 @@ export default function ProductDetailPage() {
       {/* Header */}
 
       {/* Breadcrumb */}
-      <div className="px-6 lg:px-12 py-4 text-sm text-gray-400">
+      <div className=" container px-6  text-sm text-gray-400">
         <div className="flex items-center gap-2">
           <a href="#" className="hover:text-white transition">Home</a>
           <span>|</span>

@@ -15,7 +15,7 @@ export default function FilterDropdown({ title, children }: FilterDropdownProps)
       {/* Header */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between mb-[20px] text-left text-black dark:text-white"
+        className="w-full flex items-center justify-between mb-[10px] text-left text-black dark:text-white"
       >
         <span className="text-[20px] font-medium">{title}</span>
 
