@@ -4,21 +4,28 @@ import { usePathname } from "next/navigation";
 import Header from "../components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
-const publicPaths = ["/"];
-
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // If you want to hide header/footer on specific pages later
   const pathname = usePathname();
-  const showHeaderFooter = publicPaths.includes(pathname);
+  
+  // Pages where you DON'T want header/footer (login, admin, etc.)
+  const excludedPaths = [
+    "/admin",
+  ];
+
+  const hideLayout = excludedPaths.some((path) =>
+    pathname.startsWith(path)
+  );
 
   return (
     <>
-      {showHeaderFooter && <Header />}
+      {!hideLayout && <Header />}
       {children}
-      {showHeaderFooter && <Footer />}
+      {!hideLayout && <Footer />}
     </>
   );
 }

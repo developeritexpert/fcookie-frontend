@@ -18,8 +18,7 @@ export default function Banner(): JSX.Element {
           <div className="absolute inset-0 
             bg-[linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),linear-gradient(180deg,rgba(255,255,255,0)_43.69%,rgba(255,255,255,0.99)_100%)] 
             dark:bg-[linear-gradient(180deg,rgba(0,0,0,0)_43.69%,rgba(0,0,0,0.94)_100%),linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2))] 
-            rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"
-          ></div>
+            rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"></div>
 
           {/* Banner Shade 2 (Fixed URL typo) */}
           <div className="absolute top-[-50px] left-0 bg-[url('/img/bann-shade.png')] bg-cover bg-center"></div>

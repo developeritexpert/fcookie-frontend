@@ -3,14 +3,16 @@ import { useEffect, useState } from "react"
 import { useTheme } from "next-themes"
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from "next/navigation";
 import LanguageDropdown from "./LanguageDropdown"
+
 export default function Header() {
   const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState<boolean>(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
   const [isAnimating, setIsAnimating] = useState<boolean>(false)
-  const [fixed, setFixed] = useState(false);
-
+  const pathname = usePathname();
+  const [fixed,setFixed]=useState<boolean>(false)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 400) {
@@ -24,8 +26,6 @@ export default function Header() {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-
 
   useEffect(() => {
     setMounted(true)
@@ -76,7 +76,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`w-full  py-[25px] px-[20px] md:px-[30px] lg:px-[50px] transition-all duration-400 ${fixed ? "fixed top-0 left-0 z-50 bg-white dark:bg-black" : "relative z-50" 
+      <header className={`w-full  py-[25px] px-[20px] md:px-[30px] lg:px-[50px] transition-all duration-400 ${fixed ? "fixed top-0 left-0 z-50 bg-white dark:bg-black" : "relative z-50"
         }`}>
         <div className="p-[16px] max-w-[1440px] mx-auto bg-[#FFFFFF12] flex justify-between items-center rounded-[11px] border border-[#EFB24D]/10 dark:border-[#444444]">
           <div className='flex gap-[20px] lg:gap-[40px] xl:gap-[75px] items-center'>
@@ -132,9 +132,36 @@ export default function Header() {
                 </div>
               </button>
             </div>
-            <div>
-              <Link href="/" className=' bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D]  hover:bg-transparent  px-[30px] py-[10px] font-semibold rounded-[7px] block'>Login</Link>
-            </div>
+            {pathname === "/login" ? (
+              <div>
+                <Link
+                  href="/register"
+                  className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                >
+                  Sign Up
+                </Link>
+              </div>
+            ) : pathname === "/register" ? (
+              <div>
+                <Link
+                  href="/login"
+                  className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                >
+                  Login
+                </Link>
+              </div>
+            ) : (
+              <div>
+                <Link
+                  href="/login"
+                  className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                >
+                  Login
+                </Link>
+              </div>
+            )}
+
+
           </div>
 
           <div className="lg:hidden flex items-center gap-4">

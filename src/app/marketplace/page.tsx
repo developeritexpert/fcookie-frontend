@@ -1,8 +1,7 @@
+
 import React from "react";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import Discover from "@/components/layout/DiscoverMore";
-import ProductsFilter from "@/components/public/MarketPlace/MarketFilterSec";
+import ProductsFilter from "@/components/public/marketplace/MarketFilterSec";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -14,11 +13,9 @@ export const metadata: Metadata = {
 export default function MarketplacePage(){
   return (
     <div>
-      <Header />
-
       {/* Banner */}
       <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative">
-        <div className="absolute -z-0 top-[-181px] left-0 right-0 bottom-0 bg-[#EFB24D29] blur-[754px]"></div>
+        {/* <div className="absolute -z-0 top-[-181px] left-0 right-0 bottom-0 bg-[#EFB24D29] blur-[754px]"></div> */}
 
         <div className="bg-[url('/img/market-bann-img.png')] bg-cover bg-center max-w-[1800px] w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[642px] relative brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
           {/* Gradient overlays */}
@@ -41,8 +38,6 @@ export default function MarketplacePage(){
       {/* Filters & Discover section */}
       <ProductsFilter />
       <Discover />
-
-      <Footer />
     </div>
   );
 }

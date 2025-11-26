@@ -33,7 +33,7 @@ export default function Discover() {
                 <Link href="/">
                 <div className='grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-[30px] '>
                     {discover.map((item, index) => (
-                        <div className='p-[16px] pb-[26px] dark:bg-[#0D0D0D] border border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px]  transition-all duration-300 hover:shadow-lg hover:-translate-y-1'>
+                        <div key={index} className='p-[16px] pb-[26px] dark:bg-[#0D0D0D] border border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px]  transition-all duration-300 hover:shadow-lg hover:-translate-y-1'>
                             <Image src={item.image} alt="" width={200} height={200} className='rounded-[15px] w-full h-full  max-w-full sm:max-w-[428px] max-h-[fit-content] blur-0 image-render-pixel' />
                             <p className=" mt-[20px] text-[18px]  md:text-[20px] font-medium ">{item.title}</p>
                             <p className="mt-[5px] text-[#6C6C6C] text-[15px]  leading-[20px] font-normal  ">{item.subtitle}</p>
