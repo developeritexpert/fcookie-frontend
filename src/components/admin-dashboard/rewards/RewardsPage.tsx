@@ -105,12 +105,12 @@ export default function RewardsPage() {
           <thead>
             <tr className="bg-[#fff] text-[#000] font-medium text-left">
               <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[180px]">Reward Name</th>
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[120px]">Type</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[170px]">Type</th>
               <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px]">Value</th>
               <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[120px]">Probability (%)</th>
               <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[120px]">Expiry (Days)</th>
               <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px]">Status</th>
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[150px]">Action</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px]">Action</th>
             </tr>
           </thead>
           <tbody>

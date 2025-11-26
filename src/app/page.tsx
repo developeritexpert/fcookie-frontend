@@ -10,6 +10,7 @@ import DiscoverMore from "../components/layout/DiscoverMore";
 import Footer from "../components/layout/Footer";
 
 import { JSX } from "react";
+
 export default function Page(): JSX.Element {
   return (
     <>
@@ -21,6 +22,7 @@ export default function Page(): JSX.Element {
       <ProductsSlider />
       <DiscoverMore />
       {/* <Footer /> */}
+    
     </>
   );
 }

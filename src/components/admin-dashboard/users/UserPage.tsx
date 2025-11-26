@@ -116,12 +116,12 @@ export default function UserPage() {
         <table className="lg:w-full text-sm rounded-[7px]">
           <thead>
             <tr className="bg-[#fff] text-[#000] font-medium text-left">
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[150px]">User</th>
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[200px]">Email</th>
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px]">Role</th>
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px]">Status</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[180px]">User</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[250px]">Email</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[130px]">Role</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[130px]">Status</th>
               <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[120px]">Last Active</th>
-              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[150px] text-right">Action</th>
+              <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px] ">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -151,8 +151,8 @@ export default function UserPage() {
                   </span>
                 </td>
                 <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.lastActive}</td>
-                <td className="py-[10px] px-[15px] border border-[#F7F8F81C] text-right">
-                  <div className="flex gap-2 justify-end w-full">
+                <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
+                  <div className="flex gap-2  w-full">
 
                     <button onClick={() => handleEdit(user.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</button>
                     <button onClick={() => handleRemove(user.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Remove</button>

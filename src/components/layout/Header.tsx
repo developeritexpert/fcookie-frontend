@@ -12,10 +12,10 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
   const [isAnimating, setIsAnimating] = useState<boolean>(false)
   const pathname = usePathname();
-  const [fixed,setFixed]=useState<boolean>(false)
+  const [fixed, setFixed] = useState<boolean>(false)
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 400) {
+      if (window.scrollY > 100) {
         setFixed(true);
       } else {
         setFixed(false);
@@ -76,8 +76,8 @@ export default function Header() {
 
   return (
     <>
-      <header className={`w-full  py-[25px] px-[20px] md:px-[30px] lg:px-[50px] transition-all duration-400 ${fixed ? "fixed top-0 left-0 z-50 bg-white dark:bg-black" : "relative z-50"
-        }`}>
+      <header className={`w-full py-[25px] px-[20px] md:px-[30px] lg:px-[50px] transition-all duration-1000 ease-in-out
+    ${fixed ? "fixed top-0 left-0 z-40 bg-white dark:bg-black shadow-md" : "relative z-40 bg-transparent shadow-none"}`} >
         <div className="p-[16px] max-w-[1440px] mx-auto bg-[#FFFFFF12] flex justify-between items-center rounded-[11px] border border-[#EFB24D]/10 dark:border-[#444444]">
           <div className='flex gap-[20px] lg:gap-[40px] xl:gap-[75px] items-center'>
             <Link href="/">
@@ -103,9 +103,13 @@ export default function Header() {
             </div>
           </div>
 
-          <div className='hidden lg:flex gap-[10px]'>
+          <div className='hidden lg:flex lg:items-center gap-[10px]'>
             <LanguageDropdown />
-            <div>
+
+
+
+
+            {/* <div>
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className='bg-[#EFB24D0F] dark:bg-[#FFFFFF0D] cursor-pointer px-[8px] py-[8px] text-sm flex items-center gap-[10px] font-semibold rounded-[7px]'
@@ -131,7 +135,59 @@ export default function Header() {
                   )}
                 </div>
               </button>
+            </div> */}
+
+            <div>
+              <button
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                className="bg-transparent dark:bg-[#FFFFFF0D] border border-[#F7F8F8] dark:border-[#FFFFFF0D] cursor-pointer px-[10px] py-[8px]
+                  text-sm flex items-center gap-[10px] font-semibold rounded-[7px] relative">
+                {/* LABEL */}
+                <span>{theme === "dark" ? "Dark Mode" : "Light Mode"}</span>
+
+                {/* OUTER BOX */}
+                <div className=" bg-[#E6E6E6] dark:bg-[#FFFFFF12] w-[50px] h-[22px] rounded-[20px]
+                 relative flex items-center justify-between px-[5px]">
+
+                  {/* ICON (Same SVGs you used) */}
+                  {theme === "dark" ? (
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      className="fill-black dark:fill-white">
+                      <path d="M2.13987 11.8589C3.56992 13.2827 5.4437 14 7.3232 14C10.3531 14 12.9509 12.1174 13.9832 9.71124V9.7055C14.0828 9.25556 13.7246 8.90902 13.3237 8.97604C13.2694 8.97604 13.1609 9.02262 13.1488 9.03411C10.8141 10.1018 8.02997 9.6117 6.20849 7.79152C4.39927 5.98289 3.90325 3.22828 4.94187 0.900101C4.94762 0.894357 4.94762 0.888613 4.95337 0.882869C5.21895 0.086386 4.47839 -0.151023 4.14194 0.089572C-0.337805 2.20519 -1.45766 8.25503 2.13987 11.8589Z" />
+                    </svg>
+                  ) : (
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 15 16"
+                      className="fill-black dark:fill-white">
+                      <path
+                        fill="currentColor"
+                        d="M7.50006 12.5053C7.18427 12.5053 6.93164 12.7579 6.93164 13.0737V14.4474C6.93164 14.7632 7.18427 15.0158 7.50006 15.0158C7.81585 15.0158 8.06848 14.7632 8.06848 14.4474V13.0737C8.06848 12.7421 7.81585 12.5053 7.50006 12.5053Z" />
+                      <path
+                        fill="currentColor"
+                        d="M3.17403 11.0368L2.19509 12.0158C1.97403 12.2368 1.97403 12.5842 2.19509 12.8053C2.30561 12.9158 2.44772 12.9632 2.58982 12.9632C2.73193 12.9632 2.87403 12.9158 2.98456 12.8053L3.96351 11.8263C4.18456 11.6053 4.18456 11.2579 3.96351 11.0368C3.74245 10.8158 3.39509 10.8158 3.17403 11.0368Z" />
+                    </svg>
+                  )}
+
+                  {/* CIRCLE SLIDER */}
+                  <span
+                    className={`
+              w-[20px] h-[20px] bg-white rounded-full absolute
+              top-[1px] transition-all duration-200
+              ${theme === "dark" ? "right-[2px]" : "left-[2px]"}
+            `}
+                  ></span>
+                </div>
+              </button>
             </div>
+
+
+
+
             {pathname === "/login" ? (
               <div>
                 <Link
