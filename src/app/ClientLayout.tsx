@@ -15,6 +15,7 @@ export default function ClientLayout({
   // Pages where you DON'T want header/footer (login, admin, etc.)
   const excludedPaths = [
     "/admin",
+    "/dashboard"
   ];
 
   const hideLayout = excludedPaths.some((path) =>

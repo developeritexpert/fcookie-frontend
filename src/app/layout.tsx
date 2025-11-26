@@ -5,8 +5,8 @@ import ClientLayout from "./ClientLayout";
 import AOSWrapper from "@/components/aos/AOSWrapper";
 
 export const metadata: Metadata = {
-  title: "My New Project",
-  description: "Beautiful eCommerce landing page",
+  title: "FCookie",
+  description: "App",
   icons: {
     icon: "/favicon.png",
   },
