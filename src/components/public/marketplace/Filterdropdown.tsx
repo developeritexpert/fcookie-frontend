@@ -11,13 +11,13 @@ export default function FilterDropdown({ title, children }: FilterDropdownProps)
   const [open, setOpen] = useState<boolean>(false);
 
   return (
-    <div className="w-full bg-transparent border-b border-[#E6E6E6] dark:border-[#343434] py-[30px] !m-0">
+    <div className="w-full bg-transparent border-b border-[#E6E6E6] dark:border-[#343434] py-[20px] md:py-[30px] !m-0">
       {/* Header */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between mb-[10px] text-left text-black dark:text-white"
+        className="w-full flex items-center justify-between  text-left text-black dark:text-white"
       >
-        <span className="text-[20px] font-medium">{title}</span>
+        <span className="text-[18px] md:text-[20px] font-medium">{title}</span>
 
         <IoChevronDown
           className={` transition-transform duration-300 ${

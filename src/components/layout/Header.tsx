@@ -77,8 +77,11 @@ export default function Header() {
   return (
     <>
       <header className={`w-full py-[25px] px-[20px] md:px-[30px] lg:px-[50px] transition-all duration-1000 ease-in-out
-    ${fixed ? "fixed top-0 left-0 z-40 bg-white dark:bg-black shadow-md" : "relative z-40 bg-transparent shadow-none"}`} >
-        <div className="p-[16px] max-w-[1440px] mx-auto bg-[#FFFFFF12] flex justify-between items-center rounded-[11px] border border-[#EFB24D]/10 dark:border-[#444444]">
+    ${fixed ? "fixed top-0 left-0 z-40 bg-white dark:bg-black" : "relative overflow-x-hidden z-40 bg-transparent "}`} >
+              <div className="absolute inset-0 bg-[#EFB24D]/10 blur-[524px] -z-10 h-full w-full"></div>
+
+
+        <div className="p-[16px] max-w-[1440px] mx-auto flex justify-between items-center rounded-[11px] bg-[#EFB24D]/5  dark:bg-[#FFFFFF12] border border-[#EFB24D]/15 dark:border-[#444444]">
           <div className='flex gap-[20px] lg:gap-[40px] xl:gap-[75px] items-center'>
             <Link href="/">
               <Image
@@ -138,18 +141,19 @@ export default function Header() {
             </div> */}
 
             <div>
+
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 className="bg-transparent dark:bg-[#FFFFFF0D] border border-[#F7F8F8] dark:border-[#FFFFFF0D] cursor-pointer px-[10px] py-[8px]
                   text-sm flex items-center gap-[10px] font-semibold rounded-[7px] relative">
-                {/* LABEL */}
+                
                 <span>{theme === "dark" ? "Dark Mode" : "Light Mode"}</span>
 
-                {/* OUTER BOX */}
+                
                 <div className=" bg-[#E6E6E6] dark:bg-[#FFFFFF12] w-[50px] h-[22px] rounded-[20px]
                  relative flex items-center justify-between px-[5px]">
 
-                  {/* ICON (Same SVGs you used) */}
+                
                   {theme === "dark" ? (
                     <svg
                       width="14"
@@ -173,7 +177,7 @@ export default function Header() {
                     </svg>
                   )}
 
-                  {/* CIRCLE SLIDER */}
+            
                   <span
                     className={`
               w-[20px] h-[20px] bg-white rounded-full absolute
@@ -183,6 +187,7 @@ export default function Header() {
                   ></span>
                 </div>
               </button>
+              
             </div>
 
 
