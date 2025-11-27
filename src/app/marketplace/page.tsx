@@ -10,12 +10,14 @@ export const metadata: Metadata = {
     "Discover, collect, and trade digital packs and rare items. Explore products and build your collection.",
 };
 
-export default function MarketplacePage(){
+export default function MarketplacePage() {
   return (
     <div>
       {/* Banner */}
-      <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative">
-        {/* <div className="absolute -z-0 top-[-181px] left-0 right-0 bottom-0 bg-[#EFB24D29] blur-[754px]"></div> */}
+      <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative overflow-x-hidden">
+        <div className="absolute top-[-10%] left-0 right-0 md:left-[10px] md:right-[10px] lg:left-[100px] lg:right-[100px] bg-[#EFB24D]/40 blur-[724px] -z-10 h-[25%] w-full"></div>
+
+
 
         <div className="bg-[url('/img/market-bann-img.png')]  bg-no-repeat bg-center bg-cover m-auto max-w-[1800px] w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[642px] relative brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
           {/* Gradient overlays */}
