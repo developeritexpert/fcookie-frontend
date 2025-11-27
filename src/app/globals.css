@@ -89,3 +89,94 @@ img{
   }
   
 }
+
+/* SUCCESS Toast */
+[data-sonner-toast][data-type="success"] {
+  border: 1px solid #22c55e !important; /* green */
+}
+
+/* ERROR Toast */
+[data-sonner-toast][data-type="error"] {
+  border: 1px solid #ef4444 !important; /* red */
+}
+
+/* INFO Toast */
+[data-sonner-toast][data-type="info"] {
+  border: 1px solid #3b82f6 !important; /* blue */
+}
+
+/* ---------- Sonner stacked toasts + theme overrides ---------- */
+
+/* The Sonner root container that holds toasts */
+[data-sonner-root] {
+  display: flex;               /* stack toasts vertically */
+  flex-direction: column;      /* newest at bottom by default; see reverse below */
+  gap: 10px;                   /* space between toasts (lines) */
+  align-items: flex-end;       /* keep toasts flush to right */
+  padding: 12px;
+  pointer-events: none;        /* container doesn't block clicks */
+  z-index: 9999;
+}
+
+/* Each toast box (make it interactive) */
+[data-sonner-toast] {
+  pointer-events: auto;
+  margin: 0;                   /* no extra margins (gap handles spacing) */
+  transform: translateX(0) !important; /* prevent overlapping transforms */
+  opacity: 1 !important;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+  animation: fcookie-toast-in .36s cubic-bezier(.2,.9,.2,1);
+}
+
+/* Smooth slide-in from the right + fade */
+@keyframes fcookie-toast-in {
+  from { transform: translateX(14px); opacity: 0; }
+  to   { transform: translateX(0);  opacity: 1; }
+}
+
+/* Slightly faster leaving animation */
+[data-sonner-toast][data-leaving="true"] {
+  animation: fcookie-toast-out .22s ease-in forwards;
+}
+@keyframes fcookie-toast-out {
+  from { transform: translateX(0); opacity: 1; }
+  to   { transform: translateX(6px); opacity: 0; }
+}
+
+/* The X (close) button small tweak so it sits perfectly */
+[data-sonner-toast] .sn-close {
+  background: transparent;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* THEME - keep black background / white text by default */
+[data-sonner-toast] {
+  background: #000 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  border: 1px solid #FACC15; /* yellow default */
+  padding: 12px 14px !important;
+}
+
+/* Per-type border colors (success/error/info) */
+[data-sonner-toast][data-type="success"] { border-color: #22c55e !important; } /* green */
+[data-sonner-toast][data-type="error"]   { border-color: #ef4444 !important; } /* red */
+[data-sonner-toast][data-type="info"]    { border-color: #3b82f6 !important; } /* blue */
+
+/* If your app toggles light mode by adding .light on body/html, support it */
+.light [data-sonner-toast] {
+  background: #fff !important;
+  color: #111 !important;
+  border-color: #FACC15 !important;
+}
+
+/* Prevent stacking overlap when many toasts queued — keep container tall enough */
+[data-sonner-root] {
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+}
