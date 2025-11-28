@@ -7,24 +7,24 @@ export default function LanguageDropdown() {
   const [open, setOpen] = useState(false);
   const [lang, setLang] = useState("en");
 
-    type Lang = {
-      code: string;
-      label: string;
-      flag: string;
-    };
+  type Lang = {
+    code: string;
+    label: string;
+    flag: string;
+  };
 
-    const languages: Lang[] = [
-      { code: "en", label: "EN", flag: "/img/flag1.png" },
-      { code: "hi", label: "HI", flag: "/img/flag2.png" },
-      { code: "fr", label: "FR", flag: "/img/flag3.png" },
-    ];
+  const languages: Lang[] = [
+    { code: "en", label: "EN", flag: "/img/flag1.png" },
+    { code: "hi", label: "HI", flag: "/img/flag2.png" },
+    { code: "fr", label: "FR", flag: "/img/flag3.png" },
+  ];
 
   const selected = languages.find((l) => l.code === lang) ?? languages[0];
 
 
 
   return (
-    <div className="relative  flex items-center">
+    <div className="relative   flex items-center">
       <div className="inline-block">
 
         {/* Button */}
@@ -32,7 +32,7 @@ export default function LanguageDropdown() {
           onClick={() => setOpen(!open)}
           className="
           flex items-center gap-2 
-          bg-white dark:bg-transparent
+     bg-transparent
           text-black dark:text-white 
           px-2 py-1 rounded-md
         "
@@ -55,7 +55,7 @@ export default function LanguageDropdown() {
 
         {/* Dropdown */}
         {open && (
-          <div  className=" absolute left-0 mt-1 w-full bg-white dark:bg-[#0D0D0D] text-black dark:text-white
+          <div className=" absolute left-0 mt-1 w-full bg-white dark:bg-[#0D0D0D] text-black dark:text-white
             rounded-md z-50 py-2 shadow-xl">
             {languages.map((item) => (
               <div

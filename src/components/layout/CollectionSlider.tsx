@@ -102,9 +102,9 @@ export default function CollectionSlider(): JSX.Element {
     };
 
     return (
-        <div className="px-[20px] md:px-[30px] lg:px-[50px] relative -z-0" data-aos="fade-up" data-aos-delay="100">
+        <div className=" relative -z-0" data-aos="fade-up" data-aos-delay="100">
             <div className="absolute z-20 bottom-[-15%] lg:bottom-[-25%] left-0  h-[300px] w-[180px] lg:h-[400px] lg:w-[180px]  xl:h-[538px]  bg-[#EFB24D4D] blur-[150px] pointer-events-none"></div>
-            <div className="pt-[20px] sm:pt-[30px] pb-[30px] md:pb-[50px] overflow-hidden relative">
+            <div className="pt-[20px] sm:pt-[30px] pb-[30px] md:pb-[50px] px-[20px] md:px-[30px] lg:px-[50px] overflow-hidden relative">
 
                 <div className="container relative" data-aos="fade-up">
                     {/* Header */}
@@ -125,14 +125,14 @@ export default function CollectionSlider(): JSX.Element {
                         {slides.map((item, i) => (
                             <div key={i} className="py-[20px]  bg-white dark:bg-[#0D0D0D] border h-full 
                              border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px] !flex flex-col items-center
-                              transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                                <div className=" flex items-center justify-center">
+                              transition-all duration-300  hover:shadow-lg hover:shadow-[#EFB24D]/20 group">
+                                <div className=" flex items-center justify-center overflow-hidden rounded-[4px]">
                                     <Image
                                         src={item.image}
                                         alt="Model"
                                         width={300}
                                         height={300}
-                                        className="w-full h-full max-w-[185px] max-h-[276px]"
+                                        className="w-full h-full max-w-[185px] max-h-[276px] group-hover:scale-105 transition-transform"
                                     />
                                 </div>
 
@@ -170,7 +170,7 @@ export default function CollectionSlider(): JSX.Element {
                         <div className="flex items-center gap-4">
                             <button
                                 onClick={() => sliderRef.current?.slickPrev()}
-                                className="group  rounded-[21px] border border-[#FFFFFF4D] hover:border-[#EFB24D] hover:bg-[#EFB24D] bg-transparent duration-400 py-[11px] px-[18px] transition "
+                                className="group  rounded-[21px] border border-[#E6E6E6] dark:border-[#FFFFFF4D] hover:border-[#EFB24D] hover:bg-[#EFB24D] bg-transparent duration-400 py-[11px] px-[18px] transition "
                             >
                                 <svg
                                     width="20"
@@ -189,7 +189,7 @@ export default function CollectionSlider(): JSX.Element {
 
                             <button
                                 onClick={() => sliderRef.current?.slickNext()}
-                                className="group rounded-[21px] border border-[#FFFFFF4D] hover:border-[#EFB24D] hover:bg-[#EFB24D] bg-transparent duration-400 py-[11px] px-[18px] transition "
+                                className="group rounded-[21px] border border-[#E6E6E6] dark:border-[#FFFFFF4D] hover:border-[#EFB24D] hover:bg-[#EFB24D] bg-transparent duration-400 py-[11px] px-[18px] transition "
                             >
                                 <svg
                                     width="20"
