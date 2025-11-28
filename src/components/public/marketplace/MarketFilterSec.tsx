@@ -157,8 +157,10 @@ export default function ProductsFilter() {
   ]
 
   return (
-    <div className="text-white pt-[16px]  px-[20px] md:px-[30px] lg:px-[50px] ">
-      <div className="max-w-[1440px] mx-auto">
+    <div className="text-white pt-[16px]  px-[20px] md:px-[30px] lg:px-[50px] relative">
+      <div className="absolute top-[5%] sm:bottom-[10%]  md:bottom-[20%] lg:bottom-[35%] left-0  bg-[#EFB24D]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
+      <div className="absolute bottom-[-5%] right-0 bg-[#75DA5B]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
+      <div className="container ">
         <div className="grid grid-cols-1 md:grid-cols-12 md:gap-4 lg:gap-8">
           {/* SIDEBAR */}
 
@@ -169,10 +171,16 @@ export default function ProductsFilter() {
               </h2>
               {/* ------ Price ------ */}
               <FilterDropdown title="Price">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px] gap-2">
                   {prices.map((p) => (
                     <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{p}</span>
                     </label>
                   ))}
@@ -181,7 +189,7 @@ export default function ProductsFilter() {
 
               {/* ------ Category ------ */}
               <FilterDropdown title="Category">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px] gap-2">
                   {categories.map((c) => (
                     <label
                       key={c.name}
@@ -190,14 +198,17 @@ export default function ProductsFilter() {
                       <div className="flex items-center gap-[10px] ">
                         <input
                           type="checkbox"
-                          className="accent-[#000] dark:accent-[#fff] w-[16px] h-[16px]"
-                        />
-                        <span className="opacity-80 group-hover:opacity-100 transition text-[16px] font-normal">
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
+                        <span className=" group-hover:opacity-100 transition text-[16px] font-normal">
                           {c.name}
                         </span>
                       </div>
 
-                      <span className="text-xs opacity-40  transition text-[16px] font-normal">
+                      <span className=" transition text-[16px] font-normal">
                         ({c.count})
                       </span>
                     </label>
@@ -207,10 +218,16 @@ export default function ProductsFilter() {
 
               {/* ------ Grader ------ */}
               <FilterDropdown title="Grader">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {graders.map((g) => (
                     <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{g}</span>
                     </label>
                   ))}
@@ -218,12 +235,19 @@ export default function ProductsFilter() {
               </FilterDropdown>
 
 
+
               {/* ------ Grade ------ */}
               <FilterDropdown title="Grade">
-                <div className="flex flex-col gap-2 mt-[20px]">
+                <div className="flex flex-col gap-2 mt-[10px]">
                   {grades.map((g) => (
                     <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{g}</span>
                     </label>
                   ))}
@@ -233,10 +257,16 @@ export default function ProductsFilter() {
 
               {/* ------ Year ------ */}
               <FilterDropdown title="Year">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {years.map((y) => (
                     <label key={y} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{y}</span>
                     </label>
                   ))}
@@ -246,10 +276,16 @@ export default function ProductsFilter() {
 
               {/* ------ Set ------ */}
               <FilterDropdown title="Set">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {sets.map((s) => (
                     <label key={s} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{s}</span>
                     </label>
                   ))}
@@ -258,10 +294,16 @@ export default function ProductsFilter() {
 
               {/* ------ LAnguage ------ */}
               <FilterDropdown title="Language">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {languages.map((l) => (
                     <label key={l} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{l}</span>
                     </label>
                   ))}
@@ -271,7 +313,7 @@ export default function ProductsFilter() {
 
               {/* ------ title/subject ------ */}
               <FilterDropdown title="Title/Subject">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {titleSubject.map((t) => (
                     <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
                       <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
@@ -284,10 +326,16 @@ export default function ProductsFilter() {
 
               {/* ------ title/PKMN ------ */}
               <FilterDropdown title="Title/PKMN">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {titlePKMN.map((p) => (
                     <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{p}</span>
                     </label>
                   ))}
@@ -297,10 +345,16 @@ export default function ProductsFilter() {
 
               {/* ------ Events  ------ */}
               <FilterDropdown title="Event">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {events.map((e) => (
                     <label key={e} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{e}</span>
                     </label>
                   ))}
@@ -310,10 +364,16 @@ export default function ProductsFilter() {
 
               {/* ------ variants  ------ */}
               <FilterDropdown title="Variant">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 mt-[10px] ">
                   {variants.map((v) => (
                     <label key={v} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{v}</span>
                     </label>
                   ))}
@@ -323,16 +383,21 @@ export default function ProductsFilter() {
 
               {/* ------ TAgs  ------ */}
               <FilterDropdown title="Tags">
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col mt-[10px]  gap-2">
                   {tags.map((t) => (
                     <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                       <span>{t}</span>
                     </label>
                   ))}
                 </div>
               </FilterDropdown>
-
 
 
 
@@ -384,10 +449,16 @@ export default function ProductsFilter() {
                 </h2>
                 {/* ------ Price ------ */}
                 <FilterDropdown title="Price">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px] gap-2">
                     {prices.map((p) => (
                       <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{p}</span>
                       </label>
                     ))}
@@ -396,7 +467,7 @@ export default function ProductsFilter() {
 
                 {/* ------ Category ------ */}
                 <FilterDropdown title="Category">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px] gap-2">
                     {categories.map((c) => (
                       <label
                         key={c.name}
@@ -405,14 +476,17 @@ export default function ProductsFilter() {
                         <div className="flex items-center gap-[10px] ">
                           <input
                             type="checkbox"
-                            className="accent-[#000] dark:accent-[#fff] w-[16px] h-[16px]"
-                          />
-                          <span className="opacity-80 group-hover:opacity-100 transition text-[16px] font-normal">
+                            className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
+                          <span className=" group-hover:opacity-100 transition text-[16px] font-normal">
                             {c.name}
                           </span>
                         </div>
 
-                        <span className="text-xs opacity-40  transition text-[16px] font-normal">
+                        <span className=" transition text-[16px] font-normal">
                           ({c.count})
                         </span>
                       </label>
@@ -422,10 +496,16 @@ export default function ProductsFilter() {
 
                 {/* ------ Grader ------ */}
                 <FilterDropdown title="Grader">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {graders.map((g) => (
                       <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{g}</span>
                       </label>
                     ))}
@@ -433,12 +513,19 @@ export default function ProductsFilter() {
                 </FilterDropdown>
 
 
+
                 {/* ------ Grade ------ */}
                 <FilterDropdown title="Grade">
-                  <div className="flex flex-col gap-2 mt-[20px]">
+                  <div className="flex flex-col gap-2 mt-[10px]">
                     {grades.map((g) => (
                       <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{g}</span>
                       </label>
                     ))}
@@ -448,10 +535,16 @@ export default function ProductsFilter() {
 
                 {/* ------ Year ------ */}
                 <FilterDropdown title="Year">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {years.map((y) => (
                       <label key={y} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{y}</span>
                       </label>
                     ))}
@@ -461,10 +554,16 @@ export default function ProductsFilter() {
 
                 {/* ------ Set ------ */}
                 <FilterDropdown title="Set">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {sets.map((s) => (
                       <label key={s} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{s}</span>
                       </label>
                     ))}
@@ -473,10 +572,16 @@ export default function ProductsFilter() {
 
                 {/* ------ LAnguage ------ */}
                 <FilterDropdown title="Language">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {languages.map((l) => (
                       <label key={l} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{l}</span>
                       </label>
                     ))}
@@ -486,7 +591,7 @@ export default function ProductsFilter() {
 
                 {/* ------ title/subject ------ */}
                 <FilterDropdown title="Title/Subject">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {titleSubject.map((t) => (
                       <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
                         <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
@@ -499,10 +604,16 @@ export default function ProductsFilter() {
 
                 {/* ------ title/PKMN ------ */}
                 <FilterDropdown title="Title/PKMN">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {titlePKMN.map((p) => (
                       <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{p}</span>
                       </label>
                     ))}
@@ -512,10 +623,16 @@ export default function ProductsFilter() {
 
                 {/* ------ Events  ------ */}
                 <FilterDropdown title="Event">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {events.map((e) => (
                       <label key={e} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{e}</span>
                       </label>
                     ))}
@@ -525,10 +642,16 @@ export default function ProductsFilter() {
 
                 {/* ------ variants  ------ */}
                 <FilterDropdown title="Variant">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 mt-[10px] ">
                     {variants.map((v) => (
                       <label key={v} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{v}</span>
                       </label>
                     ))}
@@ -538,16 +661,21 @@ export default function ProductsFilter() {
 
                 {/* ------ TAgs  ------ */}
                 <FilterDropdown title="Tags">
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col mt-[10px]  gap-2">
                     {tags.map((t) => (
                       <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
                         <span>{t}</span>
                       </label>
                     ))}
                   </div>
                 </FilterDropdown>
-
 
 
 

@@ -2,19 +2,48 @@
 
 import React, { useState } from "react";
 import { Heart, Share2, ChevronRight, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { FiShare2 } from "react-icons/fi";
+import { GoTag } from "react-icons/go";
+import { IoDiamondOutline } from "react-icons/io5";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
+import { CiCircleCheck } from "react-icons/ci";
+import { LuVault } from "react-icons/lu";
+import { RiShieldFlashLine } from "react-icons/ri";
+import { IoIosArrowDown } from "react-icons/io";
+import { TbShieldSearch } from "react-icons/tb";
+import Breadcrumb from "@/components/layout/Breadcrumb";
 
 export default function ProductDetailPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [isWatchlisted, setIsWatchlisted] = useState(false);
-  const [selectedTab, setSelectedTab] = useState("1M");
+  const [activeTab, setActiveTab] = useState("PSA");
+  const [activeGrade, setActiveGrade] = useState("8");
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState("Top offer $129.65");
+
+  const options = ["Top offer $129.65", "A", "B", "C"];
+
+
+  const gradingTabs = ["PSA", "CGC", "BGS", "SGC"];
+  const grades = ["6", "6.5", "7", "7.5", "8", "8.5", "9", "9.5", "10"];
+
+  const transactions = [
+    { date: "November 8, 2025", price: "$160.50" },
+    { date: "November 8, 2025", price: "$167.50" },
+    { date: "November 7, 2025", price: "$180.00" },
+    { date: "November 6, 2025", price: "$190.00" },
+    { date: "November 6, 2025", price: "$170.00" },
+  ];
 
   const productImages = [
     "/img/market-card1.png",
-    "/img/market-card1.png",
-    "/img/market-card1.png",
-    "/img/market-card1.png",
+    "/img/market-card3.png",
+    "/img/market-card4.png",
+    "/img/market-card5.png",
   ];
 
   const relatedProducts = [
@@ -53,269 +82,385 @@ export default function ProductDetailPage() {
     { type: "Mint", amount: "$25.00", time: "1 week ago", from: "fc000c...2000", to: "storaxpure41005" },
   ];
 
-  const tabs = ["1D", "1W", "1M", "3M", "1Y", "5Y", "All", "9.5"];
+
+
+
+  const tags = [
+    "PSA",
+    "9 Mint",
+    "Pokémon",
+    "2023",
+    "English",
+    "2024 Bowman Draft Chrome Prospect Autograph Orange Refractor",
+    "Carson Benge",
+  ];
+
+  const rows = [
+    { label: "Standard", value: "ERC-721 token on the blockchain" },
+    { label: "Chain", value: "Polygon" },
+    { label: "Token ID", value: "168367...3114" },
+    { label: "Contract address", value: "0x251B...dcAD" },
+    { label: "Owner address", value: "0x5E47...CD6A" },
+  ];
+
+  const activityData = [
+    {
+      icons: <GoTag />,
+      type: "Sale",
+      time: "1 month ago",
+      amount: "$142.50",
+      from: "steampunkske1109",
+      to: "pokecomics3725",
+    },
+    {
+      icons: <IoDiamondOutline />,
+      type: "Mint",
+      time: "1 month ago",
+      amount: "$25.00",
+      from: "0x0000...0000",
+      to: "steampunkske1109",
+    },
+  ];
+  const breadcrumbItems = [
+    { label: "Home", href: "/home" },
+    { label: "Marketplace", href: "/marketplace" },
+    { label: "2024 Bowman Draft Chrome Prospect Autograph Orange Refractor" } 
+  ]
+
 
   return (
-    <div className="min-h-screen text-white">
-      {/* Header */}
+    <div >
+    <Breadcrumb items={breadcrumbItems} />
+      {/* Main Content */}
+      <div className=" px-[20px] md:px-[30px] lg:px-[50px] pt-[30px] pb-[30px] sm:pt-[40px] sm:pb-[40px] md:pt-[60px] md:pb-[60px] lg:pt-[80px] lg:pb-[80px] xl:pt-[100px] xl:pb-[120px] relative">
+        <div className="absolute top-0 left-0   bg-[#EFB24D]/20 blur-[724px] -z-10 h-[25%] w-full"></div>
+        <div className="absolute bottom-[5%] sm:bottom-[10%]  md:bottom-[20%] lg:bottom-[35%] left-0  bg-[#EFB24D]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
+        <div className="absolute bottom-[-5%] right-0 bg-[#75DA5B]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xl:gap-12 ">
+            {/* Left Side - Product Images */}
+            <div className="space-y-6 ">
+              <div className="sticky top-0 ">
+                {/* Main Image */}
+                <div className="bg-[#FFFFFF05] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-2xl py-[60px]  md:py-[114px] flex items-center justify-center min-h-[350px] md:min-h-[500px] relative">
+                  <div className="absolute top-[15px] right-[16px] sm:top-[19px] sm:right-[27px] flex gap-2">
+                    <button
+                      onClick={() => setIsWatchlisted(!isWatchlisted)}
+                      className=" transition" >
+                      <Heart className={`w-5 h-5 ${isWatchlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
+                    </button>
+                    <span className="text-black dark:text-white text-[14px] font-normal">
+                      3 Watching
+                    </span>
+                  </div>
+                  <img
+                    src={productImages[selectedImage]}
+                    alt="Product"
+                    className=" w-full max-w-full max-h-[250px]  sm:max-w-[280px] sm:max-h-[400px] object-contain"
+                  />
+                </div>
 
-      {/* Breadcrumb */}
-      <div className=" container px-6  text-sm text-gray-400">
-        <div className="flex items-center gap-2">
-          <a href="#" className="hover:text-white transition">Home</a>
-          <span>|</span>
-          <a href="#" className="hover:text-white transition">Marketplace</a>
-          <span>|</span>
-          <span className="text-white">2024 Bowman Draft Chrome Prospect Autograph Orange Refractor</span>
+                {/* Thumbnail Images */}
+                <div className="grid grid-cols-4 gap-4 mt-[15px]" >
+                  {productImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(idx)}
+                      className={`border-2 ${selectedImage === idx ? 'border-[#f59e0b]  ' : ' border-[#E6E6E6] dark:border-[#FFFFFF1C]'
+                        } rounded-xl  p-2 sm:p-4 flex items-center justify-center h-[100px] hover:border-[#f59e0b] transition`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+
+            {/* Right Side - Product Details */}
+            <div className="space-y-6">
+              {/* Title */}
+              <div className=" flex justify-between items-center">
+                <div className=" flex items-center gap-[5px] px-[13px] py-[10px] bg-[#FFFFFF0A]  rounded-[4px] text-black dark:text-white ">
+                  <LuVault />
+                  <p className="text-[12px] font-normal">Vaulted and Insured</p>
+                </div>
+
+                <div className="p-[10px]  border border-[#E6E6E6] dark:border-[#FFFFFF1C]">
+                  <Link href="/" >
+                    <p className="text-black dark:text-white z"><FiShare2 /></p>
+                  </Link>
+                </div>
+
+              </div>
+              <h1 className="text-[28px] md:text-[32px] font-semibold leading-tight mt-[15px] text-black dark:text-white ">
+                2024 Bowman Draft Chrome Prospect Autographs Orange Refractors
+              </h1>
+              <p className="text-[16px] font-medium mt-[10px] text-black dark:text-white ">Owned by <span className="text-[#4DCE94]"> Fcookie</span></p>
+
+              <div className=" flex items-center text-black dark:text-white w-[fit-content] gap-[5px] px-[13px] py-[10px] border border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A] mt-[23px] rounded-[4px]">
+                <TbShieldSearch />
+                <p className="text-[12px] font-normal  ">PSA: 107245864</p>
+              </div>
+
+              {/* Price Box */}
+              <div className="mt-6 bg-transparent transition hover:shadow-md hover:shadow-[#EFB24D80] border border-[#E6E6E6] dark:border-[#FFFFFF1C] px-[15px] sm:px-[25px] py-[23px] rounded-[7px]">
+                <p className="text-[14px] font-light text-black dark:text-white ">Listed for <span className="text-[18px] font-medium">$2,690</span></p>
+                <div className="mt-[15px] text-center text-[16px] text-normal flex flex-col sm:flex-row  gap-[10px]">
+
+                  <button
+                    onClick={() => setShowAuthModal(true)}
+                    className="sm:flex-1 px-3 py-[10px] w-full rounded-md bg-[#EFB24D] border border-[#EFB24D] transition-all  text-black hover:bg-transparent hover:text-[#EFB24D]"
+                  >
+                    Buy Now
+                  </button>
+                  <button
+                    onClick={() => setShowOfferModal(true)}
+                    className="sm:flex-1 px-3 py-[10px]  rounded-md border border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A] text-[#EFB24D] transition-all hover:bg-[#EFB24D] hover:text-black"
+                  >
+                    Make an Offer
+                  </button>
+                </div>
+                <div className=" mt-[35px] border-t border-[#E6E6E6] dark:border-[#FFFFFF1C]"></div>
+
+
+
+                <div className="relative w-full pt-[18px]">
+                  {/* Dropdown button */}
+                  <div
+                    onClick={() => setOpen(!open)}
+                    className=" rounded px-4 py-2 cursor-pointer flex justify-between items-center text-[16px] font-normal text-black dark:text-white "
+                  >
+                    {selected}
+                    <span className={`transform transition ${open ? "rotate-180" : ""}`}>
+                      <IoIosArrowDown />
+                    </span>
+                  </div>
+
+                  {/* Options */}
+                  {open && (
+                    <div className="absolute w-full  rounded mt-1  z-10 ">
+                      {options.map((opt) => (
+                        <div
+                          key={opt}
+                          onClick={() => {
+                            setSelected(opt);
+                            setOpen(false);
+                          }}
+                          className="px-4 py-2 bg-white dark:bg-[#0D0D0D] text-black dark:text-white cursor-pointer border-none"
+                        >
+                          {opt}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+
+              </div>
+
+
+
+              {/* Features */}
+              <div className="flex  flex-wrap gap-2 justify-between text-black dark:text-white border border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A] rounded-[7px] px-[15px] sm:px-[25px] py-[25px]">
+                <div className="flex items-center gap-2 text-[14px] font-normal">
+                  <span className="text-lg"><CiCircleCheck /></span> Authenticity guarantee
+                </div>
+                <div className="flex items-center gap-2 text-[14px] font-normal ">
+                  <span className="text-lg"><LuVault /></span> Handled and insured by fcookie
+                </div>
+                <div className="flex items-center gap-2 text-[14px] font-normal e">
+                  <span className="text-lg"><RiShieldFlashLine /></span> Order-digitally, redeem anytime
+                </div>
+              </div>
+
+
+              {/* Recent Transactions */}
+              <div className="w-full transition hover:shadow-md hover:shadow-[#EFB24D80] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-[7px]  text-black dark:text-white">
+                <h2 className="text-lg border-b border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A] px-[15px] sm:px-[25px] py-[16px]">Recent Transactions</h2>
+
+                <div className="px-[15px] sm:px-[25px] pt-[25px]">
+                  {/* Grading Tabs */}
+                  <div className="flex flex-wrap gap-3 mb-[21px]  ">
+                    {gradingTabs.map((tab) => (
+                      <button
+                        key={tab}
+                        onClick={() => setActiveTab(tab)}
+                        className={`px-[18px] py-[8px] text-[14px] font-normal rounded-lg border 
+            ${activeTab === tab
+                            ? "bg-[#EFB24D] text-black dark:text-white border-[#EFB24D]"
+                            : "border-[#E6E6E6] dark:border-[#FFFFFF1C] text-black dark:text-white"
+                          }`}
+                      >
+                        {tab}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Grades */}
+                  <div className="flex flex-wrap gap-[11px] mb-[37px]">
+                    {grades.map((g) => (
+                      <button
+                        key={g}
+                        onClick={() => setActiveGrade(g)}
+                        className={`h-[34px] w-[64px] rounded-lg border text-[14px] font-normal 
+                     ${activeGrade === g
+                            ? "bg-[#EFB24D] text-black dark:text-white border-[#EFB24D] "
+                            : "border-[#E6E6E6] dark:border-[#FFFFFF1C] text-black dark:text-white "
+                          }`}
+                      >
+                        {g}
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Title row */}
+                  <div className="flex justify-between items-center  px-[16px] py-[18px] rounded-[7px] text-[16px] font-normal border border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A]">
+                    <p >
+                      {activeTab} {activeGrade} (Population 11003)
+                    </p>
+
+                    <button className="underline">
+                      View All Transactions
+                    </button>
+                  </div>
+
+                  {/* List */}
+                  <div className="">
+                    {transactions.map((t, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-between border-b border-[#E6E6E6] dark:border-[#1f1f1f] py-[22px] last:border-b-0"
+                      >
+                        <p className="text-black dark:text-white">{t.date}</p>
+                        <p>{t.price}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Details */}
+              <div className=" rounded-[7px] border text-black dark:text-white transition hover:shadow-md hover:shadow-[#EFB24D80] border-[#E6E6E6] dark:border-[#FFFFFF1C] shadow-lg ">
+                {/* Header */}
+                <div className="text-[16px] font-medium py-[16px] px-[15px] sm:px-[25px] border-b border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A]  mb-3">
+                  Details
+                </div>
+
+                <div className="px-[15px] sm:px-[25px] py-[25px]">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-[12px] mb-6">
+                    {tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="flex items-center rounded-[4px] border border-[#E6E6E6] dark:border-[#FFFFFF1C] px-[19px] py-[9px] text-[14px] hover:text-[white] hover:bg-[#EFB24D] transition"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Info panel */}
+                  <div className="rounded-lg border border-[#E6E6E6] dark:border-[#FFFFFF0A] bg-[#FFFFFF0A] px-[15px] py-[20px] ">
+                    <dl className="space-y-[20px] text-[14px] ">
+                      {rows.map((row) => (
+                        <div
+                          key={row.label}
+                          className="flex items-center justify-between gap-[20px]"
+                        >
+                          <dt className="">
+                            {row.label}
+                          </dt>
+                          <dd className=" text-right truncate">
+                            {row.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </div>
+                  <div className="mt-[17px] flex justify-end">
+                    <button
+                      type="button"
+                      className="text-[12px] text-black dark:text-white underline">
+                      Show Less
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Activity-history*/}
+          <div className=" text-black dark:text-white mt-[40px] lg:mt-[60px] xl:mt-[80px]">
+            <h2 className="text-[32px] font-semibold mb-[12px]">Activity History</h2>
+
+            <div className="space-y-4 " >
+              {activityData.map((item, index) => (
+                <div
+                  key={index}
+                  className=" border border-[#E6E6E6] dark:border-[#FFFFFF1C] transition hover:shadow-md hover:shadow-[#EFB24D80] rounded-[7px]  flex-col pb-[20px] pt-[20px] px-[15px] sm:px-[20px] sm:pb-[25px]">
+
+                  <div className="flex justify-between items-center mb-[20px]">
+                    <div className="flex items-center gap-3">
+                      <span className="px-[13px] py-[7px] text-[14px] font-normal  rounded-lg bg-[#FFFFFF0A] flex gap-2 items-center">
+                        {item.icons} {item.type}
+                      </span>
+                      <span className="text-[12px] opacity-50">{item.time}</span>
+                    </div>
+
+
+                    <div className="bg-[#FFFFFF0A] p-[10px]">
+                      <Link href="/">
+                        <FaArrowUpRightFromSquare />
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Price */}
+                  <p className="text-[22px] font-medium mb-[15px]">{item.amount}</p>
+
+                  {/* From / To */}
+                  <div className="flex flex-wrap items-center gap-2 px-[15px] py-[7px] text-black dark:text-white" >
+                    <span className="opacity-50 text-[12px] font-light">From:</span>
+                    <span className="text-[14px] font-normal ">
+                      {item.from}
+                    </span>
+                    <div className="border border-[#FFFFFF1A] h-[22px]"></div>
+                    <div>
+                      <span className="opacity-50 text-[12px] font-light">To:</span>
+                      <span className="text-[14px] font-normal">
+                        {item.to}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Main Content */}
-      <div className="px-6 lg:px-12 max-w-[1600px] mx-auto py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left Side - Product Images */}
-          <div className="space-y-6">
-            {/* Main Image */}
-            <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-12 flex items-center justify-center min-h-[500px] relative">
-              <button 
-                onClick={() => setIsWatchlisted(!isWatchlisted)}
-                className="absolute top-6 left-6 bg-[#1a1a1a] hover:bg-[#252525] p-3 rounded-lg transition"
-              >
-                <Heart className={`w-5 h-5 ${isWatchlisted ? 'fill-red-500 text-red-500' : 'text-gray-400'}`} />
-              </button>
-              <span className="absolute top-6 left-20 bg-[#1a1a1a] px-3 py-2 rounded-lg text-sm">
-                3 Watching
-              </span>
-              <button className="absolute top-6 right-6 bg-[#1a1a1a] hover:bg-[#252525] p-3 rounded-lg transition">
-                <Share2 className="w-5 h-5 text-gray-400" />
-              </button>
-              <img
-                src={productImages[selectedImage]}
-                alt="Product"
-                className="max-w-[280px] max-h-[400px] object-contain"
-              />
-            </div>
+      {/* Similar Products Section */}
 
-            {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-4">
-              {productImages.map((img, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedImage(idx)}
-                  className={`bg-[#0f0f0f] border-2 ${
-                    selectedImage === idx ? 'border-[#f59e0b]' : 'border-[#1a1a1a]'
-                  } rounded-xl p-4 flex items-center justify-center h-[100px] hover:border-[#f59e0b] transition`}
-                >
-                  <img
-                    src={img}
-                    alt={`Thumbnail ${idx + 1}`}
-                    className="max-w-full max-h-full object-contain"
-                  />
-                </button>
-              ))}
-            </div>
+      <div className="pt-[30px] pb-[30px]  sm:pt-[40px] sm:pb-[40px]   md:pt-[70px] md:pb-[80px]   lg:pt-[86px] lg:pb-[100px]  px-[20px] md:px-[30px] lg:px-[50px] relative">
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#EFB24D14] to-[rgba(239,178,77,0)] pointer-events-none"></div>
+        <div className="container relative z-10">
+
+          <div className="flex items-center justify-center mb-[25px] sm:mb-[40px]">
+            <h2 className="text-[32px] text-black dark:text-white font-semibold">Similar listings</h2>
           </div>
 
-          {/* Right Side - Product Details */}
-          <div className="space-y-6">
-            {/* Title */}
-            <div>
-              <h1 className="text-3xl lg:text-4xl font-bold leading-tight mb-3">
-                2024 Bowman Draft Chrome Prospect Autograph Orange Refractor
-              </h1>
-              <p className="text-gray-400 flex items-center gap-2">
-                Owned by <span className="text-[#f59e0b]">fcookie</span>
-              </p>
-            </div>
-
-            {/* Price & Cert */}
-            <div className="flex items-center gap-3 text-sm text-gray-400">
-              <span className="flex items-center gap-2">
-                <span className="text-[#10b981]">✓</span> PSA - 07258565
-              </span>
-            </div>
-
-            {/* Listed Price */}
-            <div className="border-t border-b border-[#1a1a1a] py-6">
-              <p className="text-sm text-gray-400 mb-2">Listed for</p>
-              <p className="text-5xl font-bold text-white mb-1">$2,690</p>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex gap-4">
-              <button 
-                onClick={() => setShowAuthModal(true)}
-                className="flex-1 bg-[#f59e0b] hover:bg-[#d97706] text-black py-4 px-6 rounded-xl font-semibold text-lg transition"
-              >
-                Buy Now
-              </button>
-              <button 
-                onClick={() => setShowOfferModal(true)}
-                className="flex-1 bg-transparent border-2 border-[#f59e0b] text-[#f59e0b] hover:bg-[#f59e0b] hover:text-black py-4 px-6 rounded-xl font-semibold text-lg transition"
-              >
-                Make an Offer
-              </button>
-            </div>
-
-            {/* Top Offer */}
-            <div className="text-sm text-gray-400">
-              Top offer: <span className="text-white">$129.85</span>
-            </div>
-
-            {/* Features */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span className="text-[#10b981]">✓</span> Authenticity guarantee
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span className="text-[#10b981]">✓</span> Handled and insured by fcookie
-              </div>
-              <div className="flex items-center gap-2 text-sm text-gray-400">
-                <span className="text-[#10b981]">✓</span> Order-digitally, redeem anytime
-              </div>
-            </div>
-
-            {/* Recent Transactions */}
-            <div className="border-t border-[#1a1a1a] pt-6">
-              <h3 className="text-xl font-semibold mb-4">Recent Transactions</h3>
-              
-              {/* Tabs */}
-              <div className="flex gap-2 mb-4 overflow-x-auto pb-2">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab}
-                    onClick={() => setSelectedTab(tab)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition ${
-                      selectedTab === tab
-                        ? 'bg-[#f59e0b] text-black'
-                        : 'bg-[#1a1a1a] text-gray-400 hover:bg-[#252525]'
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
-
-              {/* Transaction List */}
-              <div className="space-y-3">
-                {recentTransactions.map((transaction, idx) => (
-                  <div
-                    key={idx}
-                    className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-xl p-4 hover:border-[#252525] transition"
-                  >
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <p className="text-white font-medium">{transaction.date}</p>
-                        {transaction.grade && (
-                          <p className="text-sm text-gray-400 mt-1">{transaction.grade}</p>
-                        )}
-                      </div>
-                      <p className="text-[#f59e0b] font-semibold text-lg">{transaction.price}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <button className="w-full mt-4 text-[#f59e0b] hover:text-[#d97706] font-medium text-sm flex items-center justify-center gap-2 transition">
-                View All Transactions
-                <ChevronRight className="w-4 h-4" />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Details Section */}
-        <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8">
-            <h3 className="text-2xl font-semibold mb-6">Details</h3>
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <span className="bg-[#1a1a1a] px-4 py-2 rounded-lg text-sm">PSA</span>
-                <span className="bg-[#1a1a1a] px-4 py-2 rounded-lg text-sm">9 RAY</span>
-                <span className="bg-[#1a1a1a] px-4 py-2 rounded-lg text-sm">Pokémon</span>
-                <span className="bg-[#1a1a1a] px-4 py-2 rounded-lg text-sm">2023</span>
-                <span className="bg-[#1a1a1a] px-4 py-2 rounded-lg text-sm">English</span>
-              </div>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                2024 Bowman Draft Chrome Prospect Autograph Orange Refractor
-              </p>
-              <div className="grid grid-cols-2 gap-4 pt-4 text-sm">
-                <div>
-                  <p className="text-gray-400">Standard</p>
-                  <p className="text-white">URC-721 based on the blockchain</p>
-                </div>
-                <div>
-                  <p className="text-gray-400">Chain</p>
-                  <p className="text-white">Polygon</p>
-                </div>
-                <div>
-                  <p className="text-gray-400">Token ID</p>
-                  <p className="text-white">165387...3114</p>
-                </div>
-                <div>
-                  <p className="text-gray-400">Contract Address</p>
-                  <p className="text-white">0x528...aCA0</p>
-                </div>
-                <div>
-                  <p className="text-gray-400">Owner Address</p>
-                  <p className="text-white">0x5647...CCSA</p>
-                </div>
-                <div>
-                  <p className="text-gray-400">3PG LGR</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Activity History */}
-          <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8">
-            <h3 className="text-2xl font-semibold mb-6">Activity History</h3>
-            <div className="space-y-4">
-              {activityHistory.map((activity, idx) => (
-                <div
-                  key={idx}
-                  className="border border-[#1a1a1a] rounded-xl p-4 hover:border-[#252525] transition"
-                >
-                  <div className="flex items-center justify-between mb-2">
-                    <div className="flex items-center gap-3">
-                      <span className={`px-3 py-1 rounded-lg text-xs font-semibold ${
-                        activity.type === 'Sold' ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/20 text-blue-400'
-                      }`}>
-                        {activity.type}
-                      </span>
-                      <span className="text-lg font-bold">{activity.amount}</span>
-                    </div>
-                    <button className="text-gray-400 hover:text-white transition">
-                      <ChevronRight className="w-5 h-5" />
-                    </button>
-                  </div>
-                  <div className="flex items-center justify-between text-sm text-gray-400">
-                    <div>
-                      <span>from</span> <span className="text-white">{activity.from}</span> 
-                      <span className="mx-2">→</span> 
-                      <span>to</span> <span className="text-white">{activity.to}</span>
-                    </div>
-                    <span>{activity.time}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Similar Products Section */}
-        <div className="mt-20">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-3xl font-bold">Similar listings</h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 xl:grid-cols-4 gap-6 ">
             {relatedProducts.map((item, index) => (
               <div
                 key={index}
-                className="group bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-6 hover:border-[#f59e0b] hover:shadow-xl hover:shadow-[#f59e0b]/20 transition-all cursor-pointer"
+                className="group bg-transparent dark:bg-[#0D0D0D] border border-[#E6E6E6] dark:border-[#343434] rounded-2xl p-6 hover:border-[#EFB24D] hover:shadow-xl hover:shadow-[#EFB24D]/20 transition-all cursor-pointer"
               >
-                <div className="w-full h-[240px] flex items-center justify-center mb-6 bg-[#1a1a1a] rounded-xl overflow-hidden">
+                <div className="w-full h-[180px] sm:h-[240px] flex items-center justify-center mb-6  rounded-xl overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -324,10 +469,10 @@ export default function ProductDetailPage() {
                 </div>
 
                 <div>
-                  <h4 className="text-sm font-medium text-white mb-2 line-clamp-2 min-h-[40px]">
+                  <h4 className="text-[16px] font-medium text-black dark:text-white mb-2 line-clamp-2 min-h-[40px]">
                     {item.title}
                   </h4>
-                  <p className="text-lg font-bold text-[#f59e0b]">
+                  <p className="text-[15px] font-normal text-[#6C6C6C]">
                     {item.price}
                   </p>
                 </div>
@@ -338,93 +483,98 @@ export default function ProductDetailPage() {
       </div>
 
 
-      {/* Auth Modal */}
-      {showAuthModal && (
-        <div className="fixed inset-0  backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
-            <button
-              onClick={() => setShowAuthModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            
-            <h2 className="text-2xl font-bold mb-6">Login to Continue</h2>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
-                />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">Password</label>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
-                />
-              </div>
-              
-              <button className="w-full bg-[#f59e0b] hover:bg-[#d97706] text-black py-3 rounded-lg font-semibold transition">
-                Login
-              </button>
-              
-              <p className="text-center text-sm text-gray-400">
-                Don't have an account? <a href="#" className="text-[#f59e0b] hover:underline">Sign up</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
 
-      {/* Make Offer Modal */}
-      {showOfferModal && (
-        <div className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
-            <button
-              onClick={() => setShowOfferModal(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            
-            <h2 className="text-2xl font-bold mb-6">Make an Offer</h2>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-2">Your Offer</label>
-                <div className="relative">
-                  <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+      {/* Auth Modal */}
+      {
+        showAuthModal && (
+          <div className="fixed inset-0  backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
+              <button
+                onClick={() => setShowAuthModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <h2 className="text-2xl font-bold mb-6">Login to Continue</h2>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email</label>
                   <input
-                    type="number"
-                    placeholder="0.00"
-                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg pl-8 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
                   />
                 </div>
-                <p className="text-xs text-gray-400 mt-2">Listed price: $2,690</p>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Password</label>
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                  />
+                </div>
+
+                <button className="w-full bg-[#EFB24D] hover:bg-[#d97706] text-black py-3 rounded-lg font-semibold transition">
+                  Login
+                </button>
+
+                <p className="text-center text-sm text-gray-400">
+                  Don't have an account? <a href="#" className="text-[#EFB24D] hover:underline">Sign up</a>
+                </p>
               </div>
-              
-              <div>
-                <label className="block text-sm font-medium mb-2">Message (Optional)</label>
-                <textarea
-                  placeholder="Add a message to the seller..."
-                  rows={4}
-                  className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] resize-none"
-                />
-              </div>
-              
-              <button className="w-full bg-[#f59e0b] hover:bg-[#d97706] text-black py-3 rounded-lg font-semibold transition">
-                Submit Offer
-              </button>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )
+      }
+
+      {/* Make Offer Modal */}
+      {
+        showOfferModal && (
+          <div className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
+              <button
+                onClick={() => setShowOfferModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <h2 className="text-2xl font-bold mb-6">Make an Offer</h2>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Your Offer</label>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+                    <input
+                      type="number"
+                      placeholder="0.00"
+                      className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg pl-8 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">Listed price: $2,690</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Message (Optional)</label>
+                  <textarea
+                    placeholder="Add a message to the seller..."
+                    rows={4}
+                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] resize-none"
+                  />
+                </div>
+
+                <button className="w-full bg-[#EFB24D] hover:bg-[#d97706] text-black py-3 rounded-lg font-semibold transition">
+                  Submit Offer
+                </button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </div >
   );
 }
