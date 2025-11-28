@@ -65,14 +65,14 @@ img{
 
 /* animation  */
 .move-right{
-  animation:move-rgt 10s infinite linear ;
+  animation:move-rgt 15s infinite linear ;
 }
 @keyframes move-rgt {
   0%,100%{
     transform: translateX(0%);
   }
   50%{
-    transform: translateX(-30%);
+    transform: translateX(-80%);
   }
   
 }
@@ -85,7 +85,7 @@ img{
     transform: translateX(0%);
   }
   50%{
-    transform: translateX(30%);
+    transform: translateX(50%);
   }
   
 }

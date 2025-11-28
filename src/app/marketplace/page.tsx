@@ -14,8 +14,8 @@ export default function MarketplacePage() {
   return (
     <div>
       {/* Banner */}
-      <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative overflow-x-hidden">
-        <div className="absolute top-[-10%] left-0 right-0 md:left-[10px] md:right-[10px] lg:left-[100px] lg:right-[100px] bg-[#EFB24D]/40 blur-[724px] -z-10 h-[25%] w-full"></div>
+      <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative ">
+        <div className="absolute top-[-10%] left-0  bg-[#EFB24D]/40 blur-[724px] -z-0 h-[25%] w-full"></div>
 
 
 
