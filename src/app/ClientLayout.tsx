@@ -25,7 +25,9 @@ export default function ClientLayout({
   return (
     <>
       {!hideLayout && <Header />}
-      {children}
+      <div className={`${!hideLayout ? 'mt-[130px]' : '' } `}> 
+        {children}
+      </div>
       {!hideLayout && <Footer />}
     </>
   );
