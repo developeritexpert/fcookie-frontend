@@ -174,39 +174,17 @@ export default function ProductsFilter() {
       <div className="container ">
         <div className="grid grid-cols-1 md:grid-cols-12 md:gap-4 lg:gap-8">
           {/* SIDEBAR */}
-
-          <aside className="md:col-span-3 hidden md:block  pe-[15px] lg:pe-[30px] border-r border-[#E6E6E6] dark:border-[#343434]  me:-[15px] lg:me-[30px]">
-            <div>
-              <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left mb-[13px] text-black dark:text-white">
-                Filter By:
-              </h2>
-              {/* ------ Price ------ */}
-              <FilterDropdown title="Price">
-                <div className="flex flex-col mt-[10px] gap-2">
-                  {prices.map((p) => (
-                    <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
-                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
-                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
-                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
-                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{p}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
-
-              {/* ------ Category ------ */}
-              <FilterDropdown title="Category">
-                <div className="flex flex-col mt-[10px] gap-2">
-                  {categories.map((c) => (
-                    <label
-                      key={c.name}
-                      className="flex items-center justify-between text-sm cursor-pointer text-black dark:text-white "
-                    >
-                      <div className="flex items-center gap-[10px] ">
+        
+            <aside className="md:col-span-3 hidden md:block pb-[30px] md:pb-[50px] pe-[15px] lg:pe-[30px] border-r border-[#E6E6E6] dark:border-[#343434]  me:-[15px] lg:me-[30px]">
+              <div className="sticky top-[100px]">
+                <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left mb-[13px] text-black dark:text-white">
+                  Filter By:
+                </h2>
+                {/* ------ Price ------ */}
+                <FilterDropdown title="Price">
+                  <div className="flex flex-col mt-[10px] gap-2">
+                    {prices.map((p) => (
+                      <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
                         <input
                           type="checkbox"
                           className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
@@ -214,212 +192,234 @@ export default function ProductsFilter() {
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span className=" group-hover:opacity-100 transition text-[16px] font-normal">
-                          {c.name}
+                        <span>{p}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
+
+                {/* ------ Category ------ */}
+                <FilterDropdown title="Category">
+                  <div className="flex flex-col mt-[10px] gap-2">
+                    {categories.map((c) => (
+                      <label
+                        key={c.name}
+                        className="flex items-center justify-between text-sm cursor-pointer text-black dark:text-white "
+                      >
+                        <div className="flex items-center gap-[10px] ">
+                          <input
+                            type="checkbox"
+                            className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
+                          <span className=" group-hover:opacity-100 transition text-[16px] font-normal">
+                            {c.name}
+                          </span>
+                        </div>
+
+                        <span className=" transition text-[16px] font-normal">
+                          ({c.count})
                         </span>
-                      </div>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
-                      <span className=" transition text-[16px] font-normal">
-                        ({c.count})
-                      </span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
-
-              {/* ------ Grader ------ */}
-              <FilterDropdown title="Grader">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {graders.map((g) => (
-                    <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ Grader ------ */}
+                <FilterDropdown title="Grader">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {graders.map((g) => (
+                      <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{g}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{g}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
 
-              {/* ------ Grade ------ */}
-              <FilterDropdown title="Grade">
-                <div className="flex flex-col gap-2 mt-[10px]">
-                  {grades.map((g) => (
-                    <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ Grade ------ */}
+                <FilterDropdown title="Grade">
+                  <div className="flex flex-col gap-2 mt-[10px]">
+                    {grades.map((g) => (
+                      <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{g}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{g}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ Year ------ */}
-              <FilterDropdown title="Year">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {years.map((y) => (
-                    <label key={y} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ Year ------ */}
+                <FilterDropdown title="Year">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {years.map((y) => (
+                      <label key={y} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{y}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{y}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ Set ------ */}
-              <FilterDropdown title="Set">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {sets.map((s) => (
-                    <label key={s} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ Set ------ */}
+                <FilterDropdown title="Set">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {sets.map((s) => (
+                      <label key={s} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{s}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{s}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
-              {/* ------ LAnguage ------ */}
-              <FilterDropdown title="Language">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {languages.map((l) => (
-                    <label key={l} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ LAnguage ------ */}
+                <FilterDropdown title="Language">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {languages.map((l) => (
+                      <label key={l} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{l}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{l}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ title/subject ------ */}
-              <FilterDropdown title="Title/Subject">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {titleSubject.map((t) => (
-                    <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
-                      <span>{t}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                {/* ------ title/subject ------ */}
+                <FilterDropdown title="Title/Subject">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {titleSubject.map((t) => (
+                      <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                        <span>{t}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ title/PKMN ------ */}
-              <FilterDropdown title="Title/PKMN">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {titlePKMN.map((p) => (
-                    <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ title/PKMN ------ */}
+                <FilterDropdown title="Title/PKMN">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {titlePKMN.map((p) => (
+                      <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{p}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{p}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ Events  ------ */}
-              <FilterDropdown title="Event">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {events.map((e) => (
-                    <label key={e} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ Events  ------ */}
+                <FilterDropdown title="Event">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {events.map((e) => (
+                      <label key={e} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{e}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{e}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ variants  ------ */}
-              <FilterDropdown title="Variant">
-                <div className="flex flex-col gap-2 mt-[10px] ">
-                  {variants.map((v) => (
-                    <label key={v} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ variants  ------ */}
+                <FilterDropdown title="Variant">
+                  <div className="flex flex-col gap-2 mt-[10px] ">
+                    {variants.map((v) => (
+                      <label key={v} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{v}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{v}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
-              {/* ------ TAgs  ------ */}
-              <FilterDropdown title="Tags">
-                <div className="flex flex-col mt-[10px]  gap-2">
-                  {tags.map((t) => (
-                    <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                      <input
-                        type="checkbox"
-                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                {/* ------ TAgs  ------ */}
+                <FilterDropdown title="Tags">
+                  <div className="flex flex-col mt-[10px]  gap-2">
+                    {tags.map((t) => (
+                      <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                        <input
+                          type="checkbox"
+                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                      <span>{t}</span>
-                    </label>
-                  ))}
-                </div>
-              </FilterDropdown>
+                        <span>{t}</span>
+                      </label>
+                    ))}
+                  </div>
+                </FilterDropdown>
 
 
 
 
-              {/* Clear filters */}
-              <button className=" mt-[50px] py-[14px] px-[33px] text-[16px] font-normal bg-[#EFB24D] text-black  rounded-md font-semibold hover:bg-[#dca345] transition">
-                Clear Filters
-              </button>
-            </div>
-          </aside>
-
+                {/* Clear filters */}
+                <button className=" mt-[50px] py-[14px] px-[33px] text-[16px] font-normal bg-[#EFB24D] text-black  rounded-md font-semibold hover:bg-[#dca345] transition">
+                  Clear Filters
+                </button>
+              </div>
+            </aside>
+        
 
 
           {/* MOBILE TOGGLE BUTTON */}
@@ -809,10 +809,10 @@ export default function ProductsFilter() {
               {crds.map((item, index) => (
                 <article
                   key={index}
-                  className={`group  border rounded-[14px] px-[10px] py-[20px] 
+                  className={`  group  border rounded-[14px] px-[10px] py-[20px] 
                   border-[#E6E6E6] dark:border-[#1E1E1E] bg-transparent dark:bg-[#0D0D0D] 
                   hover:shadow-lg transition-shadow duration-300 hover:shadow-[#EFB24D]/20         
-                   ${viewType === "list" ? "flex gap-5 items-center" : ""}`}
+                   ${viewType === "list" ? "flex flex-row gap-5 items-center" : "flex  flex-col"}`}
                 >
                   {/* Image */}
                   <div

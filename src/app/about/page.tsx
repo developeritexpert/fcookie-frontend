@@ -1,6 +1,9 @@
 "use client";
+import AboutFaq from '@/components/layout/AboutFaq';
 import AboutSlider from '@/components/layout/AboutSlider';
 import Discover from '@/components/layout/DiscoverMore'
+import VaultSecurity from '@/components/layout/VaultSecurity';
+import VertcalSlider from '@/components/layout/VerticalSlider';
 import React from "react";
 
 export default function AboutPage() {
@@ -38,6 +41,9 @@ export default function AboutPage() {
         </div>
       </div>
       <AboutSlider />
+      <VaultSecurity/>
+      <VertcalSlider/>
+      <AboutFaq/>
       <Discover />
     </div>
   );
