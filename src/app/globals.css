@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
   --background: #ffffff;
   --foreground: #000000;
@@ -9,7 +10,7 @@
 .dark {
   --background: #000000;
   --foreground: #ffffff;
-} 
+}
 
 @font-face {
   font-family: "SF Pro Display";
@@ -42,88 +43,72 @@ body {
   max-width: 1440px;
   margin: auto;
 }
-.slick-track{
+
+.slick-track {
   display: flex !important;
 }
 
-.slick-slide{
+.slick-slide {
   height: auto !important;
 }
+
 .slick-slide>div {
   margin: 0 15px;
   height: 100%;
 }
 
-.slick-list {
-  margin: 0 16px !important;
+.slick-list {  
+
   overflow: visible !important;
 }
 
-img{
+img {
   max-width: 100%;
 }
 
 /* animation  */
-.move-right{
-  animation:move-rgt 15s infinite linear ;
+.move-right {
+  animation: move-rgt 15s infinite linear;
 }
+
 @keyframes move-rgt {
-  0%,100%{
+
+  0%,
+  100% {
     transform: translateX(0%);
   }
-  50%{
-    transform: translateX(-80%);
+
+  50% {
+    transform: translateX(-50%);
   }
-  
+
 }
-.move-right{
-  animation:move-lft 10s infinite linear ;
+
+.move-left {
+  animation: move-lft 10s infinite linear;
 }
 
 @keyframes move-lft {
-  0%,100%{
+
+  0%,
+  100% {
     transform: translateX(0%);
   }
-  50%{
-    transform: translateX(50%);
+
+  50% {
+    transform: translateX(35%);
   }
-  
-}
-/* .vertical-sld .slick-vertical .slick-slide {
-  display: flex !important;
-  height: 120px !important; 
-  box-sizing: border-box;
+
 }
 
 .vertical-sld .slick-track {
-  display: flex !important;
-  flex-direction: column !important;
-  
+  display: inline-block !important; 
+}
+.vertical-sld .slick-list{
+  height: 378px  ;
 }
 
-.vertical-sld .slick-slide:focus {
-  outline: none;
-}
-
-.vertical-sld  .slick-slide{
-  margin: 15px 0;
-}
-.vertical-sld  .slick-slide>div{
-  margin: 15px 0;
- 
-}*/
-.vertical-sld  .slick-list {
-  overflow: hidden !important;
-  height: 100% !important;
-} *
- .vertical-sld .slick-vertical .slick-slide {
-  display: flex !important;
-  height: 120px !important;
-}
-.vertical-sld .slick-track {
-  display: flex !important;
-  flex-direction: column !important;
-}
-.vertical-sld .slick-slide > div {
-  margin: 15px 0;
+.vertical-sld  .slick-slide>div {
+  margin: 10px 0 ;
+  height: 100%;
 }
