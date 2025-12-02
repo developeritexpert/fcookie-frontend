@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import dynamic from "next/dynamic";
 import "slick-carousel/slick/slick.css";
@@ -103,7 +104,7 @@ export default function AboutSlider() {
   return (
     <div className='overflow-hidden'>
       {/* Slider Section */}
-      <div className="w-full pt-[20px] pb-[20px] sm:pb-[40px] md:pb-[60px]">
+      <div className="w-full pt-[20px] pb-[20px] sm:pb-[40px] md:pb-[60px]" data-aos="fade-up" data-aos-delay="100">
         <Slider {...settings}>
           {slides.map((item) => (
             <div key={item.id}>
@@ -131,7 +132,7 @@ export default function AboutSlider() {
                            opacity-0 translate-y-6 transition-all duration-500
                            group-hover:opacity-100 group-hover:translate-y-0">
 
-                  <p className="text-[16px] md:text-[18px] xl:text-[22px] font-medium text-white mb-[14px] max-w-[492px]">
+                  <p className="text-[16px] md:text-[18px] xl:text-[22px] font-medium leading-7 text-white mb-[14px] max-w-[492px]">
                     {item.para}
                   </p>
 
@@ -151,3 +152,5 @@ export default function AboutSlider() {
     </div>
   )
 }
+
+
