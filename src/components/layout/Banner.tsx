@@ -9,7 +9,7 @@ export default function Banner(): JSX.Element {
       <div className="px-[20px] md:px-[30px] lg:px-[50px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative">
         
         {/* Background Shade */}
-         <div className="absolute top-[-50px] left-0  bg-[url('/img/bann-shade.png)]  bg-no-repeat bg-cover "></div>
+           <div className="absolute top-[-10%] left-0  bg-[#EFB24D]/40 blur-[724px] -z-0 h-[25%] w-full"></div>
 
         {/* Banner Image */}
         <div className="bg-[url('/img/bann1.png')] bg-cover bg-center max-w-[1800px] m-auto w-full h-[360px] md:h-[420px] lg:h-[642px] relative filter brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
@@ -45,8 +45,8 @@ export default function Banner(): JSX.Element {
               <Link
                 href="/"
                 className="bg-[#EFB24D] border border-[#EFB24D] px-[20px] py-[10px] md:px-[30px] md:py-[14px] 
-                rounded-[7px] inline-block text-black transition-all 
-                hover:text-white hover:border-[#EFB24D] hover:bg-transparent"
+                rounded-[7px] inline-block text-black transition-all duration-200
+                hover:text-black dark:hover:text-white hover:border-[#EFB24D] hover:bg-transparent"
               >
                 Get Started
               </Link>

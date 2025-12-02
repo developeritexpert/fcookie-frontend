@@ -14,12 +14,12 @@ export default function MarketplacePage() {
   return (
     <div>
       {/* Banner */}
-      <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative overflow-x-hidden">
-        <div className="absolute top-[-10%] left-0 right-0 md:left-[10px] md:right-[10px] lg:left-[100px] lg:right-[100px] bg-[#EFB24D]/40 blur-[724px] -z-10 h-[25%] w-full"></div>
+      <div className="px-[20px] md:px-[30px] lg:px-[60px] m-auto pb-[20px] md:pb-[50px] lg:pb-[105px] relative ">
+        <div className="absolute top-[-10%] left-0  bg-[#EFB24D]/40 blur-[724px] -z-0 h-[25%] w-full"></div>
 
 
 
-        <div className="bg-[url('/img/market-bann-img.png')]  bg-no-repeat bg-center bg-cover m-auto max-w-[1800px] w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[642px] relative brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
+        <div className="bg-[url('/img/market-bann-img.webp')]  bg-no-repeat bg-center bg-cover m-auto max-w-[1800px] w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[642px] relative brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
           {/* Gradient overlays */}
           <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),linear-gradient(180deg,rgba(255,255,255,0)_43.69%,rgba(255,255,255,0.99)_100%)] dark:bg-[linear-gradient(180deg,rgba(0,0,0,0)_43.69%,rgba(0,0,0,0.94)_100%),linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2))] rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"></div>
 

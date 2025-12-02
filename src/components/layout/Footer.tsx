@@ -41,7 +41,7 @@ export default function Footer() {
                         className="mb-4 w-full h-full  max-w-[180px] max-h-[51px] lg:max-w-[204px] lg:max-h-[61px] xl:w-full xl:max-w-[264px] xl:max-h-[71px]"
                     />
 
-                    <div className="text-[20px] font-normal leading-[32px] dark:text-[#F7F8F8]/70">
+                    <div className="text-[20px] font-normal leading-[32px]  text-[#000000]/70 dark:text-[#F7F8F8]/70">
 
 
                         <Link href="/"><p>{footerData.contact.phone}</p></Link>
@@ -110,7 +110,7 @@ export default function Footer() {
                         {footerData.subscribe.description}
                     </p>
 
-                    <div className="flex gap-2 bg-white px-[22px] py-[18px] rounded-[5px]">
+                    <div className="flex gap-2 border border-[#E6E6E6] dark:border-[#fff] bg-white px-[22px] py-[18px] rounded-[5px]">
                         <input
                             type="email"
                             placeholder="Enter Email Address"
