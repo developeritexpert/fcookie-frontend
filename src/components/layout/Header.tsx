@@ -96,7 +96,7 @@ export default function Header() {
       <header className={`w-full transition-all duration-500 ease-in-out 
             ${isHeaderFixed
           ? "fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-black/80 backdrop-blur-md py-[0px] shadow-lg"
-          : "absolute left-0 right-0 top-0 z-40 bg-transparent py-[25px] overflow-hidden"
+          : "absolute left-0 right-0 top-0 z-40 bg-transparent py-[25px]"
         }
             ${!isHeaderVisible ? "-translate-y-full" : "translate-y-0"}
         `}>
@@ -126,7 +126,7 @@ export default function Header() {
                   <Link href="/marketplace">Marketplace</Link>
                 </div>
                 <div className='flex items-center hover:text-[#EFB24D] duration-300'>
-                  <Link href="/">Submit my collectibles</Link>
+                  <Link href="/submit-my-collectibles">Submit my collectibles</Link>
                 </div>
               </div>
             </div>
