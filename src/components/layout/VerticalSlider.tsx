@@ -73,7 +73,7 @@ export default function VerticalSlider() {
   return (
     <div className="pt-[30px] pb-[20px]  sm:py-[50px] md:py-[70px] lg:py-[100px] px-[20px] md:px-[30px] lg:px-[50px] relative">
       <div className="absolute bottom-[30%] right-0 bg-[#75DA5B]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-b from-[#EFB24D14] to-[rgba(239,178,77,0)] pointer-events-none" />
+      <div className="absolute top-0 bottom-[-200px] left-0 right-0 z-[-1] bg-gradient-to-b from-[#EFB24D14] to-[rgba(239,178,77,0)] pointer-events-none" />
       <div className="container mx-auto" data-aos="fade-up" data-aos-delay="100">
         <div className="w-full flex flex-col lg:flex-row gap-[30px]  md:gap-[40px]  xl:gap-[50px]  2xl:gap-[100px]">
           {/* LEFT SIDE TEXT */}
@@ -83,7 +83,7 @@ export default function VerticalSlider() {
               <div ref={wrapperRef} className="vertical-sld mx-auto  w-full mt-6 overflow-hidden relative">
                 <div className="absolute z-10 bottom-0 left-0 w-full min-h-[100px] sm:min-h-[130px] md:min-h-[182px]
                      bg-gradient-to-t from-white/100 to-white/0
-                      dark:bg-[linear-gradient(0deg,#070502_43.5%,rgba(7,5,2,0)_100%)]"></div>
+                      dark:bg-[linear-gradient(0deg,#070502_43.5%,rgba(7,5,2,0)_100%)] mix-blend-luminosity rounded-b-[16px] "></div>
                 <Slider ref={sliderRef} {...settings}>
                   {contentCards.map((card) => (
                     <div key={card.id} className="px-[5px]">

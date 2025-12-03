@@ -21,11 +21,12 @@ export default function AboutPage() {
         m-auto max-w-[1800px] w-full h-[250px] sm:h-[300px] md:h-[420px] lg:h-[642px] 
         relative brightness-110 rounded-[10px] md:rounded-[15px] lg:rounded-[25px]">
 
-          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),
+          {/* bg-gradient  */}
+          {/* <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.1),rgba(0,0,0,0.1)),
           linear-gradient(180deg,rgba(255,255,255,0)_43.69%,rgba(255,255,255,0.99)_100%)] 
           dark:bg-[linear-gradient(180deg,rgba(0,0,0,0)_43.69%,rgba(0,0,0,0.94)_100%),
           linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2))] 
-          rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"></div>
+          rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"></div> */}
 
           <div className="flex flex-col text-white absolute top-[25px] left-[20px] 
           sm:top-[30px] sm:left-[30px] md:top-auto md:left-[40px] md:bottom-[33px] 
@@ -41,9 +42,9 @@ export default function AboutPage() {
         </div>
       </div>
       <AboutSlider />
-      <VaultSecurity/>
-      <VertcalSlider/>
-      <AboutFaq/>
+      <VaultSecurity />
+      <VertcalSlider />
+      <AboutFaq />
       <Discover />
     </div>
   );
