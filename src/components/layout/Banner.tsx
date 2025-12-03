@@ -24,7 +24,7 @@ export default function Banner(): JSX.Element {
             />
           </div>
           {/* Gradient Overlay */}
-          <div className="absolute bottom-[-25px] dark:bottom-0 right-0 left-0 top-0
+          {/* <div className="absolute bottom-[-25px] dark:bottom-0 right-0 left-0 top-0
             bg-gradient-to-b 
             from-[#ffffff00] from-0%
             via-[#ffffff00] via-[50%]
@@ -32,7 +32,7 @@ export default function Banner(): JSX.Element {
             via-[#ffffff90] via-[80%]
             to-[#fff] to-[100%]
             dark:bg-gradient-to-b dark:from-[#00000000] dark:via-[#00000000] dark:to-[#00000000]
-            rounded-b-[10px] md:rounded-b-[15px] lg:rounded-b-[25px]"></div>
+            rounded-b-[10px] md:rounded-b-[15px] lg:rounded-b-[25px]"></div> */}
 
           {/* Banner Shade 2 (Fixed URL typo) */}
           {/* <div className="absolute top-[-50px] left-0 bg-[url('/img/bann-shade.png')] bg-cover bg-center"></div> */}

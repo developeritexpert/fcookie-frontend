@@ -83,7 +83,7 @@ export default function VerticalSlider() {
               <div ref={wrapperRef} className="vertical-sld mx-auto  w-full mt-6 overflow-hidden relative">
                 <div className="absolute z-10 bottom-0 left-0 w-full min-h-[100px] sm:min-h-[130px] md:min-h-[182px]
                      bg-gradient-to-t from-white/100 to-white/0
-                      dark:bg-[linear-gradient(0deg,#070502_43.5%,rgba(7,5,2,0)_100%)]"></div>
+                      dark:bg-[linear-gradient(0deg,#070502_43.5%,rgba(7,5,2,0)_100%)] mix-blend-luminosity rounded-b-[16px] "></div>
                 <Slider ref={sliderRef} {...settings}>
                   {contentCards.map((card) => (
                     <div key={card.id} className="px-[5px]">
