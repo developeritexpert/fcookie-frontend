@@ -41,9 +41,9 @@ export default function AboutFaq() {
                                 return (
                                     <div
                                         key={item.que}
-                                        className=" w-full rounded-lg border border-[#E6E6E6] dark:border-transparent bg-[#FFFFFF0A] text-[18px] md:text-[20px] lg:text-[24px] font-medium">
+                                        className=" w-full rounded-lg border border-[#E6E6E6] dark:border-transparent bg-[#FFFFFF0A]  md:text-[20px] lg:text-[24px] font-medium">
                                         <button
-                                            className="w-full flex items-center justify-between px-[20px] py-[15px]  lg:px-[30px] lg:py-[25px] text-left "
+                                            className="w-full text-[18px] md:text-[20px] lg:text-[24px] flex items-center justify-between px-[20px] py-[15px]  lg:px-[30px] lg:py-[25px] text-left "
                                             onClick={() => setOpenIndex(isOpen ? null : idx)}>
                                             <span>{item.que}</span>
                                             <span
@@ -54,7 +54,7 @@ export default function AboutFaq() {
                                         </button>
 
                                         <div
-                                            className={` px-[20px] lg:px-[30px]  transition-[max-height,opacity] duration-200 overflow-hidden ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                                            className={` px-[20px] text-[16px] md:text-[18px] lg:text-[20px] lg:px-[30px]  transition-[max-height,opacity] duration-200 overflow-hidden ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                                                 }`}>
                                             <p className="pb-[15px]">
                                                 {item.ans}</p>

@@ -95,8 +95,8 @@ export default function Header() {
     <>
       <header className={`w-full transition-all duration-500 ease-in-out 
             ${isHeaderFixed
-          ? "fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-black/80 backdrop-blur-md py-[0px] shadow-lg"
-          : "absolute left-0 right-0 top-0 z-40 bg-transparent py-[25px]"
+          ? "fixed top-0 left-0 right-0 z-40 bg-white/80 dark:bg-black/80 backdrop-blur-md my-[0px] shadow-lg"
+          : "absolute left-0 right-0 top-0 z-40 bg-transparent my-[25px] px-[20px]"
         }
             ${!isHeaderVisible ? "-translate-y-full" : "translate-y-0"}
         `}>
@@ -152,11 +152,11 @@ export default function Header() {
                     )}
 
                     {theme === "dark" && (
-                      <FaMoon className="text-[#E6E6E6] z-10 text-[14px] ml-auto" />
+                      <FaMoon className="text-[#EFB24D80] z-10 text-[14px] ml-auto" />
                     )}
 
                     <span
-                      className={`w-[20px] h-[20px] bg-white rounded-full absolute top-[1px] transition-all duration-300
+                      className={`w-[20px] h-[20px] bg-white dark:bg-[#00000066] rounded-full absolute top-[1px] transition-all duration-300
         ${theme === "dark" ? "right-[2px]" : "left-[2px]"}
       `}
                     />
