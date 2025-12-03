@@ -112,6 +112,7 @@ export default function ProductDetailPage() {
           <Breadcrumb items={breadcrumbItems} />
         </div>
       </div>
+      
       {/* Main Content */}
       <div className=" px-[20px] md:px-[30px] lg:px-[50px] pt-[30px] pb-[30px] sm:pt-[40px] sm:pb-[40px] md:pt-[50px] md:pb-[60px] lg:pb-[80px] xl:pb-[120px] relative">
         <div className="absolute top-0 left-0   bg-[#EFB24D]/20 blur-[724px] -z-10 h-[25%] w-full"></div>
@@ -545,7 +546,7 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      {/* Similar Products Section */}
+      
       <SimilarProducts />
 
 
