@@ -17,8 +17,8 @@ export default function ContentImg() {
                         </p>
                     </div>
                     <div className="relative" data-aos="fade-up" data-aos-delay="100" >
-                        <div className='absolute z-0 top-[-42%] sm:top-[-29%] md:top-[-30%] lg:top-[-26%] xl:top-[-24%] 2xl:top-[-22%] right-[-28%] w-[72%]'>
-                           <h2 className='move-right font-bold text-[100px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[260px] text-[#FFFFFF0F] leading-[100%]'>fcookie</h2>
+                        <div className='absolute z-0 top-[-42%] sm:top-[-29%] md:top-[-30%] lg:top-[-26%] xl:top-[-24%] 2xl:top-[-22%] right-[-68%] w-[72%]'>
+                           <h2 className='move-right font-bold text-[100px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[260px] text-[#efb24d33] dark:text-[#FFFFFF0F] leading-[100%]'>fcookie</h2>
                         </div>
 
                         <Image src="/img/cont-img1.webp" alt="" width={500} height={500} className='w-full h-full   sm:max-h-[587px] rounded-[10px] md:rounded-[15px] lg:rounded-[25px]  blur-0 image-render-pixel' />

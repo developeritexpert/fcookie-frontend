@@ -6,7 +6,7 @@ export default function VaultSecurity() {
     return (
         <div className='pt-[20px] sm:pt-[40px] md:pt-[60px] pb-[30px] sm:pb-[50px] md:pb-[80px] lg:pb-[120px]  px-[20px] md:px-[30px] lg:px-[50px] relative'>
              <div className="absolute top-[-100px] sm:top-[-150px]  md:top-[-225px] lg:top-[-200px] left-0  bg-[#EFB24D]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
-            <div className=' container'>
+            <div className=' container' data-aos="fade-up" data-aos-delay="100">
                 <h2 className='text-center text-[24px] md:text-[28px] lg:text-[32px] font-semibold mb-[5px] md:mb-[11px]'>
                     Vault-Grade Security
                 </h2>
