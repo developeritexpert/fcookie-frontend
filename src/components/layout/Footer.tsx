@@ -15,8 +15,8 @@ const footerData = {
     ],
     helpLinks: [
         { title: "Contact Us", link: "/contact" },
-        { title: "Terms of Service", link: "/terms" },
-        { title: "Privacy", link: "/privacy" },
+        { title: "Terms of Service", link: "/term-service" },
+        { title: "Privacy", link: "/privacy-policy" },
     ],
     subscribe: {
         title: "Subscribe Us",
@@ -33,14 +33,16 @@ export default function Footer() {
 
                 {/* Column 1 */}
                 <div>
-                    <Image
-                        src="/img/header-logo.png"
-                        alt="fcookie"
-                        width={200}
-                        height={200}
-                        className="mb-4 w-full h-full  max-w-[180px] max-h-[51px] lg:max-w-[204px] lg:max-h-[61px] xl:w-full xl:max-w-[264px] xl:max-h-[71px]"
-                    />
 
+                    <Link href="/">
+                        <Image
+                            src="/img/header-logo.png"
+                            alt="fcookie"
+                            width={200}
+                            height={200}
+                            className="mb-4 w-full h-full  max-w-[180px] max-h-[51px] lg:max-w-[204px] lg:max-h-[61px] xl:w-full xl:max-w-[264px] xl:max-h-[71px]"
+                        />
+                    </Link>
                     <div className="text-[20px] font-normal leading-[32px]  text-[#000000]/70 dark:text-[#F7F8F8]/70">
 
 
@@ -60,8 +62,7 @@ export default function Footer() {
                             <li key={i} className='leading-[32px] md:leading-[45px]'>
                                 <Link
                                     href={item.link}
-                                    className="text-[18px]  font-normal text-[#000000]/70 dark:text-[#f7f8f8]/70"
-                                >
+                                    className="text-[18px]  font-normal text-[#000000]/70 dark:text-[#f7f8f8]/70">
                                     {item.title}
                                 </Link>
                             </li>

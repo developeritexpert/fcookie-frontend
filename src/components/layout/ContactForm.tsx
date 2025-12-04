@@ -32,17 +32,17 @@ export default function ContactForm() {
             <div className="absolute top-[-100px] sm:top-[-150px]  md:top-[-225px] lg:top-[-200px] left-0  bg-[#EFB24D]/30 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
             <div className="absolute inset-0 top-[-100px] bg-[#EFB24D29] blur-[724px] -z-10 h-[60%]"></div>
 
-            <div className="max-w-[1118px] mx-auto">
+            <div className="max-w-[1118px] mx-auto" data-aos="fade-up">
                 <div className="  grid grid-cols-1 md:grid-cols-2 gap-[20px] sm:gap-[35px] md:gap-0 ">
 
                     {/* LEFT SIDE */}
                     <div>
-                        <h2 className="text-[28px] md:text-[32px] lg:text-[50px] font-semibold mb-[15px]">Contact Us</h2>
+                        <h2 className="text-[28px] md:text-[32px] lg:text-[50px] font-semibold mb-[19px] md:mb-[15px]">Contact Us</h2>
 
                         <div className="text-[16px] font-medium">
 
                             <div>
-                                <Link href="/" className='flex  items-start gap-[11px] mb-[30px]'>
+                                <Link href="/" className='flex  items-start gap-[11px] mb-[20px]  md:mb-[30px]'>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="18"
@@ -63,7 +63,7 @@ export default function ContactForm() {
                             </div>
 
                             <div>
-                                <Link href="/" className='flex items-center gap-[11px] mb-[25px]'>
+                                <Link href="/" className='flex items-center gap-[11px] mb-[20px] md:mb-[25px]'>
                                     <svg
                                         width="18"
                                         height="13"

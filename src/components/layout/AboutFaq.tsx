@@ -14,7 +14,7 @@ export default function AboutFaq() {
         { que: "How much are shipping fees?", ans: "Shipping fees depend on destination, carrier, and insurance options." },
     ];
     return (
-        <div className='pt-[20px] pb-[30px] sm:py-[50px] md:py-[80px] lg:py-[120px] px-[20px] md:px-[30px] lg:px-[50px] relative overflow-hidden'>
+        <div className=' py-[30px] sm:py-[50px] md:py-[80px] lg:py-[120px] px-[20px] md:px-[30px] lg:px-[50px] relative overflow-hidden'>
             <div className='absolute z-0 bottom-[-30px] right-[-28%] w-[72%]'>
                 <h2 className='move-right leading-none font-bold text-[100px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[260px]  text-[#efb24d33] dark:text-[#FFFFFF0F] '>fcookie</h2>
             </div>
@@ -66,7 +66,8 @@ export default function AboutFaq() {
                     </div>
                 </div>
 
-                <div className=" pt-[30px] sm:pt-[60px]  md:pt-[80px]   lg:pt-[120px]">
+
+                <div className=" pt-[40px] sm:pt-[60px]  md:pt-[80px]   lg:pt-[120px]">
                     <h2 className="text-[32px] md:text-[40px] lg:text-[60px]  xl:text-[80px] mb-[15px] md:mb-[24px] font-bold text-center">Join the Action?</h2>
                     <div className="flex justify-center">
                         <Link

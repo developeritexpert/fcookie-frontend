@@ -28,10 +28,10 @@ export default function AboutPage() {
           linear-gradient(0deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2))] 
           rounded-[10px] md:rounded-[15px] lg:rounded-[25px]"></div> */}
 
-          <div className="flex flex-col text-white absolute top-[25px] left-[20px] 
-          sm:top-[30px] sm:left-[30px] md:top-auto md:left-[40px] md:bottom-[33px] 
+          <div className="flex flex-col text-white absolute bottom-[20px] left-[20px] 
+          sm:bottom-[30px] sm:left-[30px]  md:left-[40px] md:bottom-[33px] 
           lg:left-[80px] xl:left-[180px]">
-            <h1 className="text-[26px] sm:text-[28px] md:text-[35px] lg:text-[50px] font-semibold mb-[8px]">
+            <h1 className="text-[26px] sm:text-[28px] leading-normal  md:text-[35px] lg:text-[50px] font-semibold mb-[8px]">
               Where Collecting Evolves
             </h1>
             <p className="text-[18px] md:text-[20px] max-w-[650px]">
