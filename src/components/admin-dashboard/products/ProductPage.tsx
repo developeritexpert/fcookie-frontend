@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 interface Option {
   value: string;
@@ -106,7 +107,7 @@ export default function ProductPage() {
                 </td>
                 <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
                   <div className="flex gap-2">
-                    <button onClick={() => handleEdit(item.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</button>
+                    <Link href="/admin/product-edit" onClick={() => handleEdit(item.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</Link>
                     <button onClick={() => handleRemove(item.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Remove</button>
                   </div>
                 </td>

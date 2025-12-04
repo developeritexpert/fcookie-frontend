@@ -113,8 +113,8 @@ export default function CollectionSlider(): JSX.Element {
                             Top Collections
                         </h2>
 
-                        <Link href="/" className="flex gap-1 items-center">
-                            <TfiLayoutLineSolid />
+                        <Link href="/" className="inline text-right text-[14px] sm:text-[16px]">
+                            <TfiLayoutLineSolid className="mr-1 inline"/>
                             Explore All Collections
                         </Link>
                     </div>
@@ -126,13 +126,13 @@ export default function CollectionSlider(): JSX.Element {
                             <div key={i} className="py-[20px]  bg-white dark:bg-[#0D0D0D] border h-full 
                              border-[#E6E6E6] dark:border-[#1E1E1E] rounded-[14px] !flex flex-col items-center
                               transition-all duration-300  hover:shadow-lg hover:shadow-[#EFB24D]/20 group">
-                                <div className=" flex items-center justify-center overflow-hidden rounded-[4px]">
+                                <div className=" flex items-center justify-center rounded-[4px]">
                                     <Image
                                         src={item.image}
                                         alt="Model"
                                         width={300}
                                         height={300}
-                                        className="w-full h-full max-w-[185px] max-h-[276px] group-hover:scale-105 transition-transform"
+                                        className="w-full h-full max-w-[185px] max-h-[200px] md:max-h-[276px] group-hover:scale-105 transition-transform"
                                     />
                                 </div>
 

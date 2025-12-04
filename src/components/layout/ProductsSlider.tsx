@@ -82,8 +82,8 @@ export default function ProductsSlider(): JSX.Element {
             Featured Products
           </h2>
 
-          <Link href="/" className="flex text-[14px] sm:text-[16px] gap-1 items-center ">
-            <TfiLayoutLineSolid />
+          <Link href="/" className="text-[14px] sm:text-[16px] text-right inline">
+            <TfiLayoutLineSolid  className="mr-1 inline"/>
             Explore All Collections
           </Link>
         </div>
@@ -93,7 +93,7 @@ export default function ProductsSlider(): JSX.Element {
               key={i}
               className="group h-full p-[14px] pb-[24px] border border-[#E6E6E6] dark:border-[#1E1E1E] w-full bg-white dark:bg-[#0D0D0D] rounded-[14px]  transition-all duration-300 hover:shadow-lg hover:shadow-[#EFB24D]/20"
             >
-              <div className="bg-[#1921610A] rounded-[14px] flex items-center justify-center overflow-hidden  ">
+              <div className="bg-[#1921610A] rounded-[14px] flex items-center justify-center">
                 <Image
                   src={item.image}
                   alt={item.title}

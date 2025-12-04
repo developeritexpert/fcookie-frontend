@@ -114,7 +114,7 @@ export default function Header() {
                   alt="Logo"
                   width={300}
                   height={35}
-                  className='w-[120px] lg:w-[150px] transition-all duration-300'
+                  className='w-[100px] sm:w-[120px] lg:w-[150px] transition-all duration-300'
                 />
               </Link>
 
@@ -187,7 +187,7 @@ export default function Header() {
                 <div>
                   <Link
                     href="/login"
-                    className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
+                    className="bg-[#EFB24D] border border-[#EFB24D] text-[#000] transition-all duration-300 ease-in-out hover:text-[#EFB24D] hover:border hover:border-[#EFB24D] hover:bg-transparent px-[30px] py-[10px] font-semibold rounded-[7px] block"
                   >
                     Login
                   </Link>
@@ -195,13 +195,13 @@ export default function Header() {
               )}
             </div>
 
-            <div className="lg:hidden flex items-center gap-4">
+            <div className="lg:hidden flex items-center gap-2 md:gap-4">
               <LanguageDropdown />
               <button
-                className="hamburger-btn bg-[#EFB24D0F] dark:bg-[#FFFFFF0D] p-3 rounded-[7px] transition-all duration-300"
+                className="hamburger-btn bg-[#EFB24D0F] dark:bg-[#FFFFFF0D] p-2 rounded-[7px] transition-all duration-300"
                 onClick={toggleMobileMenu}
               >
-                <div className="w-6 h-6 flex flex-col justify-between">
+                <div className="w-4 h-4 flex flex-col justify-between">
                   <span className={`w-full h-0.5 bg-current rounded transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''}`}></span>
                   <span className={`w-full h-0.5 bg-current rounded transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
                   <span className={`w-full h-0.5 bg-current rounded transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2.5' : ''}`}></span>
@@ -260,7 +260,7 @@ export default function Header() {
                   Marketplace
                 </Link>
                 <Link
-                  href="/"
+                  href="/submit-my-collectibles"
                   className="block text-lg font-medium text-gray-900 dark:text-white hover:text-[#EFB24D] transition-colors duration-300"
                   onClick={toggleMobileMenu}
                 >
@@ -277,7 +277,7 @@ export default function Header() {
                   <div className='bg-[#EFB24D1F] dark:bg-[#FFFFFF12] p-2 rounded-[7px]'>
                     {theme === "dark" ? (
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-[15px] max-h-[15px] min-w-[15px] min-h-[15px] object-contain">
-                        <path d="M2.13987 11.8589C3.56992 13.2827 5.4437 14 7.3232 14C10.3531 14 12.9509 12.1174 13.9832 9.71124V9.7055C14.0828 9.25556 13.7246 8.90902 13.3237 8.97604C13.2694 8.97604 13.1609 9.02262 13.1488 9.03411C10.8141 10.1018 8.02997 9.6117 6.20849 7.79152C4.39927 5.98289 3.90325 3.22828 4.94187 0.900101C4.94762 0.894357 4.94762 0.888613 4.95337 0.882869C5.21895 0.086386 4.47839 -0.151023 4.14194 0.089572C-0.337805 2.20519 -1.45766 8.25503 2.13987 11.8589Z" fill="white" />
+                        <path d="M2.13987 11.8589C3.56992 13.2827 5.4437 14 7.3232 14C10.3531 14 12.9509 12.1174 13.9832 9.71124V9.7055C14.0828 9.25556 13.7246 8.90902 13.3237 8.97604C13.2694 8.97604 13.1609 9.02262 13.1488 9.03411C10.8141 10.1018 8.02997 9.6117 6.20849 7.79152C4.39927 5.98289 3.90325 3.22828 4.94187 0.900101C4.94762 0.894357 4.94762 0.888613 4.95337 0.882869C5.21895 0.086386 4.47839 -0.151023 4.14194 0.089572C-0.337805 2.20519 -1.45766 8.25503 2.13987 11.8589Z" fill="#efb24d80" />
                       </svg>
                     ) : (
                       <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="max-w-[15px] max-h-[15px] min-w-[15px] min-h-[15px] object-contain">
@@ -297,7 +297,7 @@ export default function Header() {
 
                 <Link
                   href="/login"
-                  className="w-full border border-[#EFB24D] bg-[#EFB24D] text-[#000] px-4 py-3 font-semibold rounded-[7px] block text-center transition-all duration-300 ease-in-out hover:text-white hover:border hover:border-[#EFB24D] hover:bg-transparent"
+                  className="w-full border border-[#EFB24D] bg-[#EFB24D] text-[#000] px-4 py-3 font-semibold rounded-[7px] block text-center transition-all duration-300 ease-in-out hover:!text-[#EFB24D] hover:border hover:border-[#EFB24D] hover:bg-transparent"
                   onClick={toggleMobileMenu}
                 >
                   Login
