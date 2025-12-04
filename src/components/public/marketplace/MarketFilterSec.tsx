@@ -960,7 +960,7 @@ export default function ProductsFilter() {
 
               {/* viewport Toggle Content */}
               {openView && selectedCard && (
-                <div className="fixed inset-0 z-50 hidden  bg-[#000000d0] lg:flex items-center justify-center">
+                <div className="fixed inset-0 z-50 hidden  bg-[#000000d0] lg:flex items-center justify-center h-screen">
                   <div className="relative z-50 w-full max-w-[900px]  bg-[white] dark:bg-[#0D0D0D] text-black dark:text-white rounded-xl overflow-hidden shadow-xl flex flex-col lg:flex-row transition">
 
                     <button
