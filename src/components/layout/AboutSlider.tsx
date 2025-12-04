@@ -112,7 +112,18 @@ export default function AboutSlider() {
     autoplaySpeed: 3000,
     centerMode: true,
     centerPadding: centerPadding,
+
+  responsive: [
+    {
+      breakpoint: 575, 
+      settings: {
+        centerPadding: "0px", 
+        centerMode: false,   
+      },
+    },
+  ],
   };
+  
 
   const slides = [
     {
@@ -177,7 +188,7 @@ export default function AboutSlider() {
                            opacity-0 translate-y-6 transition-all duration-500
                            group-hover:opacity-100 group-hover:translate-y-0">
 
-                  <p className="text-[16px] md:text-[18px] xl:text-[22px] font-medium leading-7 text-white mb-[14px] max-w-[492px]">
+                  <p className="text-[16px] md:text-[18px] xl:text-[22px] font-medium leading-6 sm:leading-7 text-white mb-[14px] max-w-[492px]">
                     {item.para}
                   </p>
 
