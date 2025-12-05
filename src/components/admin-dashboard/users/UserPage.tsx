@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from 'next/link';
+import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft } from "react-icons/fa6";
 
 interface User {
   id: number;
@@ -47,23 +50,23 @@ export default function UserPage() {
 
   const activityData = [
     {
-      title: "Admin John created a new user:",
-      desc: "Sarah Smith",
+      title: "Admin John ",
+      desc: "created a new user: Sarah Smith",
       time: "45 mins ago",
     },
     {
-      title: "Christopher Davis role changed",
-      desc: "to Viewer",
+      title: "Christopher Davis ",
+      desc: "role changed to Viewer",
       time: "1 day ago",
     },
     {
-      title: "User Emma Anderson deactivated",
-      desc: "",
+      title: "User Emma Anderson",
+      desc: " deactivated",
       time: "5 weeks ago",
     },
     {
-      title: "Alex Brown Deleted Inactive",
-      desc: "User",
+      title: "Alex Brown ",
+      desc: "Deleted Inactive User",
       time: "5 hr ago",
     },
   ];
@@ -121,7 +124,7 @@ export default function UserPage() {
           <div className="flex items-center justify-between mb-[10px]">
             <div className="flex flex-col justify-between gap-[20px]">
               <span className="text-[22px]">Active User</span>
-              <div className="text-[#EFB24D] text-3xl font-semibold">{userData.filter(u => u.status === "Online").length}</div>
+              <div className="text-[#75DA5B] text-3xl font-semibold">{userData.filter(u => u.status === "Online").length}</div>
             </div>
             <div className="flex items-center justify-center">
               <Image
@@ -140,7 +143,7 @@ export default function UserPage() {
           <div className="flex items-center justify-between mb-[10px]">
             <div className="flex flex-col justify-between gap-[20px]">
               <span className="text-[22px]">Inactive Users</span>
-              <div className="text-[#EFB24D] text-3xl font-semibold">{userData.filter(u => u.status !== "Online").length}</div>
+              <div className="text-[#FF6B6B] text-3xl font-semibold">{userData.filter(u => u.status !== "Online").length}</div>
             </div>
             <div className="flex items-center justify-center">
               <Image
@@ -158,113 +161,122 @@ export default function UserPage() {
 
 
       {/* User Table */}
-      <div className="flex gap-[27px]">
-        <div className="w-full overflow-x-auto rounded-[7px]">
-          <table className="lg:w-full text-sm rounded-[7px]">
-            <thead>
-              <tr className="bg-[#fff] text-[#000] font-medium text-left">
-                <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[180px]">User</th>
-                <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[250px]">Email</th>
-                <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[130px]">Role</th>
-                <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[130px]">Status</th>
-                <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[120px]">Last Active</th>
-                <th className="py-[18px] px-[15px] border border-[#0000001C] min-w-[100px] ">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentUsers.map((user) => (
-                <tr key={user.id} className="text-[#F7F8F8B2] bg-[#F7F8F81C] hover:bg-[#F7F8F82A] transition-colors">
-                  <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
-                    <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <div className="w-10 h-10 bg-gradient-to-br from-[#75DA5B] to-[#4DCE94] rounded-full flex items-center justify-center text-black font-semibold">
-                          {/* Removed name initial */}
-                          {user.name.split(" ").map(n => n[0]).join("")}
-                        </div>
-                        {/* <div className={`absolute bottom-0 right-0 w-3 h-3 ${getStatusColor(user.status)} border-2 border-[#1a1a1a] rounded-full`}></div> */}
-                      </div>
-                      <span>{user.name}</span>
-                    </div>
-                  </td>
-                  <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.email}</td>
-                  <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.role}</td>
-                  <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
-                    <span className={`inline-block px-[10px] py-[4px] rounded-[4px] text-xs ${user.status === "Online" ? " text-[#75DA5B]" :
-                      user.status === "Away" ? " text-[#FFCD5C]" :
-                        "text-[#FF6B6B]"
-                      }`}>
-                      {user.status}
-                    </span>
-                  </td>
-                  <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.lastActive}</td>
-                  <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
-                    <div className="flex gap-2  w-full">
+      <div className="flex flex-wrap gap-[27px]">
 
-                      <button onClick={() => handleEdit(user.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</button>
-                      <button onClick={() => handleRemove(user.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Remove</button>
-                    </div>
-                  </td>
+        <div className="w-full xl:basis-[72%] ">
+          <div className="overflow-x-auto rounded-[7px]">
+            <table className=" w-full text-sm rounded-[7px]">
+              <thead>
+                <tr className="bg-[#fff] text-[#000] font-medium text-left">
+                  <th className="py-[18px] px-[15px] border border-[#0000001C] max-w-[180px]">User</th>
+                  <th className="py-[18px] px-[15px] border border-[#0000001C] max-w-[250px]">Email</th>
+                  <th className="py-[18px] px-[15px] border border-[#0000001C] max-w-[130px]">Role</th>
+                  <th className="py-[18px] px-[15px] border border-[#0000001C] max-w-[130px]">Status</th>
+                  <th className="py-[18px] px-[15px] border border-[#0000001C] max-w-[120px]">Last Active</th>
+                  <th className="py-[18px] px-[15px] border border-[#0000001C] max-w-[100px] ">Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {currentUsers.map((user) => (
+                  <tr key={user.id} className="text-[#F7F8F8B2] bg-[#F7F8F81C] hover:bg-[#F7F8F82A] transition-colors">
+                    <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
+                      <div className="flex items-center gap-3">
+                        <div className="relative">
+                          <div className="w-10 h-10 bg-gradient-to-br from-[#75DA5B] to-[#4DCE94] rounded-full flex items-center justify-center text-black font-semibold">
+                            {/* Removed name initial */}
+                            {user.name.split(" ").map(n => n[0]).join("")}
+                          </div>
+                          {/* <div className={`absolute bottom-0 right-0 w-3 h-3 ${getStatusColor(user.status)} border-2 border-[#1a1a1a] rounded-full`}></div> */}
+                        </div>
+                        <span>{user.name}</span>
+                      </div>
+                    </td>
+                    <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.email}</td>
+                    <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.role}</td>
+                    <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
+                      <span className={`inline-block px-[10px] py-[4px] rounded-[4px] text-xs ${user.status === "Online" ? " text-[#75DA5B]" :
+                        user.status === "Away" ? " text-[#FFCD5C]" :
+                          "text-[#FF6B6B]"
+                        }`}>
+                        {user.status}
+                      </span>
+                    </td>
+                    <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">{user.lastActive}</td>
+                    <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
+                      <div className="flex gap-2  w-full">
 
-        <div className="w-full max-w-[270px] rounded-xl overflow-hidden 
-         bg-[#F7F8F80A] border border-[#F7F8F81C] ">
-
-          {/* HEADER */}
-          <div className="bg-white text-black px-5 py-3 font-semibold text-sm">
-            Recent Activity
+                        <button onClick={() => handleEdit(user.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</button>
+                        <button onClick={() => handleRemove(user.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Remove</button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
 
-          {/* LIST */}
-          <div className="px-[30px] py-[20px] text-white/90 text-sm">
-            {activityData.map((item, i) => (
-              <div key={i} className="">
-                <p className="font-medium">{item.title}</p>
-                {item.desc && <p className="text-white/60">{item.desc}</p>}
-                <p className="text-yellow-400 text-xs mt-1">{item.time}</p>
-                <div className="border-b border-[#F7F8F81C]  "></div>
-              </div>
-              
+          {/* Pagination */}
+          <div className="flex justify-center gap-4 mt-[30px]">
+            <button
+              onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+              className="w-[35px] h-[35px] flex justify-center items-center  border rounded-full border-[#F7F8F81C] bg-[#F7F8F80A] transition-all ease-linear  hover:bg-[#75DA5B]"
+            >
+              <FaAngleLeft />
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => setCurrentPage(i + 1)}
+                className={`w-[35px] h-[35px] flex justify-center items-center  border rounded-full border-[#F7F8F81C] ${currentPage === i + 1 ? "bg-[#75DA5B] text-black" : "bg-[#F7F8F80A] hover:bg-[#F7F8F82A]"}`}
+              >
+                {i + 1}
+              </button>
             ))}
-          </div>
-
-          {/* BUTTON */}
-          <div className="px-5 pb-4">
-            <button className="w-full py-2 rounded-md border border-white/20 
-          bg-white/10 hover:bg-white/20 transition text-white text-sm">
-              View Full Activity
+            <button
+              onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+              className="w-[35px] h-[35px] flex justify-center items-center border rounded-full border-[#F7F8F81C] bg-[#F7F8F80A] transition-all ease-linear hover:bg-[#75DA5B]"
+            >
+              <FaAngleRight />
             </button>
           </div>
         </div>
 
+        <div className="w-full xl:basis-[25%] rounded-[7px] overflow-hidden 
+         bg-[#F7F8F80A] border border-[#F7F8F81C] ">
+
+          {/* HEADER */}
+          <div className="bg-white text-black px-[20px] py-[18px] font-semibold  text-[16px]">
+            Recent Activity
+          </div>
+
+          {/* LIST */}
+          <div className="p-[20px] pb-0 text-white/90 ">
+            {activityData.map((item, i) => (
+              <div key={i} className="">
+                <p className="font-normal text-[14px]"> <span className="font-semibold">{item.title}</span> {item.desc}</p>
+
+                <p className="text-[#EFB24D] text-[10px] mt-[6px]">{item.time}</p>
+                <div className="border-b border-[#F7F8F81C] pt-[15px] mb-[15px] "></div>
+              </div>
+
+            ))}
+          </div>
+
+          {/* BUTTON */}
+
+
+          <Link href="/activity">
+            <div className=" m-auto w-[153px] mb-[20px]">
+              <button className="w-full py-[8px] px-[12px] rounded-[7px] border border-[#F7F8F81C]
+                 transition text-white text-[14px]">
+                View Full Activity
+              </button>
+            </div>
+          </Link>
+        </div>
+
       </div>
-      {/* Pagination */}
-      <div className="flex justify-end gap-2 mt-4">
-        <button
-          onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-          className="px-3 py-1 border rounded-md border-[#F7F8F81C] bg-[#F7F8F80A] hover:bg-[#F7F8F82A]"
-        >
-          Prev
-        </button>
-        {Array.from({ length: totalPages }, (_, i) => (
-          <button
-            key={i + 1}
-            onClick={() => setCurrentPage(i + 1)}
-            className={`px-3 py-1 border rounded-md border-[#F7F8F81C] ${currentPage === i + 1 ? "bg-[#75DA5B] text-black" : "bg-[#F7F8F80A] hover:bg-[#F7F8F82A]"}`}
-          >
-            {i + 1}
-          </button>
-        ))}
-        <button
-          onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-          className="px-3 py-1 border rounded-md border-[#F7F8F81C] bg-[#F7F8F80A] hover:bg-[#F7F8F82A]"
-        >
-          Next
-        </button>
-      </div>
+
     </div>
   );
 }

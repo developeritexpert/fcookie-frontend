@@ -7,12 +7,14 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function AdminDashboardRecentAcitivity() {
     const data = {
+        labels: ['New Users', 'Returning Users'],
         datasets: [
             {
                 data: [75, 25],
-                backgroundColor: ["#001", "#75DA5B"],
+                backgroundColor: ["#75DA5B", "#75DA5B60"],
+                hoverBackgroundColor: ['#75DA5BCC', '#75DA5B40'],
                 borderWidth: 0,
-                hoverOffset: 6,
+                hoverOffset: 2,
                 cutout: "70%",
             },
         ],
@@ -23,9 +25,21 @@ export default function AdminDashboardRecentAcitivity() {
     const options = {
         plugins: {
             legend: {
-                display: false, // hide Chart.js default legend
-            },
-        },
+                display: true,
+                position: 'right',
+                labels: {
+                    color: '#F7F8F8B2',
+                    padding: 15,
+                    usePointStyle: true, // IMPORTANT: This makes it use pointStyle
+                    pointStyle: 'circle', // This makes it circular
+                    boxWidth: 10, // Size of the circle
+                    boxHeight: 10,
+                    font: {
+                        size: 12,
+                    }
+                }
+            }
+        }
     };
 
     const recent = [
@@ -52,7 +66,7 @@ export default function AdminDashboardRecentAcitivity() {
         <div>
             <div className='flex flex-col lg:flex-row gap-[27px]'>
                 <div className='bg-[#F7F8F805] basis-[990px] border border-[#F7F8F81C] px-[30px] pt-[17px] pb-[32px] rounded-[7px]'>
-                    <h4 className='text-[18px] md:text-[20px] lg:text-[24px] font-medium mb-[25px]'>Recent Activity / Insights Panel</h4>
+                    <h4 className='text-[18px] md:text-[20px] lg:text-[24px] font-semibold mb-[25px]'>Recent Activity / Insights Panel</h4>
 
                     <div className="grid grid-cols-1 xl:grid-cols-2 gap-[25px]">
                         {recent.map((item, index) => (
@@ -68,18 +82,18 @@ export default function AdminDashboardRecentAcitivity() {
                                     className="mb-[15px]"
                                 />
 
-                                <h3 className=" text-[18px] md:text-[20px] lg:text-[22px] font-semibold text-white mb-[14px]">
+                                <h3 className=" text-[18px] md:text-[20px] lg:text-[22px] font-semibold text-white mb-[8px]">
                                     {item.title}
                                 </h3>
 
 
                                 {/* MESSAGE */}
-                                <p className="text-[#F7F8F8] font-normal mb-[5px] text-[16px] sm:text-[18px] lg:text-[20px]">
+                                <p className="text-[#F7F8F8] font-normal mb-[5px]">
                                     {item.message}
                                 </p>
 
                                 {/* TIME */}
-                                <p className="text-[16px] text-normal text-[#EFB24D] ">
+                                <p className="text-sm text-normal text-[#EFB24D] ">
                                     {item.time}
                                 </p>
                             </div>
@@ -90,29 +104,14 @@ export default function AdminDashboardRecentAcitivity() {
 
                 <div className="flex-1 bg-[#F7F8F805] border border-[#F7F8F81C] h-full max-h-[fit-content] rounded-xl px-[30px] py-[21px] w-full  text-white">
 
-                    <h2 className="text-[18px] md:text-[20px] lg:text-[24px] font-medium mb-[25px] md:mb-[48px]">User Engagement</h2>
+                    <h2 className="text-[18px] md:text-[20px] lg:text-[24px] font-semibold mb-[25px] md:mb-[48px]">User Engagement</h2>
 
                     <div className='flex justify-center items-center'>
                         <div className=" flex justify-center items-center w-full max-w-[300px] h-full min-h-[260px]">
                             <Doughnut data={data} />
                         </div>
                     </div>
-
-                    {/* Legend */}
-                    <div className="mt-6 flex flex-col gap-[15px] text-sm">
-                        <div className="flex items-center gap-2">
-                            <div className="w-[16px] h-[16px] rounded-full bg-[linear-gradient(0deg,#D9D9D9,#D9D9D9),linear-gradient(0deg,rgba(255,205,92,0.33),rgba(255,205,92,0.33))] bg-blend-overlay" />
-                            <p>New Users (75%)</p>
-                        </div>
-
-                        <div className="flex items-center gap-2">
-                            <div className="w-[16px] h-[16px] rounded-full bg-[linear-gradient(0deg,#D9D9D9,#D9D9D9),linear-gradient(180deg,rgba(117,218,91,0.6)_0%,rgba(77,206,148,0.6)_100%)]  bg-blend-overlay" />
-                            <p>Returning Users (25%)</p>
-                        </div>
-                    </div>
                 </div>
-
-
             </div>
         </div>
     )
