@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import CustomSelect from "@/components/layout/CustomSelect";
 import AdminDashboardPerformanceInsights from "./AdminDashboardPerformanceInsights";
+import AdminDashboardRecentAcitivity from "./AdminDashboardRecentAcitivity";
 
 interface OptionType {
   value: string;
@@ -116,7 +117,10 @@ export default function AdminDashboardPage() {
         <AdminDashboardPerformanceInsights />
       </div>
 
-      
+       {/* Recent Acitivity */}
+      <div className="mt-[20px]">
+        <AdminDashboardRecentAcitivity/>
+      </div>
     </>
   );
 }
