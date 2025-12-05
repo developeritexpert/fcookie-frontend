@@ -1,6 +1,7 @@
 "use client";
-
 import React from "react";
+
+
 import Image from "next/image";
 import LanguageDropdown from "@/components/layout/LanguageDropdown";
 
@@ -13,6 +14,9 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
   collapsed,
   setCollapsed,
 }) => {
+
+
+
   return (
     <header className="h-[60px] py-[10px] bg-[#F7F8F80A] flex items-center justify-between px-4 border-b border-[#444444] dark:text-[#F7F8F8]">
       <div className="flex items-center gap-[10px] md:gap-[20px]">
@@ -32,7 +36,9 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
         <LanguageDropdown />
 
         <div className="relative">
+
           {/* Bell Icon */}
+
           <svg
             width="20"
             height="24"
@@ -51,6 +57,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
             />
           </svg>
 
+
           <span className="text-xs font-semibold absolute top-[-5px] right-[-5px] rounded-full h-[17px] w-[17px] p-1 flex items-center justify-center text-[#EFB24D] bg-[#F7F8F8]">
             6
           </span>
@@ -66,6 +73,8 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({
           />
         </div>
       </div>
+
+
     </header>
   );
 };
