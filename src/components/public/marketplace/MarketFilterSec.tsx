@@ -49,7 +49,7 @@ export default function ProductsFilter() {
   const [showOfferModal, setShowOfferModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
-
+  const [sidebarHidden, setSidebarHidden] = useState(true)
 
   // dropdown hide when i click outside
   useEffect(() => {
@@ -80,14 +80,26 @@ export default function ProductsFilter() {
     };
   }, [openView]);
 
-
-
   // dropdown json
   const categories: Category[] = [
     { name: "Pokémon", count: 72552 },
     { name: "Basketball", count: 18820 },
     { name: "Baseball", count: 16940 },
   ];
+
+  // filter sidebar hidden 
+  useEffect(() => {
+    if (openFilter) {
+      setSidebarHidden(false);
+    } else {
+      const timer = setTimeout(() => {
+        setSidebarHidden(true);
+      }, 200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [openFilter]);
+
 
   const graders: string[] = ["PSA", "BGS", "SGC", "CGC"];
   const grades: string[] = ["10", "9.5", "9", "8.5", "8"];
@@ -225,10 +237,14 @@ export default function ProductsFilter() {
         <div className="flex  md:gap-4 lg:gap-8">
           {/* SIDEBAR */}
           <aside
-            className={` pb-[30px] md:pb-[50px] pe-[15px] lg:pe-[30px] 
-           border-r border-[#E6E6E6] dark:border-[#343434] me-[15px] lg:me-[30px]
+            className={` pb-[30px] md:pb-[50px]           
            transition-all duration-300 linear overflow-hidden transform
-          ${openFilter ? "basis-[25%] translate-x-0 hidden md:block " : "basis-0 hidden -translate-x-full"}`}>
+           ${sidebarHidden ? "hidden" : ""}
+                 ${openFilter
+                ? "w-[25%] translate-x-0 opacity-100 pointer-events-auto border-r border-[#E6E6E6] dark:border-[#343434] me-[15px] pe-[15px] lg:pe-[30px] lg:me-[30px]"
+                : "w-0 -translate-x-full opacity-0 pointer-events-none"
+              } `}>
+
             <div className="sticky top-0 ">
               <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left mb-[13px] text-black dark:text-white">
                 Filter By:
@@ -759,16 +775,12 @@ export default function ProductsFilter() {
 
           {/* PRODUCTS GRID */}
           <main
-            className={` pb-[50px] md:pb-[80px] lg:pb-[120px] transition duration-300 ease-in-out transform origin-right
-            ${openFilter
-                ? "basis-[75%] "
-                : "basis-[100%] "
-              }`}>
+            className={`pb-[50px] md:pb-[80px] lg:pb-[120px] transition-all duration-300 ease-in-out
+               transform origin-right ${openFilter ? "w-[75%] mr-auto h-auto" : "w-[100%] h-auto mr-0"}`}>
             <div className="w-full">
 
               {/* ---------- TOP BAR ---------- */}
               <div className="flex flex-col  flex-wrap sm:flex-row sm:items-center gap-5 justify-between w-full py-4">
-
                 <div className="flex flex-wrap items-center gap-2">
                   {/* FILTER BUTTON */}
                   <button
@@ -855,57 +867,12 @@ export default function ProductsFilter() {
               <div
                 className={`grid gap-[20px] transition-all duration-300
                   ${viewType === "grid" ? openFilter
-                    ? "grid-cols-1 sm:grid-cols-2 xl:grid-cols-3"
-                    : "grid-cols-1 sm:grid-cols-2 xl:grid-cols-4"
+                    ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3"
+                    : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
                     : openFilter
                       ? "grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5  gap-[7px] sm:gap-[10px]  md:gap-[15px]"
-                      : "grid-cols-2  sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-[7px] sm:gap-[10px] md:gap-[15px]"}
+                      : "grid-cols-2  sm:grid-cols-3 md:grid-cols-4  xl:grid-cols-6 gap-[7px] sm:gap-[10px] md:gap-[15px]"}
                       `}>
-
-                {/* {crds.map((item, index) => (
-                  <article
-                    key={index}
-                    className="group border rounded-[14px] flex flex-col p-[15px] border-[#E6E6E6] dark:border-[#1E1E1E] bg-transparent
-                   dark:bg-[#0D0D0D] hover:shadow-lg transition-shadow duration-300 hover:shadow-[#EFB24D]/20 h-full relative">
-
-                  
-                    <button
-                      onClick={() => setOpenView(true)}  // <-- open modal
-                      className="absolute top-[15px] right-[15px] w-8 h-8 flex items-center justify-center 
-                        cursor-pointer group transition">
-                      <BsArrowsAngleExpand
-                        className="text-black dark:text-white opacity-0 group-hover:opacity-100 transition "
-                      />
-                    </button>
-
-
-
-
-                
-                    <div
-                      className={`flex items-center justify-center rounded-[4px]
-                             ${viewType === "small-grid" ? "h-[140px]" : "h-[180px]"}`}>
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={120}
-                        height={180}
-                        className=" h-full object-contain group-hover:scale-105 transition-transform"
-                      />
-                    </div>
-
-   
-                    <h4 className="text-[14px] sm:text-[16px] font-medium text-black dark:text-white mt-[20px] mb-[10px]">
-                      {item.title}
-                    </h4>
-
-                
-                    <p className="text-[15px] font-normal opacity-70 mt-auto text-[#6C6C6C]">
-                      {item.price}
-                    </p>
-                  </article>
-                ))} */}
-
                 {crds.map((item, index) => (
                   <article
                     key={index}
@@ -957,101 +924,6 @@ export default function ProductsFilter() {
                   </article>
                 ))}
               </div>
-
-              {/* viewport Toggle Content */}
-              {openView && selectedCard && (
-                <div className="fixed inset-0 z-50 hidden  bg-[#000000d0] lg:flex items-center justify-center h-screen">
-                  <div className="relative z-50 w-full max-w-[900px]  bg-[white] dark:bg-[#0D0D0D] text-black dark:text-white rounded-xl overflow-hidden shadow-xl flex flex-col lg:flex-row transition">
-
-                    <button
-                      onClick={() => {
-                        setOpenView(false);
-                        setSelectedCard(null);
-                      }}
-                      className="absolute top-4 right-4 p-2  rounded-md ">
-                      x
-                    </button>
-
-
-                    <div className="w-full lg:w-1/2 bg-white dark:bg-[#111] flex items-center justify-center p-6">
-                      <img
-                        src={selectedCard.image}
-                        alt={selectedCard.title}
-                        className="max-h-[350px] object-contain"
-                      />
-                    </div>
-                    <div className="w-full lg:w-1/2 p-6 space-y-4">
-
-                      <h1 className="text-xl pr-[20px] font-semibold leading-snug">
-                        {selectedCard.title}
-                      </h1>
-
-
-                      <div className="flex flex-wrap gap-2">
-                        {[
-                          "CGC",
-                          "9 MINT",
-                          "Pokémon",
-                          "English",
-                        ].map((t) => (
-                          <span
-                            key={t}
-                            className="px-3 py-1 border border-[#E6E6E6] dark:border-transparent transition-all hover:border-[#EFB24D] hover:text-white hover:bg-[#EFB24D] bg-white/10 rounded-full text-sm">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-
-
-
-                      <div className="border border-[#E6E6E6]  dark:border-white/10 p-4 rounded-lg flex items-center justify-between">
-                        <span className="">Not listed</span>
-
-                        <div className=" flex flex-wrap gap-[15px]">
-                          <button
-                            onClick={() => setShowAuthModal(true)}
-                            className=" px-3 py-[10px] w-full min-w-[130px] rounded-md bg-[#EFB24D] border border-[#EFB24D] transition-all hover:text-white text-black "
-                          >
-                            Buy Now
-                          </button>
-
-                          <button
-                            onClick={() => setShowOfferModal(true)}
-                            className=" px-3 py-[10px] w-full min-w-[130px] rounded-md border border-[#E6E6E6] dark:border-[#FFFFFF0A] hover:text-white bg-[#EFB24D] text-black transition-all  "
-                          >
-                            Make an Offer
-                          </button>
-                        </div>
-                      </div>
-
-                      <div className="border border-[#E6E6E6]  dark:border-white/10 p-4 rounded-lg space-y-2">
-
-
-                        <div className="flex items-center justify-between">
-                          <span className="text-lg font-semibold">{selectedCard.price}</span>
-                          <span className="text-sm text-gray-400">Expires in 7 days</span>
-                        </div>
-
-                        <p className="text-sm text-gray-400">
-                          From <span className="text-black dark:text-white font-medium">Fcookie</span>
-                        </p>
-                      </div>
-
-
-                      <div className="mt-[20px]">
-
-                        <Link href="/product-detail"  >
-                          <p className="w-[fit-content] rounded-md px-[24px] py-[12px] border border-[#E6E6E6] flex items-center gap-2  dark:border-white/10">
-                            <FaArrowUpRightFromSquare /> Open Full Page
-                          </p>
-                        </Link>
-                      </div>
-
-                    </div>
-                  </div>
-                </div>
-              )}
-
             </div>
 
             {/* PAGINATION */}
@@ -1195,6 +1067,101 @@ export default function ProductsFilter() {
           </div>
         )
       }
+
+
+
+      {/* viewport Toggle Content */}
+      {openView && selectedCard && (
+        <div className="fixed inset-0 z-50 hidden  bg-[#000000d0] lg:flex items-center justify-center h-screen">
+          <div className="relative z-50 w-full max-w-[900px]  bg-[white] dark:bg-[#0D0D0D] text-black dark:text-white rounded-xl overflow-hidden shadow-xl flex flex-col lg:flex-row transition">
+
+            <button onClick={() => {
+              setOpenView(false);
+              setSelectedCard(null);
+            }}
+              className="absolute top-4 right-4 p-2 rounded-md">
+              x
+            </button>
+
+
+            <div className="w-full lg:w-1/2 bg-white dark:bg-[#111] flex items-center justify-center p-6">
+              <img
+                src={selectedCard.image}
+                alt={selectedCard.title}
+                className="max-h-[350px] object-contain"
+              />
+            </div>
+            <div className="w-full lg:w-1/2 p-6 space-y-4">
+
+              <h1 className="text-xl pr-[20px] font-semibold leading-snug">
+                {selectedCard.title}
+              </h1>
+
+
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "CGC",
+                  "9 MINT",
+                  "Pokémon",
+                  "English",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 border border-[#E6E6E6] dark:border-transparent transition-all hover:border-[#EFB24D] hover:text-white hover:bg-[#EFB24D] bg-white/10 rounded-full text-sm">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+
+
+              <div className="border border-[#E6E6E6]  dark:border-white/10 p-4 rounded-lg flex items-center justify-between">
+                <span className="">Not listed</span>
+
+                <div className=" flex flex-wrap gap-[15px]">
+                  <button
+                    onClick={() => setShowAuthModal(true)}
+                    className=" px-3 py-[10px] w-full min-w-[130px] rounded-md bg-[#EFB24D] border border-[#EFB24D] transition-all hover:text-white text-black "
+                  >
+                    Buy Now
+                  </button>
+
+                  <button
+                    onClick={() => setShowOfferModal(true)}
+                    className=" px-3 py-[10px] w-full min-w-[130px] rounded-md border border-[#E6E6E6] dark:border-[#FFFFFF0A] hover:text-white bg-[#EFB24D] text-black transition-all  "
+                  >
+                    Make an Offer
+                  </button>
+                </div>
+              </div>
+
+              <div className="border border-[#E6E6E6]  dark:border-white/10 p-4 rounded-lg space-y-2">
+
+
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-semibold">{selectedCard.price}</span>
+                  <span className="text-sm text-gray-400">Expires in 7 days</span>
+                </div>
+
+                <p className="text-sm text-gray-400">
+                  From <span className="text-black dark:text-white font-medium">Fcookie</span>
+                </p>
+              </div>
+
+
+              <div className="mt-[20px]">
+
+                <Link href="/product-detail"  >
+                  <p className="w-[fit-content] rounded-md px-[24px] py-[12px] border border-[#E6E6E6] flex items-center gap-2  dark:border-white/10">
+                    <FaArrowUpRightFromSquare /> Open Full Page
+                  </p>
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
