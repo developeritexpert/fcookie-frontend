@@ -89,7 +89,7 @@ export default function RegisterPageSection() {
                       name="fullName"
                       type="text"
                       placeholder="Full Name"
-                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="fullName" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -100,7 +100,7 @@ export default function RegisterPageSection() {
                       name="email"
                       type="email"
                       placeholder="Email"
-                      className="w-full text-sm border  border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border  border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="email" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -111,7 +111,7 @@ export default function RegisterPageSection() {
                       name="phone"
                       type="tel"
                       placeholder="Phone No."
-                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="phone" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -122,7 +122,7 @@ export default function RegisterPageSection() {
                       name="password"
                       type="password"
                       placeholder="Password"
-                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="password" component="div" className="text-red-500 text-xs mt-1" />
                   </div>

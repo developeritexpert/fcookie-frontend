@@ -60,7 +60,7 @@ export default function AdminDashboardPage() {
           <input
             type="text"
             placeholder="Search..."
-            className="w-full border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] text-[#F7F8F8B2] text-sm pl-[30px] px-4 py-[10px] placeholder:text-[#F7F8F8B2] focus-visible:outline-none"
+            className="w-full border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] text-[#F7F8F8B2] text-sm pl-[30px] px-4 py-[10px] placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
           />
           <svg
             width="17"
@@ -115,6 +115,8 @@ export default function AdminDashboardPage() {
       <div className="mt-[20px]">
         <AdminDashboardPerformanceInsights />
       </div>
+
+      
     </>
   );
 }

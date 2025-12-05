@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+
 interface Reward {
   id: number;
   rewardName: string;
@@ -121,7 +123,7 @@ export default function RewardsPage() {
                 </td>
                 <td className="py-[10px] px-[15px] border border-[#F7F8F81C]">
                   <div className="flex gap-2">
-                     <button onClick={() => handleEdit(reward.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</button>
+                    <Link href="/admin/reward-edit" onClick={() => handleEdit(reward.id)} className="block border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Edit</Link>
                     <button onClick={() => handleRemove(reward.id)} className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] py-[6px] px-[15px] text-xs whitespace-nowrap hover:bg-[#F7F8F815] transition-colors cursor-pointer">Remove</button>
                   </div>
                 </td>
