@@ -224,11 +224,11 @@ export default function ProductEditPage() {
                             </div>
 
                             {/* Action Buttons */}
-                            <div className="flex items-center justify-between gap-[20px]">
-                                <div className="flex items-center gap-[20px]">
+                            <div className="flex items-center flex-wrap justify-between gap-[20px]">
+                                <div className="flex items-center flex-wrap gap-[20px]">
                                     <button
                                         type="submit"
-                                        className="flex gap-2 items-center bg-gradient-to-r from-[#75DA5B] to-[#4DCE94] rounded-[7px] text-black font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+                                        className="flex gap-2 items-center bg-gradient-to-r from-[#75DA5B] to-[#4DCE94] rounded-[7px] text-black font-semibold md:px-6 px-3 py-3 text-sm hover:opacity-90 transition-opacity"
                                     >
                                         Save Changes
                                     </button>
@@ -236,7 +236,7 @@ export default function ProductEditPage() {
                                     <button
                                         type="button"
                                         onClick={handleCancel}
-                                        className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] font-semibold px-6 py-3 text-sm hover:bg-[#F7F8F815] transition-colors"
+                                        className="border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] font-semibold md:px-6 px-3 py-3 text-sm hover:bg-[#F7F8F815] transition-colors"
                                     >
                                         Cancel
                                     </button>
@@ -245,7 +245,7 @@ export default function ProductEditPage() {
                                 <button
                                     type="button"
                                     onClick={handleRemoveProduct}
-                                    className="border border-[#FF6B6B] text-[#fff] duration-400 bg-[#FF6B6B] rounded-[7px] font-semibold px-6 py-3 text-sm hover:bg-[#FF6B6B25] transition-colors"
+                                    className="border border-[#FF6B6B] text-[#fff] duration-400 bg-[#FF6B6B] rounded-[7px] font-semibold md:px-6 px-3 py-3 text-sm hover:bg-[#FF6B6B25] transition-colors"
                                 >
                                     Remove Product
                                 </button>
