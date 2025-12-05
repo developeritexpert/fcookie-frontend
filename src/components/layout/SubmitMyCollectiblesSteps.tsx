@@ -89,7 +89,7 @@ const SubmitMyCollectiblesSteps = () => {
               value={formData[fieldName] as string}
               onChange={(e) => updateFormData(fieldName, e.target.value)}
               placeholder={placeholder}
-              className="w-full px-[25px] py-[15px] duration-300 focus-visible:border-[#000] dark:focus-visible:border-[#fff] placeholder:text-[#00000066] dark:placeholder:text-[#FFFFFF80] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-[7px] focus-visible:outline-none"
+              className="w-full px-[25px] py-[15px] duration-300 focus-visible:border-[#000] dark:focus-visible:border-[#fff] placeholder:text-[#00000066] dark:placeholder:text-[#FFFFFF80] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-[7px] focus-visible:outline-0"
               required={required}
             />
           </>
@@ -102,7 +102,7 @@ const SubmitMyCollectiblesSteps = () => {
             onChange={(e) => updateFormData(fieldName, e.target.value)}
             placeholder={placeholder}
             rows={4}
-            className="w-full px-[25px] py-[15px] duration-300 focus-visible:border-[#000] dark:focus-visible:border-[#fff] placeholder:text-[#00000066] dark:placeholder:text-[#FFFFFF80] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-[7px] focus-visible:outline-none resize-none"
+            className="w-full px-[25px] py-[15px] duration-300 focus-visible:border-[#000] dark:focus-visible:border-[#fff] placeholder:text-[#00000066] dark:placeholder:text-[#FFFFFF80] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-[7px] focus-visible:outline-0 resize-none"
           />
         );
 

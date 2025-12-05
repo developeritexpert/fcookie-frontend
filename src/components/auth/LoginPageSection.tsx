@@ -116,7 +116,7 @@ export default function LoginPageSection() {
                         type="email"
                         placeholder="Email"
                         className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px]
-                        focus-visible:outline-none focus-visible:border focus-visible:border-[#ffffff80] duration-300"
+                        focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] duration-300"
                       />
                       <ErrorMessage
                         name="email"
@@ -132,7 +132,7 @@ export default function LoginPageSection() {
                         type="password"
                         placeholder="Password"
                         className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px]
-                        focus-visible:outline-none focus-visible:border focus-visible:border-[#ffffff80] duration-300"
+                        focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] duration-300"
                       />
                       <ErrorMessage
                         name="password"

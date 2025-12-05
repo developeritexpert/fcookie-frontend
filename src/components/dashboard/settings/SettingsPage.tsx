@@ -79,14 +79,14 @@ function SettingsPage() {
                 <input
                   type="password"
                   placeholder="Password"
-                  className='w-full text-sm border border-[#FFFFFF1C] bg-transparent placeholder:text-[#F7F8F8] rounded-[7px] py-4 px-4 focus-visible:outline-none focus-visible:border focus-visible:border-[#ffffff80] duration-300'
+                  className='w-full text-sm border border-[#FFFFFF1C] bg-transparent placeholder:text-[#F7F8F8] rounded-[7px] py-4 px-4 focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] duration-300'
                 />
               </div>
               <div className='mb-4'>
                 <input
                   type="password"
                   placeholder="Confirm Password"
-                  className='w-full text-sm border border-[#FFFFFF1C] bg-transparent placeholder:text-[#F7F8F8] rounded-[7px] py-4 px-4 focus-visible:outline-none focus-visible:border focus-visible:border-[#ffffff80] duration-300'
+                  className='w-full text-sm border border-[#FFFFFF1C] bg-transparent placeholder:text-[#F7F8F8] rounded-[7px] py-4 px-4 focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] duration-300'
                 />
               </div>
               <button 

@@ -10,6 +10,8 @@ interface AdminDashboardNavLinkProps {
   children: ReactNode;
   collapsed: boolean;
   setCollapsed: (value: boolean) => void;
+  matchType?: "exact" | "startsWith" | "contains";
+  matchPatterns?: string[];
 }
 
 const AdminDashboardNavLink: React.FC<AdminDashboardNavLinkProps> = ({
@@ -17,9 +19,36 @@ const AdminDashboardNavLink: React.FC<AdminDashboardNavLinkProps> = ({
   children,
   collapsed,
   setCollapsed,
+  matchType = "startsWith", // Default to match child routes
+  matchPatterns = [],
 }) => {
   const pathname = usePathname();
-  const isActive = pathname === href;
+  
+  // Check if active based on match type
+  let isActive = false;
+  
+  switch (matchType) {
+    case "exact":
+      isActive = pathname === href;
+      break;
+      
+    case "contains":
+      isActive = pathname.includes(href);
+      break;
+      
+    case "startsWith":
+    default:
+      // Default behavior: match exact or starts with href + "/"
+      isActive = pathname === href || pathname.startsWith(href + "/");
+      break;
+  }
+  
+  // Also check additional match patterns if provided
+  if (!isActive && matchPatterns.length > 0) {
+    isActive = matchPatterns.some(pattern => 
+      pathname === pattern || pathname.startsWith(pattern + "/")
+    );
+  }
 
   const handleClick = () => {
     if (typeof window !== "undefined" && window.innerWidth < 768) {
