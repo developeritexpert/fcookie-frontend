@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import CustomDropdown from "@/components/layout/DashboardCustomDropdown";
-import { DropdownOption } from "@/components/layout/DashboardCustomDropdown";
-
+import { ProductEditPageSkeleton } from "@/components/skeleton-loading/PageSkeletons";
 
 interface Option {
     value: string;
@@ -12,11 +11,18 @@ interface Option {
 }
 
 export default function ProductEditPage() {
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
     const [categoryOpt, setCategoryOpt] = useState<string>("");
     const [statusOpt, setStatusOpt] = useState<string>("");
     const [visibilityOpt, setVisibilityOpt] = useState<string>("");
+
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => setIsLoading(false), 1500);
+        return () => clearTimeout(timer);
+    }, []);
 
     const statusOptions: Option[] = [
         { value: "draft", label: "Draft" },
@@ -65,6 +71,11 @@ export default function ProductEditPage() {
     const handleRemoveProduct = () => {
         console.log("Product removed");
     };
+
+    // Show skeleton while loading
+    if (isLoading) {
+        return <ProductEditPageSkeleton />;
+    }
 
     return (
         <div className="min-h-screen">
@@ -163,7 +174,7 @@ export default function ProductEditPage() {
                                     <input
                                         type="text"
                                         placeholder="Product Title"
-                                        className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+                                        className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80]"
                                     />
                                 </div>
                                 <div>
@@ -182,7 +193,7 @@ export default function ProductEditPage() {
                                     <input
                                         type="number"
                                         placeholder="Base Price (USD)"
-                                        className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+                                        className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80]"
                                     />
                                 </div>
                                 <div>
@@ -209,7 +220,7 @@ export default function ProductEditPage() {
                                     <input
                                         type="text"
                                         placeholder="Owned By"
-                                        className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+                                        className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80]"
                                     />
                                 </div>
                             </div>
@@ -219,7 +230,7 @@ export default function ProductEditPage() {
                                 <textarea
                                     rows={6}
                                     placeholder="Description"
-                                    className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 resize-none"
+                                    className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] resize-none"
                                 />
                             </div>
 
@@ -245,7 +256,7 @@ export default function ProductEditPage() {
                                 <button
                                     type="button"
                                     onClick={handleRemoveProduct}
-                                    className="border border-[#FF6B6B] text-[#fff] duration-400 bg-[#FF6B6B] rounded-[7px] font-semibold md:px-6 px-3 py-3 text-sm hover:bg-[#FF6B6B25] transition-colors"
+                                    className="border border-[#FF6B6B] text-[#fff] duration-400 bg-[#FF6B6B] rounded-[7px] font-semibold md:px-6 px-3 py-3 text-sm hover:bg-[#FF6B6B25] hover:text-[#FF6B6B] transition-colors"
                                 >
                                     Remove Product
                                 </button>

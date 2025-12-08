@@ -1,15 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import CustomDropdown from "@/components/layout/DashboardCustomDropdown";
 import { DropdownOption } from "@/components/layout/DashboardCustomDropdown";
+import { RewardEditPageSkeleton } from "@/components/skeleton-loading/PageSkeletons";
 
 export default function RewardEdit() {
+    const [isLoading, setIsLoading] = useState(true);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [rewardType, setRewardType] = useState<string>("");
     const [rewardProb, setRewardProb] = useState<string>("");
     const [rewardStatus, setRewardStatus] = useState<string>("");
+
+    useEffect(() => {
+        // Simulate loading
+        const timer = setTimeout(() => setIsLoading(false), 1500);
+        return () => clearTimeout(timer);
+    }, []);
 
     const rewardTypeOptions: DropdownOption[] = [
         { value: "physical", label: "Physical" },
@@ -48,6 +56,11 @@ export default function RewardEdit() {
         console.log("Reward removed");
     };
 
+    // Show skeleton while loading
+    if (isLoading) {
+        return <RewardEditPageSkeleton />;
+    }
+
     return (
 
         <div className="border border-[#F7F8F81A] bg-[#F7F8F80A] rounded-[7px] p-[20px]">
@@ -62,7 +75,7 @@ export default function RewardEdit() {
                             <input
                                 type="text"
                                 placeholder="Reward Name"
-                                className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent  rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+                                className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent  rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80]"
                             />
                         </div>
                         <div>
@@ -81,7 +94,7 @@ export default function RewardEdit() {
                             <input
                                 type="number"
                                 placeholder="Value"
-                                className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent  rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+                                className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent  rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80]"
                             />
                         </div>
                         <div>
@@ -101,7 +114,7 @@ export default function RewardEdit() {
                                 type="number"
                                 placeholder="Expiry (Days)"
                                 min="0"
-                                className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent  rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+                                className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent  rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80]"
                             />
                         </div>
                         <div>
@@ -172,7 +185,7 @@ export default function RewardEdit() {
                 <textarea
                     rows={6}
                     placeholder="Description"
-                    className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 resize-none"
+                    className="w-full border border-[#F7F8F81C] hover:bg-[#F7F8F80A] duration-300 bg-transparent rounded-[7px] text-[#F7F8F8B2] text-sm px-4 py-3 placeholder:text-[#F7F8F8B2] focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] resize-none"
                 />
             </div>
 

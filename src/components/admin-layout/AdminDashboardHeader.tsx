@@ -78,23 +78,23 @@ const AdminDashboardHeader: React.FC<AdminDashboardHeaderProps> = ({
 
 
           {open && (
-            <div className="absolute right-0 mt-2 w-[260px] rounded-md bg-[#1F1A11] 
-               border border-white/10 shadow-xl p-4 text-white text-sm z-50 animate-fade-down">
+            <div className="absolute top-[80%] right-0 mt-2 w-[300px] rounded-md bg-[#FFFFFF12] 
+               border border-[#444444] backdrop-blur-[50px] shadow-xl p-4 text-white text-sm z-50 animate-fade-down">
 
               {/* TAB BUTTONS */}
-              <div className="flex items-center gap-[10px] mb-3">
+              <div className="flex items-center mb-3">
                 <button
                   onClick={() => setActiveTab("alerts")}
-                  className={`px-[19px] py-[7px] rounded text-xs font-semibold w-full 
-                 ${activeTab === "alerts" ? "bg-[#EFB24D] text-black" : " border border-[#FFFFFF1C] bg-transparent"}`}
+                  className={`px-[19px] py-[7px] text-xs font-semibold w-full border-b-2
+                 ${activeTab === "alerts" ? "border-[#EFB24D] text-[#EFB24D]" : " border-[#444444] bg-transparent"}`}
                 >
                   All
                 </button>
 
                 <button
                   onClick={() => setActiveTab("messages")}
-                  className={`px-[19px] py-[7px]  rounded text-xs font-semibold  w-full 
-      ${activeTab === "messages" ? "bg-[#EFB24D] text-black" : " border border-[#FFFFFF1C]  bg-transparent"}`}
+                  className={`px-[19px] py-[7px]  text-xs font-semibold  w-full  border-b-2
+      ${activeTab === "messages" ? "border-[#EFB24D] text-[#EFB24D]" : "border-[#444444] bg-transparent"}`}
                 >
                  Unread
                 </button>
@@ -102,18 +102,78 @@ const AdminDashboardHeader: React.FC<AdminDashboardHeaderProps> = ({
 
               {/* TAB CONTENT */}
               {activeTab === "alerts" && (
-                <ul className="space-y-2">
-                  <li className="border-b border-white/10 pb-2">New user registered</li>
-                  <li className="border-b border-white/10 pb-2">Role updated for Emma</li>
-                  <li>System backup completed</li>
+                <ul className="space-y-2 text-sm mt-[20px] text-[#F7F8F8]  max-h-[300px] overflow-auto [&::-webkit-scrollbar]:w-2
+                  [&::-webkit-scrollbar-track]:bg-transparent
+                  [&::-webkit-scrollbar-thumb]:bg-[#F7F8F81C] 
+                  [&::-webkit-scrollbar-thumb]:rounded-full
+                  [&::-webkit-scrollbar-thumb:hover]:bg-[#F7F8F830]">
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    New user registered
+                    <span className="text-[#F7F8F8B3] text-xs">10s ago</span>
+                  </li>
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                   <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    New user registered
+                    <span className="text-[#F7F8F8B3] text-xs">10s ago</span>
+                  </li>
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                   <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    New user registered
+                    <span className="text-[#F7F8F8B3] text-xs">10s ago</span>
+                  </li>
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                   <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    New user registered
+                    <span className="text-[#F7F8F8B3] text-xs">10s ago</span>
+                  </li>
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                  <li className="flex flex-col gap-[3px]">System backup completed
+                    <span className="text-[#F7F8F8B3] text-xs">2hr ago</span>
+                  </li>
                 </ul>
               )}
 
               {activeTab === "messages" && (
-                <ul className="space-y-2">
-                  <li className="border-b border-white/10 pb-2">PM from Jack</li>
-                  <li className="border-b border-white/10 pb-2">Reminder: Meeting Today</li>
-                  <li>Team shared new document</li>
+                <ul className="space-y-2 text-sm mt-[20px] text-[#F7F8F8] max-h-[300px] overflow-auto [&::-webkit-scrollbar]:w-2
+                  [&::-webkit-scrollbar-track]:bg-transparent
+                  [&::-webkit-scrollbar-thumb]:bg-[#F7F8F81C]
+                  [&::-webkit-scrollbar-thumb]:rounded-full
+                  [&::-webkit-scrollbar-thumb:hover]:bg-[#F7F8F830]">
+                   <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                   <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    New user registered
+                    <span className="text-[#F7F8F8B3] text-xs">10s ago</span>
+                  </li>
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                   <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    New user registered
+                    <span className="text-[#F7F8F8B3] text-xs">10s ago</span>
+                  </li>
+                  <li className="border-b border-white/10 pb-2 flex flex-col gap-[3px]">
+                    Role updated for Emma
+                    <span className="text-[#F7F8F8B3] text-xs">3min ago</span>
+                   </li>
+                  <li className="flex flex-col gap-[3px]">System backup completed
+                    <span className="text-[#F7F8F8B3] text-xs">2hr ago</span>
+                  </li>
                 </ul>
               )}
             </div>

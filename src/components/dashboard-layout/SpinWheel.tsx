@@ -86,75 +86,98 @@ const SpinWheel = ({ spinPop, setSpinPop }: SpinWheelProps) => {
               </p>
             </div>
             <div className="flex justify-center flex-col items-center gap-[30px] relative">
-              <div className="relative">
-                <motion.div
-                  ref={wheelRef}
-                  className="w-80 h-80 bg-[#b0070d] rounded-full border-[7px] border-[#EFB24D] outline-[3px] relative overflow-hidden"
-                  animate={{ rotate: rotation }}
-                  transition={{
-                    type: "spring",
-                    damping: 20,
-                    stiffness: 50,
-                    duration: 4
-                  }}
-                  style={{ transformOrigin: 'center' }}
-                >
-                  {prizes.map((prize, index) => {
-                    const rotationAngle = index * segmentAngle;
-                    const textRotation = segmentAngle / 2;
-                    
-                    return (
-                      <div
-                        key={prize.id}
-                        className="absolute w-full h-full"
-                        style={{
-                          transform: `rotate(${rotationAngle}deg)`,
-                          transformOrigin: 'center',
-                        }}
-                      >
+              <div className='relative'>
+                <div className="relative">
+                  <motion.div
+                    ref={wheelRef}
+                    className="w-80 h-80 border-[10px] border-[#edb44a] rounded-full relative overflow-hidden"
+                    animate={{ rotate: rotation }}
+                    transition={{
+                      type: "spring",
+                      damping: 20,
+                      stiffness: 50,
+                      duration: 4
+                    }}
+                    style={{ transformOrigin: 'center' }}
+                  >
+                    <div>
+                    <Image
+                        src="/img/wheel3.svg"
+                        alt="Spin Wheel"
+                        width={500}
+                        height={500}
+                        className="w-full h-full rotate-[15deg] z-0 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]"
+                      />
+                  </div>
+                    {prizes.map((prize, index) => {
+                      const rotationAngle = index * segmentAngle;
+                      const textRotation = segmentAngle / 2;
+                      
+                      return (
                         <div
-                          className="absolute top-0 left-1/2 w-1/2 h-[55%] origin-bottom-left"
+                          key={prize.id}
+                          className="absolute w-full h-full z-[2]"
                           style={{
-                            backgroundColor: 'transparent',
+                            transform: `rotate(${rotationAngle}deg)`,
+                            transformOrigin: 'center',
                           }}
                         >
                           <div
-                            className="absolute top-[40px] left-4 transform -translate-y-1/2 font-bold text-sm whitespace-nowrap z-[999]"
-                            style={{ 
-                              transform: `rotate(${textRotation}deg)`,
-                              color:'#fff',
+                            className="absolute top-0 left-1/2 w-1/2 h-[55%] origin-bottom-left"
+                            style={{
+                              backgroundColor: 'transparent',
                             }}
                           >
-                            {prize.name}
+                            <div
+                              className="absolute top-[40px] left-4 transform -translate-y-1/2 font-bold text-sm whitespace-nowrap z-[999] z-[2]"
+                              style={{ 
+                                transform: `rotate(${textRotation}deg)`,
+                                color:'#000',
+                              }}
+                            >
+                              {prize.name}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
 
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-radial from-[#FF9D00] to-[#EFB24D] rounded-full z-10"></div>
-                  
-                  {prizes.map((_, index) => (
-                    <div
-                      key={`line-${index}`}
-                      className="absolute top-0 left-1/2 w-0.5 h-1/2 origin-bottom z-5"
-                      style={{
-                        transform: `rotate(${index * segmentAngle}deg)`,
-                        transformOrigin: 'bottom center',
-                        background: 'linear-gradient(45deg, #FF9D00, #EFB24D)'
-                      }}
-                    />
-                  ))}
-                </motion.div>
-
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-8 h-12 z-20">
-                  <div className="w-0 h-0 border-l-[16px] border-r-[16px] border-b-[24px] border-l-transparent border-r-transparent border-b-[#FF9D00] rotate-180"></div>
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gradient-radial from-[#FF9D00] to-[#EFB24D] rounded-full z-10"></div>
+                    
+                    {prizes.map((_, index) => (
+                      <div
+                        key={`line-${index}`}
+                        className="absolute top-0 left-1/2 w-0.5 h-1/2 origin-bottom z-5"
+                        style={{
+                          transform: `rotate(${index * segmentAngle}deg)`,
+                          transformOrigin: 'bottom center',
+                          background: ''
+                        }}
+                      />
+                    ))}
+                  </motion.div>
+                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1 w-8 h-12 z-20">
+                      <Image
+                        src="/img/wheel-pin2.svg"
+                        alt="Spin Wheel"
+                        width={500}
+                        height={500}
+                        className="w-[30px] pointer-none"
+                      />                
+                  </div>
                 </div>
               </div>
+                  <Image
+                        src="/img/wheel-frame2.svg"
+                        alt="Spin Wheel"
+                        width={500}
+                        height={500}
+                        className="w-[350px] absolute top-[-10px] left-1/2 translate-x-[-50%] pointer-none"
+                      />     
               <button
                 onClick={spinWheel} 
                 disabled={spinning}
-                className={`self-center bg-gradient-to-r from-[#75DA5B] to-[#4DCE94] rounded-[7px] text-black font-semibold px-[20px] py-[10px] text-sm ${
+                className={`self-center mt-[100px] bg-gradient-to-r from-[#75DA5B] to-[#4DCE94] rounded-[7px] text-black font-semibold px-[20px] py-[10px] text-sm ${
                   spinning ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
               >

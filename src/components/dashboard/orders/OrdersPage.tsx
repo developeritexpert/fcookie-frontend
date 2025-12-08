@@ -1,10 +1,11 @@
 "use client";
-import CustomSelect from "@/components/layout/CustomSelect";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { OrdersPageSkeleton } from "@/components/skeleton-loading/PageSkeletons";
+import CustomDropdown from "@/components/layout/DashboardCustomDropdown";
 
-interface SelectOption {
-  label: string;
+interface Option {
   value: string;
+  label: string;
 }
 
 interface TableDataItem {
@@ -18,12 +19,19 @@ interface TableDataItem {
 }
 
 function OrdersPage() {
-  const [selected, setSelected] = useState<SelectOption>({
-    label: "All",
-    value: "all"
-  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [selected, setSelected] = useState<string>("all");
 
-  const options: SelectOption[] = [
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <OrdersPageSkeleton />;
+  }
+
+  const options: Option[] = [
     { value: "all", label: "All" },
     { value: "delivered", label: "Delivered" },
     { value: "processing", label: "Processing" },
@@ -68,17 +76,18 @@ function OrdersPage() {
     <div>
       <div className="flex flex-col sm:flex-row items-center justify-between gap-[10px] sm:gap-[20px] mb-[25px]">
         <div>
-          <CustomSelect
+          <CustomDropdown
             options={options}
             value={selected}
             onChange={setSelected}
+            placeholder="Select Filter"
           />
         </div>
         <div className="relative min-w-[250px]">
           <input
             type="text"
             placeholder="Search..."
-            className="w-full border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] text-[#F7F8F8B2] text-sm pl-[30px] px-4 py-[10px] placeholder:text-[#F7F8F8B2] focus-visible:outline-0"
+            className="w-full border border-[#F7F8F81C] bg-[#F7F8F80A] rounded-[7px] text-[#F7F8F8B2] text-sm pl-[30px] px-4 py-[10px] placeholder:text-[#F7F8F8B2] focus-visible:outline-0  focus-visible:border focus-visible:border-[#ffffff80] duration-300"
           />
           <svg 
             width="17" 
