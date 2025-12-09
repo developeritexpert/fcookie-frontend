@@ -14,12 +14,12 @@ export default function AboutFaq() {
         { que: "How much are shipping fees?", ans: "Shipping fees depend on destination, carrier, and insurance options." },
     ];
     return (
-        <div className='py-[30px] sm:py-[50px] md:py-[80px] lg:py-[120px] px-[20px] md:px-[30px] lg:px-[50px] relative overflow-hidden'>
+        <div className=' py-[30px] sm:py-[50px] md:py-[80px] lg:py-[120px] px-[20px] md:px-[30px] lg:px-[50px] relative overflow-hidden'>
             <div className='absolute z-0 bottom-[-30px] right-[-28%] w-[72%]'>
-                <h2 className='move-right leading-none font-bold text-[100px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[260px]  text-[#FFFFFF0F] '>fcookie</h2>
+                <h2 className='move-right leading-none font-bold text-[100px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[260px]  text-[#efb24d33] dark:text-[#FFFFFF0F] '>fcookie</h2>
             </div>
 
-            <div className='container'>
+            <div className='container' data-aos="fade-up" data-aos-delay="100">
                 <div className="w-full flex flex-col md:flex-row gap-[30px] lg:gap-[70px]  xl:gap-[100px]">
                     {/* LEFT SIDE TEXT */}
                     <div className="flex-1 ">
@@ -35,15 +35,15 @@ export default function AboutFaq() {
                     <div className="flex-1 basis-[100px]   lg:basis-[200px] xl:basis-[250px]">
 
 
-                        <div className="w-full  space-y-[25px]">
+                        <div className="w-full space-y-[15px] md:space-y-[20px]  lg:space-y-[25px]">
                             {faqs.map((item, idx) => {
                                 const isOpen = openIndex === idx;
                                 return (
                                     <div
                                         key={item.que}
-                                        className=" w-full rounded-lg border border-[#E6E6E6] dark:border-transparent bg-[#FFFFFF0A] text-[18px] md:text-[20px] lg:text-[24px] font-medium">
+                                        className=" w-full rounded-lg border border-[#E6E6E6] dark:border-transparent bg-[#FFFFFF0A]  md:text-[20px] lg:text-[24px] font-medium">
                                         <button
-                                            className="w-full flex items-center justify-between px-[20px] py-[15px]  lg:px-[30px] lg:py-[25px] text-left "
+                                            className="w-full text-[18px] md:text-[20px] lg:text-[24px] flex items-center justify-between px-[20px] py-[15px]  lg:px-[30px] lg:py-[25px] text-left "
                                             onClick={() => setOpenIndex(isOpen ? null : idx)}>
                                             <span>{item.que}</span>
                                             <span
@@ -54,7 +54,7 @@ export default function AboutFaq() {
                                         </button>
 
                                         <div
-                                            className={`px-[30px]  transition-[max-height,opacity] duration-200 overflow-hidden ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                                            className={` px-[20px] text-[16px] md:text-[18px] lg:text-[20px] lg:px-[30px]  transition-[max-height,opacity] duration-200 overflow-hidden ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
                                                 }`}>
                                             <p className="pb-[15px]">
                                                 {item.ans}</p>
@@ -66,7 +66,8 @@ export default function AboutFaq() {
                     </div>
                 </div>
 
-                <div className=" pt-[30px] sm:pt-[60px]  md:pt-[80px]   lg:pt-[120px]">
+
+                <div className=" pt-[40px] sm:pt-[60px]  md:pt-[80px]   lg:pt-[120px]">
                     <h2 className="text-[32px] md:text-[40px] lg:text-[60px]  xl:text-[80px] mb-[15px] md:mb-[24px] font-bold text-center">Join the Action?</h2>
                     <div className="flex justify-center">
                         <Link

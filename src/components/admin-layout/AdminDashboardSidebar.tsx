@@ -33,8 +33,8 @@ export default function AdminDashboardSidebar({
             <Image
               src="/icons/cookie.png"
               alt="Logo"
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               className="md:block hidden"
             />
           ) : (
@@ -69,7 +69,7 @@ export default function AdminDashboardSidebar({
       </div>
 
       {/* Navigation */}
-      <div className="flex-1 pt-[30px] pl-[10px] overflow-y-auto">
+      <div className="flex-1 pt-[30px] pl-[10px]">
         <nav className="flex flex-col space-y-[10px]">
           {adminSidebarItems.map((item) => (
             <AdminDashboardNavLink

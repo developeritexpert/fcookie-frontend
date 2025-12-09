@@ -1,9 +1,13 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Link from 'next/link';
 import FilterDropdown from "./Filterdropdown";
 import { IoChevronDown } from "react-icons/io5";
+import { CgLayoutGridSmall } from "react-icons/cg";
+import { BsArrowsAngleExpand } from "react-icons/bs";
+import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 const HERO_IMAGE = "/mnt/data/21d5008a-d5dd-4005-a4a2-afbb03982848.png";
 
@@ -27,20 +31,75 @@ const options = [
   { id: 4, label: "Newest", value: "newest" },
 ];
 
+type CardType = {
+  title: string;
+  price: string;
+  image: string;
+};
+
 export default function ProductsFilter() {
+  const [open, setOpen] = useState(false);
   const [viewType, setViewType] = useState("grid");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [selected, setSelected] = useState(options[0]);
   const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(options[0]);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [openFilter, setOpenFilter] = useState(false);
+  const [openView, setOpenView] = useState(false);
+  const [showOfferModal, setShowOfferModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
+  const [sidebarHidden, setSidebarHidden] = useState(true)
+
+  // dropdown hide when i click outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
 
+  // overflow-hidden Add and Remove 
+  useEffect(() => {
+    if (openView) {
+      document.body.classList.add("!overflow-hidden");
+    } else {
+      document.body.classList.remove("!overflow-hidden");
+    }
 
+    return () => {
+      document.body.classList.remove("!overflow-hidden");
+    };
+  }, [openView]);
 
+  // dropdown json
   const categories: Category[] = [
     { name: "Pokémon", count: 72552 },
     { name: "Basketball", count: 18820 },
     { name: "Baseball", count: 16940 },
   ];
+
+  // filter sidebar hidden 
+  useEffect(() => {
+    if (openFilter) {
+      setSidebarHidden(false);
+    } else {
+      const timer = setTimeout(() => {
+        setSidebarHidden(true);
+      }, 200);
+
+      return () => clearTimeout(timer);
+    }
+  }, [openFilter]);
+
 
   const graders: string[] = ["PSA", "BGS", "SGC", "CGC"];
   const grades: string[] = ["10", "9.5", "9", "8.5", "8"];
@@ -104,7 +163,10 @@ export default function ProductsFilter() {
   ];
 
 
-  const crds = [
+
+
+  // card json
+  const crds: CardType[] = [
     {
       "title": "2024 Bowman Draft Chrome Prospect Autograph Orange ",
       "price": "$2,690",
@@ -171,20 +233,49 @@ export default function ProductsFilter() {
     <div className="text-white pt-[16px]  px-[20px] md:px-[30px] lg:px-[50px] relative">
       <div className="absolute top-[100px] sm:top-[150px]  md:top-[325px] lg:top-[300px] left-0  bg-[#EFB24D]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
       <div className="absolute bottom-[-5%] right-0 bg-[#75DA5B]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div>
-      <div className="container ">
-        <div className="grid grid-cols-1 md:grid-cols-12 md:gap-4 lg:gap-8">
+      <div className="container " >
+        <div className="flex  md:gap-4 lg:gap-8">
           {/* SIDEBAR */}
-        
-            <aside className="md:col-span-3 hidden md:block pb-[30px] md:pb-[50px] pe-[15px] lg:pe-[30px] border-r border-[#E6E6E6] dark:border-[#343434]  me:-[15px] lg:me-[30px]">
-              <div className="sticky top-[100px]">
-                <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left mb-[13px] text-black dark:text-white">
-                  Filter By:
-                </h2>
-                {/* ------ Price ------ */}
-                <FilterDropdown title="Price">
-                  <div className="flex flex-col mt-[10px] gap-2">
-                    {prices.map((p) => (
-                      <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+          <aside
+            className={` pb-[30px] md:pb-[50px]           
+           transition-all duration-300 linear overflow-hidden transform
+           ${sidebarHidden ? "hidden" : ""}
+                 ${openFilter
+                ? "w-[25%] translate-x-0 opacity-100 pointer-events-auto border-r border-[#E6E6E6] dark:border-[#343434] me-[15px] pe-[15px] lg:pe-[30px] lg:me-[30px]"
+                : "w-0 -translate-x-full opacity-0 pointer-events-none"
+              } `}>
+
+            <div className="sticky top-0 ">
+              <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-semibold text-left mb-[13px] text-black dark:text-white">
+                Filter By:
+              </h2>
+              {/* ------ Price ------ */}
+              <FilterDropdown title="Price">
+                <div className="flex flex-col mt-[10px] gap-2">
+                  {prices.map((p) => (
+                    <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
+                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
+                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
+                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
+                      <span>{p}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
+
+              {/* ------ Category ------ */}
+              <FilterDropdown title="Category">
+                <div className="flex flex-col mt-[10px] gap-2">
+                  {categories.map((c) => (
+                    <label
+                      key={c.name}
+                      className="flex items-center justify-between text-sm cursor-pointer text-black dark:text-white "
+                    >
+                      <div className="flex items-center gap-[10px] ">
                         <input
                           type="checkbox"
                           className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
@@ -192,245 +283,226 @@ export default function ProductsFilter() {
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{p}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
-
-                {/* ------ Category ------ */}
-                <FilterDropdown title="Category">
-                  <div className="flex flex-col mt-[10px] gap-2">
-                    {categories.map((c) => (
-                      <label
-                        key={c.name}
-                        className="flex items-center justify-between text-sm cursor-pointer text-black dark:text-white "
-                      >
-                        <div className="flex items-center gap-[10px] ">
-                          <input
-                            type="checkbox"
-                            className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
-                           rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
-                           checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
-                              checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
-                            checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                          <span className=" group-hover:opacity-100 transition text-[16px] font-normal">
-                            {c.name}
-                          </span>
-                        </div>
-
-                        <span className=" transition text-[16px] font-normal">
-                          ({c.count})
+                        <span className=" group-hover:opacity-100 transition text-[16px] font-normal">
+                          {c.name}
                         </span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      </div>
 
-                {/* ------ Grader ------ */}
-                <FilterDropdown title="Grader">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {graders.map((g) => (
-                      <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+                      <span className=" transition text-[16px] font-normal">
+                        ({c.count})
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
+
+              {/* ------ Grader ------ */}
+              <FilterDropdown title="Grader">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {graders.map((g) => (
+                    <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{g}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{g}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
 
-                {/* ------ Grade ------ */}
-                <FilterDropdown title="Grade">
-                  <div className="flex flex-col gap-2 mt-[10px]">
-                    {grades.map((g) => (
-                      <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ Grade ------ */}
+              <FilterDropdown title="Grade">
+                <div className="flex flex-col gap-2 mt-[10px]">
+                  {grades.map((g) => (
+                    <label key={g} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{g}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{g}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ Year ------ */}
-                <FilterDropdown title="Year">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {years.map((y) => (
-                      <label key={y} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ Year ------ */}
+              <FilterDropdown title="Year">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {years.map((y) => (
+                    <label key={y} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{y}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{y}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ Set ------ */}
-                <FilterDropdown title="Set">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {sets.map((s) => (
-                      <label key={s} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ Set ------ */}
+              <FilterDropdown title="Set">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {sets.map((s) => (
+                    <label key={s} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{s}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{s}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
-                {/* ------ LAnguage ------ */}
-                <FilterDropdown title="Language">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {languages.map((l) => (
-                      <label key={l} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ LAnguage ------ */}
+              <FilterDropdown title="Language">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {languages.map((l) => (
+                    <label key={l} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{l}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{l}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ title/subject ------ */}
-                <FilterDropdown title="Title/Subject">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {titleSubject.map((t) => (
-                      <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
-                        <span>{t}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+              {/* ------ title/subject ------ */}
+              <FilterDropdown title="Title/Subject">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {titleSubject.map((t) => (
+                    <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input type="checkbox" className="accent-[#000] dark:accent-[#fff]" />
+                      <span>{t}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ title/PKMN ------ */}
-                <FilterDropdown title="Title/PKMN">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {titlePKMN.map((p) => (
-                      <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ title/PKMN ------ */}
+              <FilterDropdown title="Title/PKMN">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {titlePKMN.map((p) => (
+                    <label key={p} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{p}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{p}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ Events  ------ */}
-                <FilterDropdown title="Event">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {events.map((e) => (
-                      <label key={e} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ Events  ------ */}
+              <FilterDropdown title="Event">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {events.map((e) => (
+                    <label key={e} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{e}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{e}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ variants  ------ */}
-                <FilterDropdown title="Variant">
-                  <div className="flex flex-col gap-2 mt-[10px] ">
-                    {variants.map((v) => (
-                      <label key={v} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ variants  ------ */}
+              <FilterDropdown title="Variant">
+                <div className="flex flex-col gap-2 mt-[10px] ">
+                  {variants.map((v) => (
+                    <label key={v} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{v}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{v}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
-                {/* ------ TAgs  ------ */}
-                <FilterDropdown title="Tags">
-                  <div className="flex flex-col mt-[10px]  gap-2">
-                    {tags.map((t) => (
-                      <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
-                        <input
-                          type="checkbox"
-                          className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
+              {/* ------ TAgs  ------ */}
+              <FilterDropdown title="Tags">
+                <div className="flex flex-col mt-[10px]  gap-2">
+                  {tags.map((t) => (
+                    <label key={t} className="flex items-center gap-2 text-[16px] text-black dark:text-white">
+                      <input
+                        type="checkbox"
+                        className="w-[22px] h-[22px] appearance-none border border-[#E6E6E6] dark:border-[#ffffff1a]
                            rounded-sm  bg-transparent relative cursor-pointer checked:bg-black dark:checked:bg-white   
                            checked:after:content-['']  checked:after:absolute checked:after:top-1/2 checked:after:left-1/2 checked:after:-translate-x-1/2
                               checked:after:-translate-y-1/2 checked:after:w-[5px] checked:after:h-[10px] checked:after:border-r-2 checked:after:border-b-2
                             checked:after:border-white dark:checked:after:border-black after:rotate-45"/>
-                        <span>{t}</span>
-                      </label>
-                    ))}
-                  </div>
-                </FilterDropdown>
+                      <span>{t}</span>
+                    </label>
+                  ))}
+                </div>
+              </FilterDropdown>
 
 
 
 
-                {/* Clear filters */}
-                <button className=" mt-[50px] py-[14px] px-[33px] text-[16px] font-normal bg-[#EFB24D] text-black  rounded-md font-semibold hover:bg-[#dca345] transition">
-                  Clear Filters
-                </button>
-              </div>
-            </aside>
-        
+              {/* Clear filters */}
+              <button className=" mt-[50px] py-[14px] px-[33px] text-[16px] font-normal bg-[#EFB24D] text-black  rounded-md font-semibold hover:bg-[#dca345] transition">
+                Clear Filters
+              </button>
+            </div>
+          </aside>
 
-
-          {/* MOBILE TOGGLE BUTTON */}
+          {/* MOBILE TOGGLE Sidebar */}
           <div className="relative md:hidden">
 
             {/* FIXED FILTER BUTTON */}
+
             <button
               onClick={() => setSidebarOpen(true)}
               className="fixed left-4 bottom-4 z-30 bg-white dark:bg-[#0D0D0D] text-black dark:text-white
-               px-6 py-2 rounded-md shadow-lg border border-[#E6E6E6] dark:border-[#343434]">
-              Filter
+               px-6 py-2 rounded-md shadow-lg border border-[#E6E6E6] dark:border-[#343434] flex  items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                strokeWidth="2" className="w-4 h-4 stroke-black dark:stroke-white">
+                <path d="M3 4h18M6 12h12M10 20h4" />
+              </svg>
+              Filters
             </button>
 
 
@@ -692,7 +764,7 @@ export default function ProductsFilter() {
 
 
                 {/* Clear filters */}
-                <button className=" mt-[50px] py-[14px] px-[33px] text-[16px] font-normal bg-[#EFB24D] text-black  rounded-md font-semibold hover:bg-[#dca345] transition">
+                <button className=" mt-[50px] py-[14px] px-[33px] text-[16px] font-normal bg-[#EFB24D] text-black  rounded-md  hover:bg-[#dca345] transition">
                   Clear Filters
                 </button>
 
@@ -700,147 +772,158 @@ export default function ProductsFilter() {
             </div>
           </div>
 
+
           {/* PRODUCTS GRID */}
+          <main
+            className={`pb-[50px] md:pb-[80px] lg:pb-[120px] transition-all duration-300 ease-in-out
+               transform origin-right ${openFilter ? "w-[75%] mr-auto h-auto" : "w-[100%] h-auto mr-0"}`}>
+            <div className="w-full">
 
-          <main className="col-span-full md:col-span-9 pb-[50px]  md:pb-[80px] lg:pb-[120px]">
+              {/* ---------- TOP BAR ---------- */}
+              <div className="flex flex-col  flex-wrap sm:flex-row sm:items-center gap-5 justify-between w-full py-4">
+                <div className="flex flex-wrap items-center gap-2">
+                  {/* FILTER BUTTON */}
+                  <button
+                    onClick={() => setOpenFilter(prev => !prev)}
+                    className="hidden md:flex items-center gap-2 h-[46px] px-[30px] border border-[#E6E6E6] dark:border-[#343434] bg-transparent 
+                   text-black dark:text-white rounded-[5px] text-[14px] font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                      strokeWidth="2" className="w-4 h-4 stroke-black dark:stroke-white">
+                      <path d="M3 4h18M6 12h12M10 20h4" />
+                    </svg>
+                    Filters
+                  </button>
 
-            {/* topbar  */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-5 justify-between w-full py-4">
+                  {/* GRID Button */}
+                  <button
+                    onClick={() => setViewType("grid")}
+                    className={`p-2 border rounded-[1px] h-[46px] w-[46px] flex justify-center items-center
+                       ${viewType === "grid"
+                        ? "bg-white border-[#E6E6E6]"
+                        : "bg-[#0D0D0D] border-[#E6E6E6] dark:border-[#343434]"}`}>
+                    <svg width="19" height="19" viewBox="0 0 19 19" fill="currentColor"
+                      className={`${viewType === "grid" ? "text-black" : "text-white"}`}>
+                      <path d="M3.27586 0C1.47031 0 0 1.47031 0 3.27586V15.7241C0 17.5297 1.47031 19 3.27586 19H15.7241C17.5297 19 19 17.5297 19 15.7241V3.27586C19 1.47031 17.5297 0 15.7241 0H3.27586ZM3.27586 1.31034H8.84876V1.33594V8.84487H1.64186C1.5203 8.84487 1.41281 8.8807 1.31428 8.937V3.27599C1.31428 2.19213 2.19594 1.31047 3.27979 1.31047L3.27586 1.31034ZM1.31034 15.7241V10.0631C1.40888 10.1194 1.51637 10.1553 1.63793 10.1553H8.84483V17.6642V17.6898H3.27193C2.18808 17.6898 1.30641 16.8081 1.30641 15.7243L1.31034 15.7241ZM15.7241 17.6897H10.1512V17.6641V10.1551H17.6857V15.7241C17.6857 16.8079 16.8041 17.6896 15.7202 17.6896L15.7241 17.6897ZM17.6897 3.27586V8.84483H10.1552V1.3359V1.3103H15.7281C16.8119 1.3103 17.6936 2.19197 17.6936 3.27582L17.6897 3.27586Z" />
+                    </svg>
+                  </button>
 
-              <div className="flex items-center gap-2">
+                  {/* SMALL GRID Button */}
+                  <button
+                    onClick={() => setViewType("small-grid")}
+                    className={`p-2 border rounded-[1px] h-[46px] w-[46px] flex justify-center items-center
+                     ${viewType === "small-grid"
+                        ? "bg-white border-[#E6E6E6]"
+                        : "bg-[#0D0D0D] border-[#E6E6E6] dark:border-[#343434]"
+                      }`}>
 
-                {/* GRID Button */}
-                {/* GRID Button */}
-                <button
-                  onClick={() => setViewType("grid")}
-                  className={`p-2 border rounded-[1px] h-[46px] w-[46px] flex justify-center items-center
-    ${viewType === "grid"
-                      ? "bg-white border-[#E6E6E6]"
-                      : "bg-[#0D0D0D] border-[#E6E6E6] dark:border-[#343434]"
-                    }`}
-                >
-                  <svg
-                    width="19"
-                    height="19"
-                    viewBox="0 0 19 19"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className={`transition-all ${viewType === "grid" ? "text-black" : "text-white"}`}
-                    fill="currentColor"
-                  >
-                    <path d="M3.27586 0C1.47031 0 0 1.47031 0 3.27586V15.7241C0 17.5297 1.47031 19 3.27586 19H15.7241C17.5297 19 19 17.5297 19 15.7241V3.27586C19 1.47031 17.5297 0 15.7241 0H3.27586ZM3.27586 1.31034H8.84876V1.33594V8.84487H1.64186C1.5203 8.84487 1.41281 8.8807 1.31428 8.937V3.27599C1.31428 2.19213 2.19594 1.31047 3.27979 1.31047L3.27586 1.31034ZM1.31034 15.7241V10.0631C1.40888 10.1194 1.51637 10.1553 1.63793 10.1553H8.84483V17.6642V17.6898H3.27193C2.18808 17.6898 1.30641 16.8081 1.30641 15.7243L1.31034 15.7241ZM15.7241 17.6897H10.1512V17.6641V10.1551H17.6857V15.7241C17.6857 16.8079 16.8041 17.6896 15.7202 17.6896L15.7241 17.6897ZM17.6897 3.27586V8.84483H10.1552V1.3359V1.3103H15.7281C16.8119 1.3103 17.6936 2.19197 17.6936 3.27582L17.6897 3.27586Z" />
-                  </svg>
-                </button>
+                    <CgLayoutGridSmall
+                      className={`
+                           ${viewType === "small-grid" ? "text-black" : "text-white"} w-8 h-8`} />
 
-                {/* LIST Button */}
-                <button
-                  onClick={() => setViewType("list")}
-                  className={`p-2 border rounded-[1px] h-[46px] w-[46px] flex justify-center items-center
-                     ${viewType === "list"
-                      ? "bg-white border-[#E6E6E6]"
-                      : "bg-[#0D0D0D] border-[#E6E6E6] dark:border-[#343434]"
-                    }`}
-                >
-                  <Image
-                    src="/img/list-img.png"
-                    alt=""
-                    width={26}
-                    height={16}
-                    className={`transition-all
-                      ${viewType === "list"
-                        ? "filter-none"             // active → black
-                        : "filter invert brightness-0 saturate-0" // inactive → white
-                      }
-    `}
-                  />
-                </button>
+                  </button>
 
-                {/* Select Box */}
+                  {/* Sort Dropdown */}
+                  <div className="relative w-[220px]" ref={dropdownRef}>
+                    <div
+                      className="flex justify-between items-center cursor-pointer px-[19px] h-[46px] border border-[#E6E6E6] dark:border-[#343434]
+                     bg-white dark:bg-transparent text-black dark:text-white rounded text-[14px] font-medium"
+                      onClick={() => setIsOpen(!isOpen)} >
+                      {selected.label}
 
+                      <IoChevronDown className={`${isOpen ? "rotate-180" : ""} transition-transform`} />
+                    </div>
 
-
-
-                <div className="relative w-[220px]">
-                  {/* Dropdown header */}
-                  <div
-                    className="flex justify-between items-center cursor-pointer px-[19px] h-[46px] border border-[#E6E6E6] dark:border-[#343434]
-                   bg-white dark:bg-[#0D0D0D] text-black dark:text-white rounded text-[14px] font-medium"
-                    onClick={() => setIsOpen(!isOpen)}
-                  >
-                    {selected.label} {/* Will never be empty */}
-                    <IoChevronDown className={`ml-2 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                    {/* Dropdown Menu */}
+                    {isOpen && (
+                      <div className="absolute top-full left-0 w-full mt-1 border border-[#E6E6E6] dark:border-[#343434]
+                        bg-white dark:bg-[#0D0D0D] rounded shadow-md z-50">
+                        {options.map((option) => (
+                          <div
+                            key={option.id}
+                            onClick={() => {
+                              setSelected(option);
+                              setIsOpen(false);
+                            }}
+                            className="px-4 py-2 cursor-pointer text-black dark:text-white text-[14px]
+                          hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
+                          >
+                            {option.label}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  {/* Dropdown options */}
-                  {isOpen && (
-                    <div className="absolute top-full left-0 w-full mt-1 border border-[#E6E6E6] dark:border-[#343434]
-                        bg-white dark:bg-[#0D0D0D] rounded shadow-md z-50">
-                      {options.map((option) => (
-                        <div
-                          key={option.id}
-                          className="px-4 py-2 cursor-pointer text-black dark:text-white text-[14px] hover:bg-[#F5F5F5] dark:hover:bg-[#1A1A1A]"
-                          onClick={() => {
-                            setSelected(option);
-                            setIsOpen(false);
-                          }}
-                        >
-                          {option.label}
-                        </div>
-                      ))}
-                    </div>
-                  )}
+
+
                 </div>
 
-
+                <p className="text-[18px] font-medium text-black dark:text-white">
+                  Showing <span>1–12</span> of 236 Products
+                </p>
               </div>
 
-              <p className="text-[18px] font-medium text-black dark:text-white">
-                Showing <span>1–12</span> of 236 Products
-              </p>
-            </div>
+              {/* ---------- GRID SECTION ---------- */}
+              <div
+                className={`grid gap-[20px] transition-all duration-300
+                  ${viewType === "grid" ? openFilter
+                    ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3"
+                    : "grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4"
+                    : openFilter
+                      ? "grid-cols-1  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5  gap-[7px] sm:gap-[10px]  md:gap-[15px]"
+                      : "grid-cols-2  sm:grid-cols-3 md:grid-cols-4  xl:grid-cols-6 gap-[7px] sm:gap-[10px] md:gap-[15px]"}
+                      `}>
+                {crds.map((item, index) => (
+                  <article
+                    key={index}
+                    // onClick={() => {
+                    //   setSelectedCard(item);
+                    //   setOpenView(true);
+                    // }}
+                    className=" border rounded-[8px] sm:rounded-[14px] flex flex-col p-[15px] border-[#E6E6E6] dark:border-[#1E1E1E]
+                       bg-transparent dark:bg-[#0D0D0D] hover:shadow-lg transition-shadow duration-300
+                       hover:shadow-[#EFB24D]/20 h-full relative cursor-pointer group">
 
+                    {/* VIEWPORT BUTTON */}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedCard(item);
+                        setOpenView(true);
+                      }}
+                      className="  absolute top-[15px] right-[15px] w-8 h-8 flex items-center justify-center cursor-pointer transition"
+                      aria-label="Open viewport">
+                      <BsArrowsAngleExpand
+                        className="text-black dark:text-white opacity-0 group-hover:opacity-100 transition w-5 h-5"
+                      />
+                    </button>
 
-            <div
-              className={
-                viewType === "grid"
-                  ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-[20px]"
-                  : "flex flex-col gap-[20px]"
-              }
-            >
-              {crds.map((item, index) => (
-                <article
-                  key={index}
-                  className={`  group  border rounded-[14px] px-[10px] py-[20px] 
-                  border-[#E6E6E6] dark:border-[#1E1E1E] bg-transparent dark:bg-[#0D0D0D] 
-                  hover:shadow-lg transition-shadow duration-300 hover:shadow-[#EFB24D]/20         
-                   ${viewType === "list" ? "flex flex-row gap-5 items-center" : "flex  flex-col"}`}
-                >
-                  {/* Image */}
-                  <div
-                    className={
-                      viewType === "list"
-                        ? "w-[120px] h-[190px] flex items-center justify-center"
-                        : " h-[180px] flex items-center justify-center rounded-[4px] overflow-hidden"
-                    }>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={108}
-                      height={180}
-                      className="object-contain group-hover:scale-105 transition-transform"
-                    />
-                  </div>
+                    {/* IMAGE */}
+                    <div
+                      className={`flex items-center justify-center rounded-[4px]
+                ${viewType === "small-grid" ? "h-[140px]" : "h-[180px]"}`}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={120}
+                        height={180}
+                        className="h-full object-contain group-hover:scale-105 transition-transform"
+                      />
+                    </div>
 
-                  {/* Title & Price */}
-                  <div className={viewType === "list" ? "flex-1" : "mt-[20px]  sm:mt-[40px] mb-[11px]"}>
-                    <h4 className="text-[16px] font-medium text-black dark:text-white">
+                    {/* TITLE */}
+                    <h4 className="text-[14px] sm:text-[16px] font-medium text-black dark:text-white mt-[20px] mb-[10px]">
                       {item.title}
                     </h4>
-                  </div>
-                  <p className="text-[15px] font-normal opacity-70 mt-auto text-[#6C6C6C]">
-                    {item.price}
-                  </p>
-                </article>
-              ))}
+
+                    {/* PRICE */}
+                    <p className="text-[15px] font-normal opacity-70 mt-auto text-[#6C6C6C]">
+                      {item.price}
+                    </p>
+                  </article>
+                ))}
+              </div>
             </div>
 
             {/* PAGINATION */}
@@ -889,9 +972,196 @@ export default function ProductsFilter() {
               </div>
 
             </div>
+
           </main>
         </div>
       </div>
+
+      {/*Buy Auth Modal */}
+      {
+        showAuthModal && (
+          <div className="fixed inset-0  backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-[#0f0f0f] text-black dark:text-white border border-[#E6E6E6] dark:border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
+              <button
+                onClick={() => setShowAuthModal(false)}
+                className="absolute top-4 right-4   transition">
+                x
+              </button>
+
+              <h2 className="text-2xl font-bold mb-6">Login to Continue</h2>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email</label>
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="w-full dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg px-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Password</label>
+                  <input
+                    type="password"
+                    placeholder="Enter your password"
+                    className="w-full dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg px-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                  />
+                </div>
+
+                <button className="w-full bg-[#EFB24D] hover:bg-[#d97706] text-black py-3 rounded-lg font-semibold transition">
+                  Login
+                </button>
+
+                <p className="text-center text-sm text-gray-400">
+                  Don't have an account? <a href="#" className="text-[#EFB24D] hover:underline">Sign up</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+
+      {/* Make Offer Modal */}
+      {
+        showOfferModal && (
+          <div className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+            <div className="bg-white dark:bg-[#0f0f0f] border border-[#E6E6E6] dark:border-[#1a1a1a]  text-black dark:text-white  rounded-2xl p-8 max-w-md w-full relative">
+              <button
+                onClick={() => setShowOfferModal(false)}
+                className="absolute top-4 right-4  transition"  >
+                x
+              </button>
+
+              <h2 className="text-2xl font-bold mb-6">Make an Offer</h2>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">Your Offer</label>
+                  <div className="relative">
+                    <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">$</span>
+                    <input
+                      type="number"
+                      placeholder="0.00"
+                      className="w-full bg-white dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg pl-8 pr-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-2">Listed price: $2,690</p>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium mb-2">Message (Optional)</label>
+                  <textarea
+                    placeholder="Add a message to the seller..."
+                    rows={4}
+                    className="w-full bg-white dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg px-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] resize-none"
+                  />
+                </div>
+
+                <button className="w-full bg-[#EFB24D] hover:bg-[#d97706] text-black py-3 rounded-lg font-semibold transition">
+                  Submit Offer
+                </button>
+              </div>
+            </div>
+          </div>
+        )
+      }
+
+
+
+      {/* viewport Toggle Content */}
+      {openView && selectedCard && (
+        <div className="fixed inset-0 z-50 hidden  bg-[#000000d0] lg:flex items-center justify-center h-screen">
+          <div className="relative z-50 w-full max-w-[900px]  bg-[white] dark:bg-[#0D0D0D] text-black dark:text-white rounded-xl overflow-hidden shadow-xl flex flex-col lg:flex-row transition">
+
+            <button onClick={() => {
+              setOpenView(false);
+              setSelectedCard(null);
+            }}
+              className="absolute top-4 right-4 p-2 rounded-md">
+              x
+            </button>
+
+
+            <div className="w-full lg:w-1/2 bg-white dark:bg-[#111] flex items-center justify-center p-6">
+              <img
+                src={selectedCard.image}
+                alt={selectedCard.title}
+                className="max-h-[350px] object-contain"
+              />
+            </div>
+            <div className="w-full lg:w-1/2 p-6 space-y-4">
+
+              <h1 className="text-xl pr-[20px] font-semibold leading-snug">
+                {selectedCard.title}
+              </h1>
+
+
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "CGC",
+                  "9 MINT",
+                  "Pokémon",
+                  "English",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="px-3 py-1 border border-[#E6E6E6] dark:border-transparent transition-all hover:border-[#EFB24D] hover:text-white hover:bg-[#EFB24D] bg-white/10 rounded-full text-sm">
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+
+
+              <div className="border border-[#E6E6E6]  dark:border-white/10 p-4 rounded-lg flex items-center justify-between">
+                <span className="">Not listed</span>
+
+                <div className=" flex flex-wrap gap-[15px]">
+                  <button
+                    onClick={() => setShowAuthModal(true)}
+                    className=" px-3 py-[10px] w-full min-w-[130px] rounded-md bg-[#EFB24D] border border-[#EFB24D] transition-all hover:text-white text-black "
+                  >
+                    Buy Now
+                  </button>
+
+                  <button
+                    onClick={() => setShowOfferModal(true)}
+                    className=" px-3 py-[10px] w-full min-w-[130px] rounded-md border border-[#E6E6E6] dark:border-[#FFFFFF0A] hover:text-white bg-[#EFB24D] text-black transition-all  "
+                  >
+                    Make an Offer
+                  </button>
+                </div>
+              </div>
+
+              <div className="border border-[#E6E6E6]  dark:border-white/10 p-4 rounded-lg space-y-2">
+
+
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-semibold">{selectedCard.price}</span>
+                  <span className="text-sm text-gray-400">Expires in 7 days</span>
+                </div>
+
+                <p className="text-sm text-gray-400">
+                  From <span className="text-black dark:text-white font-medium">Fcookie</span>
+                </p>
+              </div>
+
+
+              <div className="mt-[20px]">
+
+                <Link href="/product-detail"  >
+                  <p className="w-[fit-content] rounded-md px-[24px] py-[12px] border border-[#E6E6E6] flex items-center gap-2  dark:border-white/10">
+                    <FaArrowUpRightFromSquare /> Open Full Page
+                  </p>
+                </Link>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

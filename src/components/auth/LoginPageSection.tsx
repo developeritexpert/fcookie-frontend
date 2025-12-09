@@ -78,9 +78,9 @@ export default function LoginPageSection() {
 
   return (
     <>
-      <section className="min-h-[calc(100vh-130px)] py-[50px] px-[20px] md:px-[30px] lg:px-[50px] flex items-center justify-center relative">
+      <section className="py-[50px] px-[20px] md:px-[30px] lg:px-[50px] flex items-center justify-center relative">
         <div className="mx-auto max-w-[1000px]">
-          <div className="flex md:flex-row flex-col-reverse gap-[50px] items-center pb-[150px]">
+          <div className="flex md:flex-row flex-col-reverse gap-[50px] items-center pb-[100px] lg:pb-[150px]">
 
             {/* LEFT IMAGE */}
             <div className="basis-[50%]">
@@ -115,8 +115,8 @@ export default function LoginPageSection() {
                         name="email"
                         type="email"
                         placeholder="Email"
-                        className="w-full text-sm border border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px]
-                        focus-visible:outline-none focus-visible:border focus-visible:border-[#ffffff80] duration-300"
+                        className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px]
+                        focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] duration-300"
                       />
                       <ErrorMessage
                         name="email"
@@ -131,8 +131,8 @@ export default function LoginPageSection() {
                         name="password"
                         type="password"
                         placeholder="Password"
-                        className="w-full text-sm border border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px]
-                        focus-visible:outline-none focus-visible:border focus-visible:border-[#ffffff80] duration-300"
+                        className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px]
+                        focus-visible:outline-0 focus-visible:border focus-visible:border-[#ffffff80] duration-300"
                       />
                       <ErrorMessage
                         name="password"
@@ -147,12 +147,12 @@ export default function LoginPageSection() {
                         <Field type="checkbox" name="rememberMe" className="peer hidden" />
 
                         <div
-                          className="h-4 w-4 border border-[#FFFFFF1C] duration-300 
-                          peer-checked:border-[#FFFFFF80] rounded-[5px] flex items-center justify-center transition"
+                          className="h-4 w-4 border border-[#E6E6E6] dark:border-[#FFFFFF1C] duration-300 
+                          peer-checked:border-[#000] dark:peer-checked:border-[#FFFFFF80] rounded-[5px] flex items-center justify-center transition"
                         ></div>
 
                         <svg
-                          className="hidden peer-checked:block w-3 h-3 text-white absolute left-0.5"
+                          className="hidden peer-checked:block w-3 h-3 text-black dark:text-white  absolute left-0.5"
                           fill="none"
                           stroke="currentColor"
                           strokeWidth="3"

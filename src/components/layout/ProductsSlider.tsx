@@ -71,27 +71,29 @@ export default function ProductsSlider(): JSX.Element {
 
   return (
     <div className="pt-[30px] lg:pt-[50px] pb-[50px] lg:pb-[110px] px-[20px] md:px-[30px] lg:px-[50px] overflow-hidden relative  ">
-      <div className=" move-right absolute   bottom-0 left-[-20%] z-20 w-[300px] h-[75px]   sm:w-[400px] sm:h-[120px]   md:w-[550px] md:h-[130px]   lg:w-[650px] lg:h-[150px]  xl:w-[876px] xl:h-[195px]   bg-[url('/img/fcookie.png')]  bg-no-repeat bg-contain"></div>
+      {/* <div className=" move-right absolute   z-20 w-[300px] h-[75px]   sm:w-[400px] sm:h-[120px]   md:w-[550px] md:h-[130px]   lg:w-[650px] lg:h-[150px]  xl:w-[876px] xl:h-[195px]   bg-[url('/img/fcookie.png')]  bg-no-repeat bg-contain"></div> */
+       <div className='absolute z-20  bottom-[-12px] sm:bottom-[-19px] md:bottom-[-35px] left-[-20%] w-[72%]'>
+                <h2 className='move-left leading-none font-bold text-[100px] sm:text-[130px] md:text-[170px] lg:text-[200px] xl:text-[260px]  text-[#efb24d33] dark:text-[#FFFFFF0F] '>fcookie</h2>
+            </div>}
       <div className="container relative">
         <div className="absolute z-10 top-0 left-[-200%] bg-white dark:bg-black w-[200%] h-full "></div>
         <div className="flex justify-between mb-[30px] text-black dark:text-white">
-          <h2 className="font-semibold text-[24px] md:text-[28px] lg:text-[32px] ">
+          <h2 className="font-semibold text-[20px] sm:text-[24px] md:text-[28px] lg:text-[32px] ">
             Featured Products
           </h2>
 
-          <Link href="/" className="flex gap-1 items-center ">
-            <TfiLayoutLineSolid />
+          <Link href="/" className="text-[14px] sm:text-[16px] text-right inline">
+            <TfiLayoutLineSolid  className="mr-1 inline"/>
             Explore All Collections
           </Link>
         </div>
-
         <Slider ref={sliderRef} {...settings}>
           {slides.map((item, i) => (
             <div
               key={i}
               className="group h-full p-[14px] pb-[24px] border border-[#E6E6E6] dark:border-[#1E1E1E] w-full bg-white dark:bg-[#0D0D0D] rounded-[14px]  transition-all duration-300 hover:shadow-lg hover:shadow-[#EFB24D]/20"
             >
-              <div className="bg-[#1921610A] rounded-[14px] flex items-center justify-center overflow-hidden  ">
+              <div className="bg-[#1921610A] rounded-[14px] flex items-center justify-center">
                 <Image
                   src={item.image}
                   alt={item.title}

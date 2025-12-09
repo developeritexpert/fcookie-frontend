@@ -112,6 +112,7 @@ export default function ProductDetailPage() {
           <Breadcrumb items={breadcrumbItems} />
         </div>
       </div>
+
       {/* Main Content */}
       <div className=" px-[20px] md:px-[30px] lg:px-[50px] pt-[30px] pb-[30px] sm:pt-[40px] sm:pb-[40px] md:pt-[50px] md:pb-[60px] lg:pb-[80px] xl:pb-[120px] relative">
         <div className="absolute top-0 left-0   bg-[#EFB24D]/20 blur-[724px] -z-10 h-[25%] w-full"></div>
@@ -123,43 +124,43 @@ export default function ProductDetailPage() {
             <div className="space-y-6 ">
               <div className="sticky top-[100px] ">
                 {/* <div className="relative"> */}
-                  {/* <div className="absolute bottom-[-5%] sm:bottom-[-10%]  md:bottom-[-15%] lg:bottom-[-20%] left-0  bg-[#EFB24D]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div> */}
-                 {/* Main Image */}
-                  <div className="bg-[#FFFFFF05] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-2xl py-[60px]  md:py-[114px] flex items-center justify-center min-h-[350px] md:min-h-[500px] relative">
-                    <div className="absolute top-[15px] right-[16px] sm:top-[19px] sm:right-[27px] flex gap-2">
-                      <button
-                        onClick={() => setIsWatchlisted(!isWatchlisted)}
-                        className=" transition" >
-                        <Heart className={`w-5 h-5 ${isWatchlisted ? 'fill-red-500 text-red-500' : 'text-black dark:text-white'}`} />
-                      </button>
-                      <span className="text-black dark:text-white text-[14px] font-normal">
-                        3 Watching
-                      </span>
-                    </div>
-                    <img
-                      src={productImages[selectedImage]}
-                      alt="Product"
-                      className=" w-full max-w-full max-h-[250px]  sm:max-w-[280px] sm:max-h-[400px] object-contain"
-                    />
+                {/* <div className="absolute bottom-[-5%] sm:bottom-[-10%]  md:bottom-[-15%] lg:bottom-[-20%] left-0  bg-[#EFB24D]/20 blur-[150px] -z-10 h-[108px] w-[108px] md:h-[208px] md:w-[208px] lg:h-[308px] lg:w-[308px]"></div> */}
+                {/* Main Image */}
+                <div className="bg-[#FFFFFF05] border border-[#E6E6E6] dark:border-[#FFFFFF1C] rounded-2xl py-[60px]  md:py-[114px] flex items-center justify-center min-h-[350px] md:min-h-[500px] relative">
+                  <div className="absolute top-[15px] right-[16px] sm:top-[19px] sm:right-[27px] flex gap-2">
+                    <button
+                      onClick={() => setIsWatchlisted(!isWatchlisted)}
+                      className=" transition" >
+                      <Heart className={`w-5 h-5 ${isWatchlisted ? 'fill-red-500 text-red-500' : 'text-black dark:text-white'}`} />
+                    </button>
+                    <span className="text-black dark:text-white text-[14px] font-normal">
+                      3 Watching
+                    </span>
                   </div>
+                  <img
+                    src={productImages[selectedImage]}
+                    alt="Product"
+                    className=" w-full max-w-full max-h-[250px]  sm:max-w-[280px] sm:max-h-[400px] object-contain"
+                  />
+                </div>
 
-                  {/* Thumbnail Images */}
-                  <div className="grid grid-cols-4 gap-4 mt-[15px]" >
-                    {productImages.map((img, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedImage(idx)}
-                        className={`border-2 ${selectedImage === idx ? 'border-[#f59e0b]  ' : ' border-[#E6E6E6] dark:border-[#FFFFFF1C]'
-                          } rounded-xl  p-2 sm:p-4 flex items-center justify-center h-[100px] hover:border-[#f59e0b] transition`}
-                      >
-                        <img
-                          src={img}
-                          alt={`Thumbnail ${idx + 1}`}
-                          className="max-w-full max-h-full object-contain"
-                        />
-                      </button>
-                    ))}
-                  </div>
+                {/* Thumbnail Images */}
+                <div className="grid grid-cols-4 gap-4 mt-[15px]" >
+                  {productImages.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(idx)}
+                      className={`border-2 ${selectedImage === idx ? 'border-[#f59e0b]  ' : ' border-[#E6E6E6] dark:border-[#FFFFFF1C]'
+                        } rounded-xl  p-2 sm:p-4 flex items-center justify-center h-[100px] hover:border-[#f59e0b] transition`}
+                    >
+                      <img
+                        src={img}
+                        alt={`Thumbnail ${idx + 1}`}
+                        className="max-w-full max-h-full object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
                 {/* </div> */}
               </div>
             </div>
@@ -309,7 +310,7 @@ export default function ProductDetailPage() {
                   <span className="text-lg">
 
                     <svg width="15" height="16" viewBox="0 0 15 16" xmlns="http://www.w3.org/2000/svg" className="transition-colors duration-300 text-black dark:text-white">
-                      <path fillRule="evenodd" clipRule="evenodd"  d="M4.50375 1.3056C3.90846 1.13013 3.34334 1.2064 2.91196 1.528C2.48006 1.8496 2.23497 2.3776 2.21363 3.0128C2.17877 3.624 1.80047 4.16053 1.24316 4.38667C0.654627 4.60587 0.241459 5.008 0.0765041 5.528C-0.0884509 6.048 0.0161421 6.62347 0.363224 7.14987C0.685849 7.66507 0.68689 8.32747 0.365826 8.84587C0.0156217 9.3776 -0.0879305 9.95253 0.0765041 10.472C0.241459 10.9925 0.655668 11.3952 1.23847 11.6117C1.79526 11.8347 2.17617 12.3696 2.21363 12.9819C2.23497 13.6235 2.48058 14.1509 2.91196 14.472C3.34386 14.7936 3.91002 14.8699 4.50583 14.6939C5.08344 14.5392 5.6985 14.7424 6.08045 15.2155C6.46552 15.7211 6.96663 16 7.5 16C8.03389 16 8.53552 15.7205 8.91643 15.2192C9.29525 14.7456 9.90928 14.5397 10.4895 14.6928C11.0915 14.8699 11.6567 14.7936 12.088 14.472C12.5199 14.1504 12.765 13.6224 12.7864 12.9872C12.8212 12.376 13.1995 11.8395 13.7568 11.6133C14.3454 11.3941 14.7585 10.992 14.9235 10.472C15.0885 9.952 14.9839 9.37653 14.6368 8.85013C14.3142 8.33493 14.3131 7.67253 14.6342 7.15413C14.9844 6.6224 15.0879 6.04747 14.9235 5.528C14.7585 5.00747 14.3443 4.6048 13.7615 4.38827C13.2047 4.16533 12.8238 3.6304 12.7864 3.01813C12.765 2.37653 12.5194 1.84907 12.088 1.528C11.6561 1.2064 11.09 1.13013 10.4942 1.30613C9.91656 1.4608 9.3015 1.2576 8.91955 0.784533C8.53448 0.278933 8.03337 0 7.5 0C6.96611 0 6.46448 0.279467 6.08357 0.7808C5.70475 1.2544 5.09072 1.46027 4.51052 1.3072L4.50375 1.3056ZM4.22119 2.33227C4.22536 2.33333 4.229 2.3344 4.23316 2.33547C5.21301 2.6016 6.25425 2.25493 6.8943 1.44907C6.8969 1.44587 6.8995 1.44267 6.9021 1.43947C7.06758 1.2208 7.26792 1.06667 7.5 1.06667C7.73208 1.06667 7.93242 1.2208 8.0979 1.43947C8.1005 1.44267 8.1031 1.44587 8.1057 1.4496C8.74575 2.25493 9.78699 2.6016 10.7668 2.33547C10.7705 2.3344 10.7746 2.33333 10.7783 2.33227C11.0379 2.25493 11.2882 2.25067 11.4761 2.39093C11.6639 2.53067 11.7378 2.776 11.7462 3.05227C11.7462 3.05653 11.7462 3.0608 11.7467 3.0656C11.8029 4.1024 12.446 5.01013 13.3915 5.38507C13.3952 5.38667 13.3988 5.38827 13.403 5.38987C13.6569 5.4832 13.862 5.63093 13.9338 5.8576C14.0056 6.08373 13.9244 6.3264 13.7725 6.5552C13.7704 6.55893 13.7678 6.56267 13.7657 6.56587C13.2162 7.43893 13.2162 8.56107 13.7657 9.4336C13.7683 9.43733 13.7704 9.44107 13.7725 9.44427C13.9244 9.67307 14.0056 9.91627 13.9338 10.1424C13.862 10.3685 13.6575 10.5163 13.403 10.6101C13.3994 10.6117 13.3952 10.6128 13.391 10.6144C12.446 10.9899 11.8029 11.8976 11.7467 12.9349C11.7467 12.9392 11.7467 12.9429 11.7462 12.9472C11.7378 13.224 11.6639 13.4693 11.4761 13.6091C11.2882 13.7488 11.0379 13.7451 10.7788 13.6677C10.7746 13.6667 10.771 13.6656 10.7668 13.6645C9.78699 13.3984 8.74575 13.7451 8.1057 14.5509C8.1031 14.5541 8.1005 14.5573 8.0979 14.5605C7.93242 14.7792 7.73208 14.9333 7.5 14.9333C7.26792 14.9333 7.06758 14.7792 6.9021 14.5605C6.8995 14.5573 6.8969 14.5541 6.8943 14.5504C6.25425 13.7451 5.21301 13.3984 4.23316 13.6645C4.22952 13.6656 4.22536 13.6667 4.22171 13.6677C3.96205 13.7451 3.71176 13.7493 3.52391 13.6091C3.33606 13.4693 3.26217 13.224 3.25384 12.9477C3.25384 12.9435 3.25384 12.9392 3.25332 12.9344C3.19712 11.8976 2.55395 10.9899 1.60845 10.6149C1.60481 10.6133 1.60117 10.6117 1.597 10.6101C1.34307 10.5168 1.13804 10.3691 1.06623 10.1424C0.994424 9.91627 1.0756 9.6736 1.22755 9.4448C1.22963 9.44107 1.23223 9.43733 1.23431 9.43413C1.78381 8.56107 1.78381 7.43893 1.23431 6.5664C1.23171 6.56267 1.22963 6.55893 1.22755 6.55573C1.0756 6.32693 0.994424 6.08373 1.06623 5.8576C1.13804 5.63147 1.34255 5.48373 1.597 5.38987C1.60065 5.38827 1.60481 5.3872 1.60897 5.3856C2.55395 5.01013 3.19712 4.1024 3.25332 3.06507C3.25332 3.0608 3.25332 3.05707 3.25384 3.0528C3.26217 2.776 3.33606 2.53067 3.52391 2.39093C3.71176 2.2512 3.96205 2.25493 4.22119 2.33227ZM7.23982 8.84587L5.52626 7.0896C5.32332 6.8816 4.99341 6.8816 4.79047 7.0896C4.58753 7.2976 4.58753 7.63573 4.79047 7.84373C4.79047 7.84373 5.90613 8.9872 6.50403 9.6C6.69916 9.8 6.96403 9.91253 7.23982 9.91253C7.51561 9.91253 7.78048 9.8 7.97561 9.6L10.7299 6.77707C10.9328 6.56907 10.9328 6.23093 10.7299 6.02293C10.527 5.81493 10.197 5.81493 9.9941 6.02293L7.23982 8.84587Z" fill="currentColor"
+                      <path fillRule="evenodd" clipRule="evenodd" d="M4.50375 1.3056C3.90846 1.13013 3.34334 1.2064 2.91196 1.528C2.48006 1.8496 2.23497 2.3776 2.21363 3.0128C2.17877 3.624 1.80047 4.16053 1.24316 4.38667C0.654627 4.60587 0.241459 5.008 0.0765041 5.528C-0.0884509 6.048 0.0161421 6.62347 0.363224 7.14987C0.685849 7.66507 0.68689 8.32747 0.365826 8.84587C0.0156217 9.3776 -0.0879305 9.95253 0.0765041 10.472C0.241459 10.9925 0.655668 11.3952 1.23847 11.6117C1.79526 11.8347 2.17617 12.3696 2.21363 12.9819C2.23497 13.6235 2.48058 14.1509 2.91196 14.472C3.34386 14.7936 3.91002 14.8699 4.50583 14.6939C5.08344 14.5392 5.6985 14.7424 6.08045 15.2155C6.46552 15.7211 6.96663 16 7.5 16C8.03389 16 8.53552 15.7205 8.91643 15.2192C9.29525 14.7456 9.90928 14.5397 10.4895 14.6928C11.0915 14.8699 11.6567 14.7936 12.088 14.472C12.5199 14.1504 12.765 13.6224 12.7864 12.9872C12.8212 12.376 13.1995 11.8395 13.7568 11.6133C14.3454 11.3941 14.7585 10.992 14.9235 10.472C15.0885 9.952 14.9839 9.37653 14.6368 8.85013C14.3142 8.33493 14.3131 7.67253 14.6342 7.15413C14.9844 6.6224 15.0879 6.04747 14.9235 5.528C14.7585 5.00747 14.3443 4.6048 13.7615 4.38827C13.2047 4.16533 12.8238 3.6304 12.7864 3.01813C12.765 2.37653 12.5194 1.84907 12.088 1.528C11.6561 1.2064 11.09 1.13013 10.4942 1.30613C9.91656 1.4608 9.3015 1.2576 8.91955 0.784533C8.53448 0.278933 8.03337 0 7.5 0C6.96611 0 6.46448 0.279467 6.08357 0.7808C5.70475 1.2544 5.09072 1.46027 4.51052 1.3072L4.50375 1.3056ZM4.22119 2.33227C4.22536 2.33333 4.229 2.3344 4.23316 2.33547C5.21301 2.6016 6.25425 2.25493 6.8943 1.44907C6.8969 1.44587 6.8995 1.44267 6.9021 1.43947C7.06758 1.2208 7.26792 1.06667 7.5 1.06667C7.73208 1.06667 7.93242 1.2208 8.0979 1.43947C8.1005 1.44267 8.1031 1.44587 8.1057 1.4496C8.74575 2.25493 9.78699 2.6016 10.7668 2.33547C10.7705 2.3344 10.7746 2.33333 10.7783 2.33227C11.0379 2.25493 11.2882 2.25067 11.4761 2.39093C11.6639 2.53067 11.7378 2.776 11.7462 3.05227C11.7462 3.05653 11.7462 3.0608 11.7467 3.0656C11.8029 4.1024 12.446 5.01013 13.3915 5.38507C13.3952 5.38667 13.3988 5.38827 13.403 5.38987C13.6569 5.4832 13.862 5.63093 13.9338 5.8576C14.0056 6.08373 13.9244 6.3264 13.7725 6.5552C13.7704 6.55893 13.7678 6.56267 13.7657 6.56587C13.2162 7.43893 13.2162 8.56107 13.7657 9.4336C13.7683 9.43733 13.7704 9.44107 13.7725 9.44427C13.9244 9.67307 14.0056 9.91627 13.9338 10.1424C13.862 10.3685 13.6575 10.5163 13.403 10.6101C13.3994 10.6117 13.3952 10.6128 13.391 10.6144C12.446 10.9899 11.8029 11.8976 11.7467 12.9349C11.7467 12.9392 11.7467 12.9429 11.7462 12.9472C11.7378 13.224 11.6639 13.4693 11.4761 13.6091C11.2882 13.7488 11.0379 13.7451 10.7788 13.6677C10.7746 13.6667 10.771 13.6656 10.7668 13.6645C9.78699 13.3984 8.74575 13.7451 8.1057 14.5509C8.1031 14.5541 8.1005 14.5573 8.0979 14.5605C7.93242 14.7792 7.73208 14.9333 7.5 14.9333C7.26792 14.9333 7.06758 14.7792 6.9021 14.5605C6.8995 14.5573 6.8969 14.5541 6.8943 14.5504C6.25425 13.7451 5.21301 13.3984 4.23316 13.6645C4.22952 13.6656 4.22536 13.6667 4.22171 13.6677C3.96205 13.7451 3.71176 13.7493 3.52391 13.6091C3.33606 13.4693 3.26217 13.224 3.25384 12.9477C3.25384 12.9435 3.25384 12.9392 3.25332 12.9344C3.19712 11.8976 2.55395 10.9899 1.60845 10.6149C1.60481 10.6133 1.60117 10.6117 1.597 10.6101C1.34307 10.5168 1.13804 10.3691 1.06623 10.1424C0.994424 9.91627 1.0756 9.6736 1.22755 9.4448C1.22963 9.44107 1.23223 9.43733 1.23431 9.43413C1.78381 8.56107 1.78381 7.43893 1.23431 6.5664C1.23171 6.56267 1.22963 6.55893 1.22755 6.55573C1.0756 6.32693 0.994424 6.08373 1.06623 5.8576C1.13804 5.63147 1.34255 5.48373 1.597 5.38987C1.60065 5.38827 1.60481 5.3872 1.60897 5.3856C2.55395 5.01013 3.19712 4.1024 3.25332 3.06507C3.25332 3.0608 3.25332 3.05707 3.25384 3.0528C3.26217 2.776 3.33606 2.53067 3.52391 2.39093C3.71176 2.2512 3.96205 2.25493 4.22119 2.33227ZM7.23982 8.84587L5.52626 7.0896C5.32332 6.8816 4.99341 6.8816 4.79047 7.0896C4.58753 7.2976 4.58753 7.63573 4.79047 7.84373C4.79047 7.84373 5.90613 8.9872 6.50403 9.6C6.69916 9.8 6.96403 9.91253 7.23982 9.91253C7.51561 9.91253 7.78048 9.8 7.97561 9.6L10.7299 6.77707C10.9328 6.56907 10.9328 6.23093 10.7299 6.02293C10.527 5.81493 10.197 5.81493 9.9941 6.02293L7.23982 8.84587Z" fill="currentColor"
                         stroke="currentColor"
                         strokeWidth="0.2" />
                     </svg>
@@ -545,7 +546,7 @@ export default function ProductDetailPage() {
         </div>
       </div>
 
-      {/* Similar Products Section */}
+
       <SimilarProducts />
 
 
@@ -554,12 +555,11 @@ export default function ProductDetailPage() {
       {
         showAuthModal && (
           <div className="fixed inset-0  backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
+            <div className="bg-white dark:bg-[#0f0f0f] text-black dark:text-white border border-[#E6E6E6] dark:border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
               <button
                 onClick={() => setShowAuthModal(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
-              >
-                <X className="w-6 h-6" />
+                className="absolute top-4 right-4   transition">
+                x
               </button>
 
               <h2 className="text-2xl font-bold mb-6">Login to Continue</h2>
@@ -570,7 +570,7 @@ export default function ProductDetailPage() {
                   <input
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                    className="w-full dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg px-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
                   />
                 </div>
 
@@ -579,7 +579,7 @@ export default function ProductDetailPage() {
                   <input
                     type="password"
                     placeholder="Enter your password"
-                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                    className="w-full dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg px-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
                   />
                 </div>
 
@@ -596,16 +596,16 @@ export default function ProductDetailPage() {
         )
       }
 
+
       {/* Make Offer Modal */}
       {
         showOfferModal && (
           <div className="fixed inset-0 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-            <div className="bg-[#0f0f0f] border border-[#1a1a1a] rounded-2xl p-8 max-w-md w-full relative">
+            <div className="bg-white dark:bg-[#0f0f0f] border border-[#E6E6E6] dark:border-[#1a1a1a]  text-black dark:text-white  rounded-2xl p-8 max-w-md w-full relative">
               <button
                 onClick={() => setShowOfferModal(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-white transition"
-              >
-                <X className="w-6 h-6" />
+                className="absolute top-4 right-4  transition"  >
+                x
               </button>
 
               <h2 className="text-2xl font-bold mb-6">Make an Offer</h2>
@@ -618,7 +618,7 @@ export default function ProductDetailPage() {
                     <input
                       type="number"
                       placeholder="0.00"
-                      className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg pl-8 pr-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
+                      className="w-full bg-white dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg pl-8 pr-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b]"
                     />
                   </div>
                   <p className="text-xs text-gray-400 mt-2">Listed price: $2,690</p>
@@ -629,7 +629,7 @@ export default function ProductDetailPage() {
                   <textarea
                     placeholder="Add a message to the seller..."
                     rows={4}
-                    className="w-full bg-[#1a1a1a] border border-[#252525] rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] resize-none"
+                    className="w-full bg-white dark:bg-[#1a1a1a] border border-[#E6E6E6] dark:border-[#252525] rounded-lg px-4 py-3  placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] resize-none"
                   />
                 </div>
 

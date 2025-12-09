@@ -34,8 +34,8 @@ export default function DashboardSidebar({
             <Image
               src="/icons/cookie.png"
               alt="Logo"
-              width={50}
-              height={50}
+              width={30}
+              height={30}
               className="md:block hidden"
             />
           ) : (
@@ -77,7 +77,7 @@ export default function DashboardSidebar({
 
       {/* Navigation Section */}
       <div className="flex-1 flex flex-col justify-between">
-        <div className="pt-[30px] duration-300 pl-[10px] overflow-y-auto">
+        <div className="pt-[30px] duration-300 pl-[10px]">
           <nav className="flex flex-col space-y-[10px] h-full">
             {dashboardSidebarItems.map((item) => (
               <DashboardNavLink
@@ -106,30 +106,20 @@ export default function DashboardSidebar({
         </div>
 
         {/* Logout Section */}
-        <div className="flex-shrink-0 flex items-center justify-center py-[20px]">
-          <button
-            onClick={handleLogout}
-            className={`bg-[#F7F8F80A] border border-[#444444] rounded-[7px] flex items-center py-[6px] duration-300 ${
-              collapsed 
-                ? "text-[0px] px-[15px] gap-[0px]" 
-                : "text-sm px-[30px] gap-[10px]"
-            }`}
-          >
-            <svg width="18" height="22" viewBox="0 0 18 22" fill="none" className="w-[15px]">
-              <path 
-                d="M10.8432 20.3609H1.37791V1.37791H10.8432C11.224 1.37791 11.5321 1.06971 11.5321 0.688953C11.5321 0.308192 11.224 0 10.8432 0H0.688953C0.308192 0 0 0.308192 0 0.688953V21.0498C0 21.4301 0.308192 21.7388 0.688953 21.7388H10.8432C11.224 21.7388 11.5321 21.4301 11.5321 21.0498C11.5321 20.6695 11.224 20.3609 10.8432 20.3609Z" 
-                fill="#F7F8F8" 
-                fillOpacity="0.7" 
-              />
-              <path 
-                d="M16.9593 10.3398L12.6533 6.03389C12.3842 5.76474 11.9483 5.76474 11.6791 6.03389C11.41 6.30259 11.41 6.73938 11.6791 7.00807L14.852 10.1809H7.51879C7.13803 10.1809 6.82983 10.4896 6.82983 10.8699C6.82983 11.2502 7.13803 11.5588 7.51879 11.5588H14.8525L11.6796 14.7317C11.4105 15.0008 11.4105 15.4367 11.6796 15.7059C11.8142 15.8404 11.9905 15.9075 12.1669 15.9075C12.3433 15.9075 12.5197 15.8404 12.6542 15.7059L16.9602 11.3999C17.1058 11.2543 17.166 11.0605 17.1536 10.8699C17.165 10.6793 17.1053 10.4854 16.9593 10.3398Z" 
-                fill="#F7F8F8" 
-                fillOpacity="0.7" 
-              />
-            </svg>
-            {!collapsed && "Logout"}
-          </button>
-        </div>
+        <div className="flex-shrink-0 flex items-center justify-center py-4">
+        <button
+          onClick={handleLogout}
+
+          className={`bg-[#F7F8F80A] border border-[#444444] rounded-[7px] flex items-center py-[6px] duration-400 ${
+            collapsed ? "text-[0px] px-[10px] gap-[0px]" : "text-sm px-[20px] gap-[10px]"
+          }`}
+        >
+          <svg width="18" height="22" viewBox="0 0 18 22" fill="none">
+            <path d="M10.8432 20.3609H1.37791V1.37791H10.8432C11.224 1.37791 11.5321 1.06971 11.5321 0.688953C11.5321 0.308192 11.224 0 10.8432 0H0.688953C0.308192 0 0 0.308192 0 0.688953V21.0498C0 21.4301 0.308192 21.7388 0.688953 21.7388H10.8432C11.224 21.7388 11.5321 21.4301 11.5321 21.0498C11.5321 20.6695 11.224 20.3609 10.8432 20.3609Z" fill="#F7F8F8" fillOpacity="0.7" />
+          </svg>
+          {!collapsed && <span className="ml-2">Logout</span>}
+        </button>
+      </div>
       </div>
 
       {/* Background Effect */}

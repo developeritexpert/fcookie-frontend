@@ -89,7 +89,7 @@ export default function RegisterPageSection() {
                       name="fullName"
                       type="text"
                       placeholder="Full Name"
-                      className="w-full text-sm border border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="fullName" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -100,7 +100,7 @@ export default function RegisterPageSection() {
                       name="email"
                       type="email"
                       placeholder="Email"
-                      className="w-full text-sm border border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border  border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="email" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -111,7 +111,7 @@ export default function RegisterPageSection() {
                       name="phone"
                       type="tel"
                       placeholder="Phone No."
-                      className="w-full text-sm border border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="phone" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -122,7 +122,7 @@ export default function RegisterPageSection() {
                       name="password"
                       type="password"
                       placeholder="Password"
-                      className="w-full text-sm border border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-none focus-visible:border-[#ffffff80] duration-300"
+                      className="w-full text-sm border border-[#E6E6E6] dark:border-[#FFFFFF1C] bg-[#FFFFFF0A] rounded-[7px] py-[15px] px-[15px] focus-visible:outline-0 focus-visible:border-[#ffffff80] duration-300"
                     />
                     <ErrorMessage name="password" component="div" className="text-red-500 text-xs mt-1" />
                   </div>
@@ -132,9 +132,9 @@ export default function RegisterPageSection() {
                   <div className="flex flex-col gap-1 mb-[20px] text-sm">
                     <label className="flex items-center gap-[5px] relative cursor-pointer">
                       <Field type="checkbox" name="terms" className="peer hidden" />
-                      <div className="h-4 w-4 border border-[#FFFFFF1C] peer-checked:border-[#FFFFFF80] rounded-[5px] flex items-center justify-center transition"></div>
+                      <div className="h-4 w-4 border border-[#E6E6E6] dark:border-[#FFFFFF1C] peer-checked:border-[#000] dark:peer-checked:border-[#FFFFFF80] rounded-[5px] flex items-center justify-center transition"></div>
                       <svg
-                        className="hidden peer-checked:block w-3 h-3 text-white absolute left-0.5"
+                        className="hidden peer-checked:block w-3 h-3  text-black dark:text-white absolute left-0.5"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="3"
