@@ -97,10 +97,10 @@ export default function LoginPageSection() {
             <div className="basis-[50%]">
               <Formik
                 initialValues={{ email: "", password: "", rememberMe: false }}
-                validationSchema={LoginSchema}  
+                validationSchema={LoginSchema}
                 onSubmit={handleSubmit}
               >
-                {({ isSubmitting }: { isSubmitting: boolean })  => (
+                {({ isSubmitting }: { isSubmitting: boolean }) => (
                   <Form>
                     <h1 className="font-semibold text-[30px] md:text-[40px] lg:text-[50px] leading-[1.2]">
                       Welcome back!
