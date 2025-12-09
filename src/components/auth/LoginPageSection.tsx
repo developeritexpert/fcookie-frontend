@@ -46,7 +46,7 @@ export default function LoginPageSection() {
       setAuth({
         user,
         token,
-        expiresIn,
+        expireInMs: expiresIn, 
         rememberMe: values.rememberMe,
       });
 

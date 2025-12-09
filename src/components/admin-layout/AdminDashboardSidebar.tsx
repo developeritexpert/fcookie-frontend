@@ -5,6 +5,7 @@ import Image from "next/image";
 import AdminDashboardNavLink from "@/components/admin-layout/AdminDashboardNavLink";
 import { adminSidebarItems } from "./sidebarData";
 import { useRouter } from "next/navigation"; 
+import { useAuthStore } from "@/components/store/useAuthStore";
 interface AdminDashboardSidebarProps {
   collapsed: boolean;
   setCollapsed: (value: boolean) => void;
@@ -17,6 +18,7 @@ export default function AdminDashboardSidebar({
    const router = useRouter();
 
   const handleLogout = () => {
+    useAuthStore.getState().logout()
     // You can also clear auth tokens or perform logout logic here
     router.push("/"); // navigate to home
   };
