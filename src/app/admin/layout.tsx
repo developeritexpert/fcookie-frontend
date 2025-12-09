@@ -3,6 +3,7 @@ import { useState, useEffect, ReactNode } from "react";
 import AdminDashboardHeader from "@/components/admin-layout/AdminDashboardHeader";
 import AdminDashboardSidebar from "@/components/admin-layout/AdminDashboardSidebar";
 import AdminDashboardFooter from "@/components/admin-layout/AdminDashboardFooter";
+import AuthGuard from "@/utils/authGuard";
 
 interface AdminLayoutProps {
   children: ReactNode;
@@ -49,7 +50,9 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           "
         >
           <div className="max-w-[1600px] mx-auto text-[#F7F8F8]">
-            {children}
+            <AuthGuard allowedRoles={['ADMIN']}>
+              {children}
+            </AuthGuard>
           </div>
         </main>
 

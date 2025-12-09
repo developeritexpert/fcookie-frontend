@@ -5,6 +5,7 @@ import Image from "next/image";
 import DashboardNavLink from "./DashboardNavLink";
 import { dashboardSidebarItems } from "./sidebarData";
 import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/components/store/useAuthStore";
 
 interface DashboardSidebarProps {
   collapsed: boolean;
@@ -18,6 +19,7 @@ export default function DashboardSidebar({
   const router = useRouter();
 
   const handleLogout = () => {
+    useAuthStore.getState().logout()
     // You can also clear auth tokens or perform logout logic here
     router.push("/"); // navigate to home
   };

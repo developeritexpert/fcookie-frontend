@@ -4,6 +4,7 @@ import { useState, useEffect, ReactNode } from "react";
 import DashboardHeader from "@/components/dashboard-layout/DashboardHeader";
 import DashboardSidebar from "@/components/dashboard-layout/DashboardSidebar";
 import DashboardFooter from "@/components/dashboard-layout/DashboardFooter";
+import AuthGuard from "@/utils/authGuard";
 
 // Define props type
 interface DashboardLayoutProps {
@@ -50,7 +51,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           [&::-webkit-scrollbar-thumb:hover]:bg-[#F7F8F830]"
         >
           <div className="max-w-[1600px] mx-auto text-[#F7F8F8]">
-            {children}
+            <AuthGuard allowedRoles={['USER']}>
+              {children}
+            </AuthGuard>
           </div>
         </main>
 
