@@ -26,3 +26,23 @@ export const CATEGORY_API = {
   UPDATE_CATEGORY: (id: string) => `${CATEGORY_API_BASE}/${id}`,
   DELETE_CATEGORY: (id: string) => `${CATEGORY_API_BASE}/${id}`,
 };
+
+// utils/apiUrl.ts (add these to your existing file)
+const FILTER_GROUP_API_BASE = `${API_BASE}/filter-groups`;
+
+export const FILTER_GROUP_API = {
+  GET_ALL: `${FILTER_GROUP_API_BASE}`,
+  GET_BY_ID: (id: string) => `${FILTER_GROUP_API_BASE}/${id}`,
+  CREATE: `${FILTER_GROUP_API_BASE}`,
+  UPDATE: (id: string) => `${FILTER_GROUP_API_BASE}/${id}`,
+  DELETE: (id: string) => `${FILTER_GROUP_API_BASE}/${id}`,
+};
+
+const FILTER_VALUE_API_BASE = `${API_BASE}/filter-values`;
+export const FILTER_VALUE_API = {
+  GET_ALL: `${FILTER_VALUE_API_BASE}`,
+  GET_BY_ID: (id: string) => `${FILTER_VALUE_API_BASE}/${id}`,
+  CREATE: `${FILTER_VALUE_API_BASE}`,
+  UPDATE: (id: string) => `${FILTER_VALUE_API_BASE}/${id}`,
+  DELETE: (id: string) => `${FILTER_VALUE_API_BASE}/${id}`,
+};
