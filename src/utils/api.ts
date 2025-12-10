@@ -110,9 +110,12 @@ const axiosWrapper = async (
       (config.headers as Record<string, string>).Authorization = `Bearer ${token}`;
     }
 
-    if (data) {
-      config.data = data;
-    }
+  if (method === 'get' && data) {
+    config.params = data; // <-- THIS FIXES params[page] issue
+  } else if (data) {
+    config.data = data;
+  }
+
 
     const response = await axios(config);
     return response.data;

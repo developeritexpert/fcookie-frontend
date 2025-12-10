@@ -385,3 +385,78 @@ export function RewardsPageSkeleton() {
     </div>
   );
 }
+
+// Categories Page Skeleton
+export function CategoriesPageSkeleton() {
+  return (
+    <div className="animate-pulse">
+      {/* Header */}
+      <div className="mb-[25px]">
+        <div className="h-8 bg-[#F7F8F81C] rounded w-48 mb-2"></div>
+        <div className="h-4 bg-[#F7F8F81C] rounded w-64"></div>
+      </div>
+
+      {/* Search and Add */}
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-[10px] sm:gap-[20px] mb-[25px]">
+        <div className="flex gap-[10px]">
+          <div className="h-10 bg-[#F7F8F81C] rounded-[7px] w-[250px]"></div>
+          <div className="h-10 bg-[#F7F8F81C] rounded-[7px] w-[120px]"></div>
+        </div>
+        <div className="h-10 bg-[#F7F8F81C] rounded-[7px] w-[140px]"></div>
+      </div>
+
+      {/* Table */}
+      <div className="w-full overflow-x-auto rounded-[7px]">
+        <div className="h-14 bg-[#F7F8F82A] rounded-t-[7px] mb-1"></div>
+        {[...Array(5)].map((_, i) => (
+          <div key={i} className="h-16 bg-[#F7F8F81C] mb-1"></div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Category Edit Page Skeleton
+export function CategoryEditPageSkeleton() {
+  return (
+    <div className="animate-pulse">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex items-center gap-4 mb-4">
+          <div className="h-10 w-10 bg-[#F7F8F81C] rounded-[7px]"></div>
+          <div>
+            <div className="h-8 bg-[#F7F8F81C] rounded w-48 mb-2"></div>
+            <div className="h-4 bg-[#F7F8F81C] rounded w-64"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Preview Card */}
+      <div className="border border-[#F7F8F81A] bg-[#F7F8F80A] rounded-[7px] p-[20px] flex gap-[20px] items-center mb-8">
+        <div className="h-20 w-20 bg-[#F7F8F81C] rounded-[7px]"></div>
+        <div>
+          <div className="h-6 bg-[#F7F8F81C] rounded w-48 mb-2"></div>
+          <div className="h-4 bg-[#F7F8F81C] rounded w-32"></div>
+        </div>
+      </div>
+
+      {/* Form */}
+      <div className="border border-[#F7F8F81A] p-[20px] rounded-[7px] bg-[#F7F8F80A]">
+        <div className="h-6 bg-[#F7F8F81C] rounded w-48 mb-6"></div>
+        <div className="space-y-6">
+          <div className="h-12 bg-[#F7F8F81C] rounded-[7px]"></div>
+          <div className="h-12 bg-[#F7F8F81C] rounded-[7px]"></div>
+          <div className="flex gap-4">
+            <div className="h-12 bg-[#F7F8F81C] rounded-[7px] w-32"></div>
+            <div className="h-12 bg-[#F7F8F81C] rounded-[7px] w-32"></div>
+          </div>
+          <div className="h-32 bg-[#F7F8F81C] rounded-[7px]"></div>
+          <div className="flex gap-4">
+            <div className="h-12 bg-[#F7F8F81C] rounded-[7px] w-40"></div>
+            <div className="h-12 bg-[#F7F8F81C] rounded-[7px] w-24"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
