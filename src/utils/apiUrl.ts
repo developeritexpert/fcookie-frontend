@@ -16,3 +16,13 @@ export const API_URL = {
 };
 
 
+// Category API URLs
+const CATEGORY_API_BASE = `${API_BASE}/category`;
+
+export const CATEGORY_API = {
+  GET_ALL_CATEGORIES: `${CATEGORY_API_BASE}/`,
+  CREATE_CATEGORY: `${CATEGORY_API_BASE}/`,
+  GET_CATEGORY_BY_ID: (id: string) => `${CATEGORY_API_BASE}/${id}`,
+  UPDATE_CATEGORY: (id: string) => `${CATEGORY_API_BASE}/${id}`,
+  DELETE_CATEGORY: (id: string) => `${CATEGORY_API_BASE}/${id}`,
+};
