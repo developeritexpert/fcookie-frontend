@@ -27,6 +27,11 @@ const statusOptions: Option[] = [
   { value: "ACTIVE", label: "Active" },
   { value: "INACTIVE", label: "Inactive" },
 ];
+const typeOptions: Option[] = [
+  { value: "single", label: "Single Select" },
+  { value: "multi", label: "Multi Select" },
+];
+
 
 type ApiResponse = {
   result?: string;
@@ -133,7 +138,7 @@ export default function FilterFormPage({ mode, filterId }: FilterFormPageProps) 
     try {
       const payload = {
         name: values.name.trim(),
-        type: 'single', // Always send 'single' as default type
+        type: values.type, // Always send 'single' as default type
         required: values.required,
         status: values.status,
         protected: values.protected,
@@ -439,6 +444,57 @@ export default function FilterFormPage({ mode, filterId }: FilterFormPageProps) 
                     ))}
                   </div>
                 </div>
+                {/* Type */}
+                <div>
+                  <label className="block text-sm font-medium text-[#F7F8F8B2] mb-2">
+                    Filter Type *
+                  </label>
+                  <div className="flex gap-4">
+                    {typeOptions.map((option) => (
+                      <label
+                        key={option.value}
+                        className={`flex items-center gap-2 cursor-pointer border rounded-[7px] px-4 py-3 transition-colors ${
+                          values.type === option.value
+                            ? "border-[#4DCE94] bg-[#4DCE9420]"
+                            : "border-[#F7F8F81C] bg-[#F7F8F80A] hover:bg-[#F7F8F815]"
+                        }`}
+                      >
+                        <Field
+                          type="radio"
+                          name="type"
+                          value={option.value}
+                          className="hidden"
+                        />
+                        <div
+                          className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                            values.type === option.value
+                              ? "border-[#4DCE94]"
+                              : "border-[#F7F8F870]"
+                          }`}
+                        >
+                          {values.type === option.value && (
+                            <div className="w-2 h-2 rounded-full bg-[#4DCE94]" />
+                          )}
+                        </div>
+                        <span
+                          className={
+                            values.type === option.value
+                              ? "text-[#4DCE94]"
+                              : "text-[#F7F8F8B2]"
+                          }
+                        >
+                          {option.label}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                  <ErrorMessage
+                    name="type"
+                    component="div"
+                    className="text-red-500 text-xs mt-1"
+                  />
+                </div>
+
 
                 {/* Order */}
                 {/* <div>

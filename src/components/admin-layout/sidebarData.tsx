@@ -43,7 +43,7 @@ export const adminSidebarItems: SidebarItem[] = [
                 className='fill-white group-hover:fill-black group-[.text-black]:fill-black' />
         </svg>
     ),
-    link: "/admin/products",
+    link: "/admin/assets",
   },
   {
     id: "users",

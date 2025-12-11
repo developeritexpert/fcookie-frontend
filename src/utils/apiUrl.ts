@@ -46,3 +46,14 @@ export const FILTER_VALUE_API = {
   UPDATE: (id: string) => `${FILTER_VALUE_API_BASE}/${id}`,
   DELETE: (id: string) => `${FILTER_VALUE_API_BASE}/${id}`,
 };
+
+// Asset API URLs
+const ASSET_API_BASE = `${API_BASE}/asset`;
+
+export const ASSET_API = {
+  GET_ALL_ASSETS: `${ASSET_API_BASE}/`,
+  CREATE_ASSET: `${ASSET_API_BASE}/`,
+  GET_ASSET_BY_ID: (id: string) => `${ASSET_API_BASE}/${id}`,
+  UPDATE_ASSET: (id: string) => `${ASSET_API_BASE}/${id}`,
+  DELETE_ASSET: (id: string) => `${ASSET_API_BASE}/${id}`,
+};
