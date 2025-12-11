@@ -64,3 +64,15 @@ export interface FilterValueListResponse {
     totalPages: number;
   };
 }
+
+export interface AssetFilter {
+  groupId: string;
+  valueId: string;
+}
+
+// For UI state management
+export interface SelectedFilterGroup {
+  groupId: string;
+  groupName: string;
+  selectedValues: string[]; // Array of valueIds
+}
