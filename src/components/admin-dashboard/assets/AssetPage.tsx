@@ -143,31 +143,35 @@ export default function AssetPage() {
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
 
-  const getStatusColor = (status: string) => {
-    switch (status.toUpperCase()) {
-      case "ACTIVE":
-        return "text-[#75DA5B] bg-[#75DA5B20]";
-      case "INACTIVE":
-        return "text-[#FF6B6B] bg-[#FF6B6B20]";
-      case "ARCHIVED":
-        return "text-[#FFB547] bg-[#FFB54720]";
-      default:
-        return "text-[#F7F8F8B2] bg-[#F7F8F820]";
-    }
-  };
+const getStatusColor = (status: string | undefined | null) => {
+  const value = (status ?? "").toUpperCase(); // prevent undefined error
 
-  const getVisibilityColor = (visibility: string) => {
-    switch (visibility.toUpperCase()) {
-      case "PUBLIC":
-        return "text-[#4DCE94] bg-[#4DCE9420]";
-      case "PRIVATE":
-        return "text-[#FF9F43] bg-[#FF9F4320]";
-      case "DRAFT":
-        return "text-[#A78BFA] bg-[#A78BFA20]";
-      default:
-        return "text-[#F7F8F8B2] bg-[#F7F8F820]";
-    }
-  };
+  switch (value) {
+    case "ACTIVE":
+      return "text-[#75DA5B] bg-[#75DA5B20]";
+    case "INACTIVE":
+      return "text-[#FF6B6B] bg-[#FF6B6B20]";
+    case "ARCHIVED":
+      return "text-[#FFB547] bg-[#FFB54720]";
+    default:
+      return "text-[#F7F8F8B2] bg-[#F7F8F820]";
+  }
+};
+
+const getVisibilityColor = (visibility: string | undefined | null) => {
+  const value = (visibility ?? "").toUpperCase(); // prevent undefined error
+
+  switch (value) {
+    case "PUBLIC":
+      return "text-[#4DCE94] bg-[#4DCE9420]";
+    case "PRIVATE":
+      return "text-[#FF9F43] bg-[#FF9F4320]";
+    case "DRAFT":
+      return "text-[#A78BFA] bg-[#A78BFA20]";
+    default:
+      return "text-[#F7F8F8B2] bg-[#F7F8F820]";
+  }
+};
 
   const formatPrice = (price: number, currency: string) => {
     const symbols: Record<string, string> = {

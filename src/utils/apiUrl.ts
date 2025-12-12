@@ -56,4 +56,5 @@ export const ASSET_API = {
   GET_ASSET_BY_ID: (id: string) => `${ASSET_API_BASE}/${id}`,
   UPDATE_ASSET: (id: string) => `${ASSET_API_BASE}/${id}`,
   DELETE_ASSET: (id: string) => `${ASSET_API_BASE}/${id}`,
+  GET_AVAILABLE_FILTERS: `${ASSET_API_BASE}/filters`, 
 };
